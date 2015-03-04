@@ -1,4 +1,6 @@
 YMT::Application.routes.draw do
+  resources :main, only: [:index]
+  resources :signup, only: [:index, :create]
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

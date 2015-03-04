@@ -1,0 +1,22 @@
+!!! 5
+/[if lt IE 7] <html class="no-js lt-ie9 lt-ie8 lt-ie7">
+/[if IE 7] <html class="no-js lt-ie9 lt-ie8">
+/[if IE 8] <html class="no-js lt-ie9">
+/ [if gt IE 8]><!
+%html.no-js
+  / <![endif]
+  %head
+    %meta{:charset => "utf-8"}/
+    %meta{:content => "IE=edge", "http-equiv" => "X-UA-Compatible"}/
+    %title Youth Media Tracker
+    %meta{:content => "", :name => "description"}/
+    %meta{:content => "width=device-width, initial-scale=1", :name => "viewport"}/
+    / Place favicon.ico and apple-touch-icon.png in the root directory
+    %link{:href => "favicon.ico", :rel => "icon"}/
+    %link{:href => "http://fonts.googleapis.com/css?family=Jura|Advent+Pro|Open+Sans", :rel => "stylesheet", :type => "text/css"}/
+    = stylesheet_link_tag "lumen"
+    = stylesheet_link_tag "normalize"
+    = stylesheet_link_tag "main"
+    = javascript_include_tag "vendor/modernizr-2.6.2.min"
+  %body
+    = yield
