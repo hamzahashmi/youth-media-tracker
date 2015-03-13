@@ -2,7 +2,6 @@ source 'https://rubygems.org'
 ruby '2.2.1'
 gem 'rails', '4.2.0'
 gem 'sass-rails', '~> 5.0'
-gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.1.0'
 gem 'jquery-rails'
 gem 'turbolinks'
@@ -41,6 +40,7 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'rubocop'
   gem 'sqlite3'
+  gem 'simplecov'
 end
 group :production do
   gem 'pg'
@@ -51,4 +51,9 @@ group :test do
   gem 'database_cleaner'
   gem 'launchy'
   gem 'selenium-webdriver'
+  gem 'cucumber-rails', :require => false
+end
+group :assets do
+  gem 'uglifier'
+  gem 'therubyracer'
 end
