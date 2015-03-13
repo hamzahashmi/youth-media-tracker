@@ -1,7 +1,11 @@
 {
   "Cucumber Features": {
     "coverage": {
+      "/Volumes/Stuff/CS169/youth-media-tracker/app/controllers/visitors_controller.rb": [
+        1,
+        null
+      ]
     },
-    "timestamp": 1426232767
+    "timestamp": 1426284978
   }
 }
