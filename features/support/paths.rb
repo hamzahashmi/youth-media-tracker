@@ -18,6 +18,10 @@ module NavigationHelpers
     when /^the edit page for "(.*)"$/ then edit_movie_path(Movie.find_by_title($1))
     when /^the details page for "(.*)"$/ then movie_path(Movie.find_by_title($1))
     when /^the Similar Movies page for "(.*)"$/ then director_path(Movie.find_by_title($1))
+    when /^the sign_up page$/ then signup_path
+    when /^the login page$/ then login_path
+
+
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
     #
