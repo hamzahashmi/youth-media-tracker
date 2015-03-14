@@ -16,6 +16,7 @@ module NavigationHelpers
     when /^the (Youth Media Tracker )?home\s?page$/ then '/'
     when /^the sign_up page$/ then signup_path
     when /^the login page$/ then login_path
+    when /^the edit page$/ then edit_user_registration_path
 
 
     # Add more mappings here.
