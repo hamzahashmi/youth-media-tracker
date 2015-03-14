@@ -7,3 +7,8 @@ Given /the following users exist/ do |users_table|
 
 end
 
+Given /I am user "(.*)" is confirmed/ do |email|
+	user = User.find_by_email(email)
+	user.confirmed_at =  Time.now
+	user.save!
+end
