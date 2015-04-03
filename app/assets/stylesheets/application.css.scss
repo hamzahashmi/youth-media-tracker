@@ -38,6 +38,14 @@
 
 /* Navbar Fonts and backgrounds */
 
+.navbar {
+	background-color: rgb(32, 80, 129);
+}
+
+.navbar a {
+	color: rgb(255, 255, 255) !important;
+}
+
 .navbar-header {
 	font-family: 'Alegreya Sans SC';
 	font-size: 24px;
@@ -50,7 +58,7 @@
 
 .navbar-header a:hover,
 .navbar-collapse a:hover {
-	background-color: rgba(238, 238, 238, 1) !important;
+	background-color: rgb(59, 115, 175) !important;
 }
 
 /* Main positioning */
@@ -68,7 +76,7 @@ main {
 }
 
 main h3 {
-	font-family: 'Alegreya Sans SC';
+	font-family: 'Lato';
 	font-size: 30px;
 }
 
