@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150402154324) do
+ActiveRecord::Schema.define(version: 20150403035738) do
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                             default: "",    null: false
@@ -57,8 +57,8 @@ ActiveRecord::Schema.define(version: 20150402154324) do
   add_index "users", ["invited_by_id"], name: "index_users_on_invited_by_id"
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
 
-  create_table "zip_codes", force: :cascade do |t|
-    t.integer  "zip_code"
+  create_table "zipcodes", force: :cascade do |t|
+    t.integer  "code"
     t.string   "county"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

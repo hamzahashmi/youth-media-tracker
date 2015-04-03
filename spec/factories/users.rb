@@ -1,5 +1,6 @@
 FactoryGirl.define do
   factory :user do
+    before (:create) {FactoryGirl.create(:zipcode)}
     confirmed_at Time.now
     name "Test User"
     email "test@example.com"

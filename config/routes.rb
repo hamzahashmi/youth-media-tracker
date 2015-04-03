@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   mount Upmin::Engine => '/admin'
   root to: 'visitors#index'
-  devise_for :users, controllers: { registrations: "users/registrations" }
+  devise_for :users
   resources :users
   get  '/users/sign_up(.:format)', to:'devise_invitable/registrations#new', as:'signup'
 

@@ -1,0 +1,36 @@
+.form-group
+  = f.label :name
+  = f.text_field :name, :autofocus => true,placeholder: "Enter your name",class: 'form-control' 
+.form-group
+  = f.label :email
+  = f.email_field :email,placeholder:"Enter a valid email", class: 'form-control'
+.form-group
+  = f.label :is_female, "Gender"
+  %br/
+  = f.select :is_female, User::GENDER_TYPES, class: 'form-control'
+.form-group
+  = f.label :date_of_birth
+  %br/
+  = f.date_select :date_of_birth ,:start_year=>1920 , class: 'form-control'
+.form-group
+  = f.label :address_street, "Street"
+  %br/
+  = f.text_field :address_street ,placeholder:"Enter street number and name", class: 'form-control'
+  %br/
+  = f.label :address_city, "City"
+  %br/
+  = f.text_field :address_city ,placeholder: "Enter city", class: 'form-control'
+  %br/
+  = f.label :address_state, "State"
+  %br/
+  = f.text_field :address_state , disabled: true, value: "California", class: 'form-control'
+.form-group 
+  = f.label :address_zip_code, "Zip Code"
+  %br/
+  = f.number_field :address_zip_code , maxlength: 5, placeholder:"Enter Zip Code", class: 'form-control'
+.form-group 
+  = f.label :phone_number, "Phone number"
+  = f.telephone_field :phone_number , maxlength: 10, placeholder:"Enter phone number", class: 'form-control'
+.form-group 
+  = f.label :bio, "Bio"
+  = f.text_area :bio , size: "60x12",placeholder: "Enter a short bio", class: 'form-control'
