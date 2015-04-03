@@ -13,3 +13,74 @@
  *= require_tree .
  *= require_self
  */
+
+@import url(http://fonts.googleapis.com/css?family=Open+Sans|Alegreya+Sans+SC|Lato);
+
+/* Navbar positioning */
+
+.navbar > .container {
+	width: 95%;
+}
+
+.navbar-nav {
+	float: right;
+}
+
+.navbar-collapse li {
+	display: inline;
+	padding: 0 10px;
+}
+
+.navbar-collapse #signoutButton {
+	position: relative;
+	float: right;
+}
+
+/* Navbar Fonts and backgrounds */
+
+.navbar {
+	background-color: rgb(32, 80, 129);
+}
+
+.navbar a {
+	color: rgb(255, 255, 255) !important;
+}
+
+.navbar-header {
+	font-family: 'Alegreya Sans SC';
+	font-size: 24px;
+}
+
+.navbar-collapse {
+	font-family: 'Lato';
+	font-size: 18px;
+}
+
+.navbar-header a:hover,
+.navbar-collapse a:hover {
+	background-color: rgb(59, 115, 175) !important;
+}
+
+/* Main positioning */
+
+
+/* Main visuals */
+html, body {
+	background-color: rgba(238, 238, 238, 1);
+}
+
+main {
+	padding: 2.5% 5%;
+	font-family: 'Open Sans';
+	font-size: 18px;
+}
+
+main h3 {
+	font-family: 'Lato';
+	font-size: 30px;
+}
+
+label {
+	font-family: 'Lato';
+	font-size: 16px;
+}
