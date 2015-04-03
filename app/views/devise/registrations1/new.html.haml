@@ -1,0 +1,38 @@
+.authform
+  = form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :role => 'form'}) do |f|
+    %h3 Sign up
+    = devise_error_messages!
+    .form-group
+      = f.label :name
+      = f.text_field :name, :autofocus => true, class: 'form-control'
+    .form-group
+      = f.label :email
+      = f.email_field :email, class: 'form-control'
+    .form-group
+      = f.label :is_female, "Male"
+      = f.check_box :is_female, {}, false, class: 'form-control'
+      = f.label :is_female, "Female"
+      = f.check_box :is_female, {}, true, class: 'form-control'
+    .form-group
+      = f.label :date_of_birth
+      %br/
+      = f.date_select :date_of_birth ,:start_year=>1920 , class: 'form-control'
+    .form-group
+      = f.label :street_address, "Street"
+      %br/
+      = f.text_field :street_address , class: 'form-control'
+      %br/
+      = f.label :city_address, "City"
+      %br/
+      = f.text_field :city_address , class: 'form-control'
+    .form-group 
+      = f.label :zipcode_address, "Zip Code"
+      %br/
+      = f.text_field :zipcode_address , class: 'form-control'
+    .form-group
+      = f.label :password
+      = f.password_field :password, class: 'form-control'
+    .form-group
+      = f.label :password_confirmation
+      = f.password_field :password_confirmation, class: 'form-control'
+    = f.submit 'Sign up', :class => 'button right', :id => 'submit_'

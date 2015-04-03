@@ -19,6 +19,8 @@ gem 'high_voltage'
 gem 'simple_form'
 gem 'upmin-admin'
 group :development do
+  gem "erb2haml"
+  gem 'foundation-rails'
   gem 'better_errors'
   gem 'foreman'
   gem 'guard-bundler'
