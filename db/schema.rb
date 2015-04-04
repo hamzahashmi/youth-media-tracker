@@ -41,12 +41,12 @@ ActiveRecord::Schema.define(version: 20150403035738) do
     t.string   "invited_by_type"
     t.integer  "invitations_count",                 default: 0
     t.datetime "date_of_birth"
-    t.boolean  "is_female",                         default: false
+    t.integer  "gender",                            default: 0
     t.string   "address_street"
     t.string   "address_city"
+    t.string   "address_state"
     t.integer  "address_zip_code"
     t.string   "bio"
-    t.string   "address_state"
     t.integer  "phone_number",           limit: 10
     t.boolean  "suspended",                         default: false, null: false
   end

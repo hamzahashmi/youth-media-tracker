@@ -4,10 +4,13 @@ Feature: Youth login
 	So I can upload videos
 
 	Background:
+		Given the following zipcodes exist:
+		|code|
+		|12345|
 	    Given the following users exist:
-	    |name|email|password|confirmed_at|
-	    |Test|Test@berkeley.edu|11111111||
-	    |test2|test2@gmail.com|11111111|Time.now|
+	    |name|email|password|confirmed_at|address_zip_code|phone_number|bio|
+	    |Test|Test@berkeley.edu|11111111||12345|123456789|"bio text"|
+	    |test2|test2@gmail.com|11111111|Time.now|12345|123456789|"bio text"|
 
 
 Scenario:

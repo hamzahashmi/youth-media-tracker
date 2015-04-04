@@ -1,7 +1,7 @@
 class AddNameToUsers < ActiveRecord::Migration
   def change
     add_column :users, :date_of_birth, :datetime
-    add_column :users, :is_female, :integer, default: 0, limit: 1
+    add_column :users, :gender, :integer, default: 0
     add_column :users, :address_street, :string
     add_column :users, :address_city, :string
     add_column :users, :address_state, :string

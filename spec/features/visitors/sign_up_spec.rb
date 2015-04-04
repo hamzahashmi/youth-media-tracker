@@ -69,4 +69,14 @@ feature 'Sign Up', :devise do
     expect(page).to have_content "Address zip code is not covered by our service."
   end
 
+  scenario 'visitor cannot sign up without phone number' do
+    sign_up_with('test@example.com', 'please123', 'please123',12345,'',"Bio","test")
+    expect(page).to have_content "Phone number can't be blank"
+  end
+
+  scenario 'visitor cannot sign up without bio' do
+    sign_up_with('test@example.com', 'please123', 'please123',12345,123456789, '',"test")
+    expect(page).to have_content "Bio can't be blank"
+  end
+
 end

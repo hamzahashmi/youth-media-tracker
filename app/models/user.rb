@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
   validate :zip_code_is_allowed , :if => :address_zip_code?
 
   GENDER_TYPES = [ ["Do not wish to say",0],["Male",1], [ "Female",2 ]  ]
-  validates :is_female, inclusion: { in: [0,1,2] }, :if => :is_female?
+  validates :gender, inclusion: { in: [0,1,2] }, :if => :gender?
 
   def set_default_role
     self.role ||= :user

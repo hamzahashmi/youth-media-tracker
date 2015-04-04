@@ -1,7 +1,7 @@
 {
   "RSpec": {
     "coverage": {
-      "/Volumes/Stuff/CS169/youth-media-tracker/app/controllers/application_controller.rb": [
+      "/home/saasbook/Desktop/youth-media-tracker/app/controllers/application_controller.rb": [
         1,
         null,
         null,
@@ -19,11 +19,11 @@
         null,
         null
       ],
-      "/Volumes/Stuff/CS169/youth-media-tracker/app/helpers/application_helper.rb": [
+      "/home/saasbook/Desktop/youth-media-tracker/app/helpers/application_helper.rb": [
         1,
         null
       ],
-      "/Volumes/Stuff/CS169/youth-media-tracker/app/models/user.rb": [
+      "/home/saasbook/Desktop/youth-media-tracker/app/models/user.rb": [
         1,
         1,
         1,
@@ -37,7 +37,7 @@
         1,
         null,
         1,
-        37,
+        46,
         null,
         null,
         null,
@@ -46,8 +46,8 @@
         null,
         null,
         1,
-        19,
-        19,
+        27,
+        27,
         1,
         1,
         1,
@@ -56,24 +56,24 @@
         null,
         null
       ],
-      "/Volumes/Stuff/CS169/youth-media-tracker/app/models/zipcode.rb": [
+      "/home/saasbook/Desktop/youth-media-tracker/app/models/zipcode.rb": [
         1,
         1,
         0,
         null,
         null
       ],
-      "/Volumes/Stuff/CS169/youth-media-tracker/app/controllers/visitors_controller.rb": [
+      "/home/saasbook/Desktop/youth-media-tracker/app/controllers/visitors_controller.rb": [
         1,
         null
       ],
-      "/Volumes/Stuff/CS169/youth-media-tracker/app/controllers/users_controller.rb": [
+      "/home/saasbook/Desktop/youth-media-tracker/app/controllers/users_controller.rb": [
         1,
         1,
         1,
         null,
         1,
-        1,
+        5,
         null,
         null,
         1,
@@ -86,35 +86,51 @@
         null,
         null,
         1,
-        0,
-        0,
-        0,
+        1,
+        1,
+        1,
         null,
         0,
         null,
         null,
         null,
         1,
-        0,
-        0,
-        0,
+        1,
+        1,
+        1,
         null,
         null,
         1,
         null,
         1,
+        8,
         1,
-        0,
         null,
         null,
         null,
         1,
-        0,
+        1,
         null,
         null,
         null
       ]
     },
-    "timestamp": 1428050295
+    "timestamp": 1428118426
+  },
+  "Cucumber Features": {
+    "coverage": {
+      "/home/saasbook/Desktop/youth-media-tracker/app/models/zipcode.rb": [
+        1,
+        1,
+        0,
+        null,
+        null
+      ],
+      "/home/saasbook/Desktop/youth-media-tracker/app/controllers/visitors_controller.rb": [
+        1,
+        null
+      ]
+    },
+    "timestamp": 1428118468
   }
 }

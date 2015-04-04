@@ -39,4 +39,30 @@ feature 'User edit', :devise do
     expect(page).to have_field('Email', with: me.email)
   end
 
+  scenario 'user cannot view users' do
+    user = FactoryGirl.create(:user)
+    login_as(user, :scope => :user)
+    visit users_path(user)
+    expect(page).to have_content("Access denied.")
+  end
+
+  scenario 'admin can update users' do
+    admin = FactoryGirl.create(:user, :email => "admin@test.com", :role => "admin")
+    user = FactoryGirl.create(:user, :email => "user@test.com")
+    login_as(admin)
+    visit users_path
+    click_button 'changeRole' + user.id.to_s
+    expect(page).to have_content("User updated.")
+  end
+
+  scenario 'admin can delete users', :js => true do
+    admin = FactoryGirl.create(:user, :email => "admin@test.com", :role => "admin")
+    user = FactoryGirl.create(:user, :email => "user@test.com")
+    login_as(admin)
+    visit users_path
+    click_link 'deleteUser' + user.id.to_s
+    page.driver.browser.switch_to.alert.accept
+    expect(page).to have_content("User deleted.")
+  end
+
 end

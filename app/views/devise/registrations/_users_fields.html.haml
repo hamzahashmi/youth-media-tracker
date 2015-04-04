@@ -5,9 +5,9 @@
   = f.label :email
   = f.email_field :email,placeholder:"Enter a valid email", class: 'form-control'
 .form-group
-  = f.label :is_female, "Gender"
+  = f.label :gender, "Gender"
   %br/
-  = f.select :is_female, User::GENDER_TYPES, class: 'form-control'
+  = f.select :gender, User::GENDER_TYPES, class: 'form-control'
 .form-group
   = f.label :date_of_birth
   %br/
