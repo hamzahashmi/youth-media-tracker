@@ -4,7 +4,7 @@
   %thead
     %tr
       %th Name
-      %th Type
+      %th Media
       %th Category
       %th Text
       %th
@@ -15,7 +15,7 @@
     - @pitches.each do |pitch|
       %tr
         %td= pitch.name
-        %td= pitch.type
+        %td= pitch.media
         %td= pitch.category
         %td= pitch.text
         %td= link_to 'Show', pitch

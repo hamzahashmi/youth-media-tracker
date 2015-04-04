@@ -11,11 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150404013317) do
+ActiveRecord::Schema.define(version: 20150404041649) do
 
   create_table "pitches", force: :cascade do |t|
     t.string   "name"
-    t.string   "type"
+    t.string   "media"
     t.string   "category"
     t.string   "text"
     t.datetime "created_at", null: false
