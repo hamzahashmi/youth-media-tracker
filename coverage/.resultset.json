@@ -7,14 +7,14 @@
         null,
         1,
         null,
-        1,
         null,
-        1,
         null,
-        1,
-        0,
         null,
-        0,
+        null,
+        null,
+        null,
+        null,
+        null,
         null,
         null,
         null
@@ -37,7 +37,7 @@
         1,
         null,
         1,
-        46,
+        44,
         null,
         null,
         null,
@@ -46,8 +46,8 @@
         null,
         null,
         1,
-        27,
-        27,
+        25,
+        25,
         1,
         1,
         1,
@@ -58,9 +58,6 @@
       ],
       "/home/saasbook/Desktop/youth-media-tracker/app/models/zipcode.rb": [
         1,
-        1,
-        0,
-        null,
         null
       ],
       "/home/saasbook/Desktop/youth-media-tracker/app/controllers/visitors_controller.rb": [
@@ -73,7 +70,7 @@
         1,
         null,
         1,
-        5,
+        3,
         null,
         null,
         1,
@@ -95,15 +92,15 @@
         null,
         null,
         1,
-        1,
-        1,
-        1,
+        0,
+        0,
+        0,
         null,
         null,
         1,
         null,
         1,
-        8,
+        5,
         1,
         null,
         null,
@@ -115,7 +112,7 @@
         null
       ]
     },
-    "timestamp": 1428118426
+    "timestamp": 1428119227
   },
   "Cucumber Features": {
     "coverage": {

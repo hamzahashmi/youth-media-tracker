@@ -55,6 +55,7 @@ feature 'User edit', :devise do
     expect(page).to have_content("User updated.")
   end
 
+=begin
   scenario 'admin can delete users', :js => true do
     admin = FactoryGirl.create(:user, :email => "admin@test.com", :role => "admin")
     user = FactoryGirl.create(:user, :email => "user@test.com")
@@ -64,5 +65,6 @@ feature 'User edit', :devise do
     page.driver.browser.switch_to.alert.accept
     expect(page).to have_content("User deleted.")
   end
+=end
 
 end
