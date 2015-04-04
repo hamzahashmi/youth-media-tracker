@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :pitches
+
   mount Upmin::Engine => '/admin'
   root to: 'visitors#index'
   devise_for :users
@@ -8,7 +10,7 @@ Rails.application.routes.draw do
   get  '/users/sign_in(.:format)', to:'devise/sessions#new', as:'login'
 
 
-  get  '/users/pitch', to:'users#pitch', as:'pitch'
-  get '/users/pitches', to:'users#pitches', as:'pitches'
+  # get  '/users/pitch', to:'users#pitch', as:'pitch'
+  # get '/users/pitches', to:'users#pitches', as:'pitches'
 
 end
