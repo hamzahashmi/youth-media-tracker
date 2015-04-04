@@ -20,6 +20,7 @@ class PitchesController < ApplicationController
 
   # GET /pitches/1/edit
   def edit
+    @pitch = Pitch.find params[:id]
   end
 
   # POST /pitches

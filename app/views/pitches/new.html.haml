@@ -1,5 +1,17 @@
-%h1 New pitch
+%h1 Submit a Pitch
 
-= render 'form'
+= form_tag pitches_path do
 
-= link_to 'Back', pitches_path
+  = label :pitch, :name, 'Name'
+  = text_field :pitch, 'name'
+
+  = label :pitch, :media, 'Media'
+  = select :pitch, :media, ["Video","Audio","Written"]
+
+  = label :pitch, :category, 'Category'
+  = select :pitch, :category, ["Arts","Sports","Political","Current Events"]
+
+  = label :pitch, :text, 'Description'
+  = text_field :pitch, 'text'
+
+  = submit_tag 'Submit Pitch'

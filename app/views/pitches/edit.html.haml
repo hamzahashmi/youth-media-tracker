@@ -1,7 +1,17 @@
-%h1 Editing pitch
+%h1 Edit a Pitch
 
-= render 'form'
+= form_tag pitches_path(@pitch), :method => :put do
 
-= link_to 'Show', @pitch
-\|
-= link_to 'Back', pitches_path
+  = label :pitch, :name, 'Name'
+  = text_field :pitch, 'name'
+
+  = label :pitch, :media, 'Media'
+  = select :pitch, :media, ['Video','Audio','Written']
+
+  = label :pitch, :category, 'Category'
+  = select :pitch, :category, ['Arts','Sports','Political','Current Events']
+
+  = label :pitch, :text, 'Description'
+  = text_area :text, size: "60x12",placeholder: "Enter a short description"
+
+  = submit_tag 'Update Pitch'
