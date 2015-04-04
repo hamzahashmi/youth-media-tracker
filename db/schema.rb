@@ -23,14 +23,14 @@ ActiveRecord::Schema.define(version: 20150404051556) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "email",                             default: "",    null: false
-    t.string   "encrypted_password",                default: ""
+    t.string   "email",                  default: "",    null: false
+    t.string   "encrypted_password",     default: ""
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.string   "name"
     t.integer  "role"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",                     default: 0,     null: false
+    t.integer  "sign_in_count",          default: 0,     null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
@@ -48,16 +48,16 @@ ActiveRecord::Schema.define(version: 20150404051556) do
     t.integer  "invitation_limit"
     t.integer  "invited_by_id"
     t.string   "invited_by_type"
-    t.integer  "invitations_count",                 default: 0
+    t.integer  "invitations_count",      default: 0
     t.datetime "date_of_birth"
-    t.integer  "gender",                            default: 0
+    t.integer  "gender",                 default: 0
     t.string   "address_street"
     t.string   "address_city"
     t.string   "address_state"
     t.integer  "address_zip_code"
     t.string   "bio"
-    t.integer  "phone_number",           limit: 10
-    t.boolean  "suspended",                         default: false, null: false
+    t.integer  "phone_number"
+    t.boolean  "suspended",              default: false, null: false
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

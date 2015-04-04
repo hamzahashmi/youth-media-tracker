@@ -7,6 +7,6 @@ class AddNameToUsers < ActiveRecord::Migration
     add_column :users, :address_state, :string
     add_column :users, :address_zip_code, :integer 
     add_column :users, :bio, :string
-    add_column :users, :phone_number, :integer, limit:10
+    add_column :users, :phone_number, :integer
   end
 end
