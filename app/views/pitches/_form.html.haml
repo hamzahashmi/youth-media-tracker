@@ -1,0 +1,11 @@
+= simple_form_for(@pitch) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :name
+    = f.input :media
+    = f.input :category
+    = f.input :text
+
+  .form-actions
+    = f.button :submit

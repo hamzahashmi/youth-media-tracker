@@ -1,0 +1,18 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @pitch.name
+%p
+  %b Media:
+  = @pitch.media
+%p
+  %b Category:
+  = @pitch.category
+%p
+  %b Text:
+  = @pitch.text
+
+= link_to 'Edit', edit_pitch_path(@pitch)
+\|
+= link_to 'Back', pitches_path
