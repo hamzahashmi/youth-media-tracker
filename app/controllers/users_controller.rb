@@ -7,6 +7,7 @@ class UsersController < ApplicationController
   end
 
   def show
+    puts params
     @user = User.find(params[:id])
     unless current_user.admin?
       unless @user == current_user
@@ -41,5 +42,19 @@ class UsersController < ApplicationController
   # def secure_params
   #   params.require(:user).permit(:role)
   # end
+
+  def pitch
+
+    render "pitch"
+
+  end
+
+
+  def pitches
+
+    
+
+
+  end
 
 end
