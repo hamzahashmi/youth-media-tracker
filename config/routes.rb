@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   get  '/users/sign_in(.:format)', to:'devise/sessions#new', as:'login'
 
 
-  # get  '/users/pitch', to:'users#pitch', as:'pitch'
+  # get  '/users/pitch', to:'pitches#index', as:'pitch'
   # get '/users/pitches', to:'users#pitches', as:'pitches'
 
 end
