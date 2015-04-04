@@ -24,7 +24,7 @@ class PitchesController < ApplicationController
   # POST /pitches
   # POST /pitches.json
   def create
-    @pitch = Pitch.new(pitch_params)
+    @pitch = Pitch.create!(pitch_params)
     flash[:notice] = 'Pitch was successfully created.'
     redirect_to pitch_path(@pitch)
   end
