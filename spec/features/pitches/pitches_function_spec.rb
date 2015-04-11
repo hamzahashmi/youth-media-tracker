@@ -21,8 +21,8 @@ feature 'Pitch functionality' do
 
   scenario 'user can view a pitch' do
     user = FactoryGirl.create(:user)
+    pitch = FactoryGirl.create(:pitch, :user => user)
     login_as(user, :scope => :user)
-    pitch = FactoryGirl.create(:pitch)
     visit pitch_path(pitch)
     expect(page).to have_content('testName')
     expect(page).to have_content('testCategory')
@@ -32,8 +32,8 @@ feature 'Pitch functionality' do
 
   scenario 'user can edit a pitch' do
     user = FactoryGirl.create(:user)
+    pitch = FactoryGirl.create(:pitch, :user => user)
     login_as(user, :scope => :user)
-    pitch = FactoryGirl.create(:pitch)
     visit edit_pitch_path(pitch)
     fill_in 'Name', :with => 'otherName'
     fill_in 'Category', :with => 'otherCategory'
@@ -48,9 +48,9 @@ feature 'Pitch functionality' do
 
   scenario 'user can see pitches' do
     user = FactoryGirl.create(:user)
+    pitch1 = FactoryGirl.create(:pitch, :name => 'Name 1',:user => user)
+    pitch2 = FactoryGirl.create(:pitch, :name => 'Name 2', :user => user)
     login_as(user, :scope => :user)
-    pitch1 = FactoryGirl.create(:pitch, :name => 'Name 1')
-    pitch2 = FactoryGirl.create(:pitch, :name => 'Name 2')
     visit pitches_path
     expect(page).to have_content('Name 1')
     expect(page).to have_content('Name 2')

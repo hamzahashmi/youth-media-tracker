@@ -4,6 +4,7 @@ FactoryGirl.define do
 	media "testMedia"
 	category "testCategory"
 	text "testText"
+	user
   end
 
 end
