@@ -1,5 +1,7 @@
 class PitchesController < ApplicationController
   before_action :set_pitch, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, except: [:index, :show]
+  before_action :authorized_user, only: [:edit, :update, :destroy]
 
   # GET /pitches
   # GET /pitches.json
@@ -14,7 +16,7 @@ class PitchesController < ApplicationController
 
   # GET /pitches/new
   def new
-    @pitch = Pitch.new
+    @pitch = current_user.pitches.build
   end
 
   # GET /pitches/1/edit
@@ -24,9 +26,16 @@ class PitchesController < ApplicationController
   # POST /pitches
   # POST /pitches.json
   def create
-    @pitch = Pitch.create!(pitch_params)
-    flash[:notice] = 'Pitch was successfully created.'
-    redirect_to pitch_path(@pitch)
+    @pitch = current_user.pitches.build(pitch_params)
+    respond_to do |format|
+      if @pitch.save
+        format.html { redirect_to @pitch, notice: 'Pitch was successfully created.' }
+        format.json { render :show, status: :created, location: @pitch }
+      else
+        format.html { render :new }
+        format.json { render json: @pitch.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   # PATCH/PUT /pitches/1
@@ -49,13 +58,27 @@ class PitchesController < ApplicationController
       #format.json { head :no_content }
     end
   end
+def upvote
+  @pitch = Pitch.find(params[:id])
+  @pitch.upvote_by current_user
+  redirect_to :back
+end
+ 
+def downvote
+  @pitch = Pitch.find(params[:id])
+  @pitch.downvote_by current_user
+  redirect_to :back
+end
 
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_pitch
       @pitch = Pitch.find(params[:id])
     end
-
+    def authorized_user
+      @pitch = current_user.pitches.find_by(id: params[:id])
+      redirect_to pitches_path, notice: "Not authorized to edit this pitch" if @pitch.nil?
+    end
     # Never trust parameters from the scary internet, only allow the white list through.
     def pitch_params
       params.require(:pitch).permit(:name, :media, :category, :text)

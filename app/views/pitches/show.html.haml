@@ -1,18 +1,27 @@
 %p#notice= notice
-
-%p
-  %b Name:
-  = @pitch.name
-%p
-  %b Media:
-  = @pitch.media
-%p
-  %b Category:
-  = @pitch.category
-%p
-  %b Text:
-  = @pitch.text
-
-= link_to 'Edit', edit_pitch_path(@pitch)
-\|
-= link_to 'Back', pitches_path
+.page-header
+	%h1
+		%b
+			= @pitch.name
+	%small
+		Submitted by #{@pitch.user.name}
+	%h4
+		= @pitch.text
+	%br/
+	%small
+		#{@pitch.media}, #{@pitch.category}
+.btn-group
+.btn-group.pull-right
+	= link_to like_pitch_path(@pitch), method: :put, class: "btn btn-default btn-sm" do
+		%span.glyphicon.glyphicon-chevron-up
+		Upvote
+		\#{@pitch.get_upvotes.size}
+	= link_to dislike_pitch_path(@pitch), method: :put, class: "btn btn-default btn-sm" do
+		%span.glyphicon.glyphicon-chevron-down
+		Downvote
+		\#{@pitch.get_downvotes.size}
+- if @pitch.user == current_user
+	.btn-group
+		= link_to 'Back', pitches_path,  class: "btn btn-default"
+		= link_to 'Edit', edit_pitch_path(@pitch), class: "btn btn-default"
+		= link_to 'Destroy', @pitch, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default"
