@@ -6,7 +6,7 @@ class PitchesController < ApplicationController
   # GET /pitches
   # GET /pitches.json
   def index
-    @pitches = Pitch.all
+    @pitches = Pitch.order(created_at: :desc)
   end
 
   # GET /pitches/1

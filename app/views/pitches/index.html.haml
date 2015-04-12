@@ -2,15 +2,16 @@
   - @pitches.each do |pitch|
     %li.list-group-item
       %blockquote
-        %h1
+        %a
           = link_to pitch.name, pitch
         %small
           Submitted #{time_ago_in_words(pitch.created_at)} by 
           %cite #{pitch.user.name}
       %p.lead
         #{pitch.text}
-      %p
+      %cite
         #{pitch.category}, #{pitch.media}
+      %br/
       .btn-group
         = link_to like_pitch_path(pitch), method: :put, class: "btn btn-default btn-sm" do
           %span.glyphicon.glyphicon-chevron-up
@@ -20,4 +21,10 @@
           %span.glyphicon.glyphicon-chevron-down
           Downvote
           \#{pitch.get_downvotes.size}
+      .active
+        %br/
+        %a
+          %span.badge
+            = pitch.comments.count
+          = link_to "Commments", pitch
      

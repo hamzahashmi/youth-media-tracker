@@ -1,23 +1,22 @@
 %p#notice= notice
 .page-header
-	%h1
+	%blockquote
 		%b
 			= @pitch.name
-	%small
-		Submitted by #{@pitch.user.name}
+		%small
+			Submitted by #{@pitch.user.name}
 	%h4
 		= @pitch.text
 	%br/
-	%small
+	%cite
 		#{@pitch.media}, #{@pitch.category}
-.btn-group
 .btn-group.pull-right
 	= link_to like_pitch_path(@pitch), method: :put, class: "btn btn-default btn-sm" do
 		%span.glyphicon.glyphicon-chevron-up
 		Upvote
 		\#{@pitch.get_upvotes.size}
 	= link_to dislike_pitch_path(@pitch), method: :put, class: "btn btn-default btn-sm" do
-		%span.glyphicon.glyphicon-chevron-down
+		= fa_icon "fa-thumbs-up"
 		Downvote
 		\#{@pitch.get_downvotes.size}
 - if @pitch.user == current_user
@@ -25,3 +24,15 @@
 		= link_to 'Back', pitches_path,  class: "btn btn-default"
 		= link_to 'Edit', edit_pitch_path(@pitch), class: "btn btn-default"
 		= link_to 'Destroy', @pitch, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default"
+.active
+	%br/
+	%span.badge
+		= @pitch.comments.count
+	Comments
+#comments
+	= render :partial => @pitch.comments
+= simple_form_for [@pitch, Comment.new]  do |f|
+	.field
+	= f.text_area :body, class: "form-control"
+	%br/
+	= f.submit "Add Comment", class: "btn btn-primary"

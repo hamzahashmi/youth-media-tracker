@@ -23,6 +23,10 @@
         1,
         null
       ],
+      "/Volumes/Stuff/CS169/youth-media-tracker/app/helpers/comments_helper.rb": [
+        1,
+        null
+      ],
       "/Volumes/Stuff/CS169/youth-media-tracker/app/helpers/pitches_helper.rb": [
         1,
         null
@@ -62,10 +66,17 @@
         null,
         null
       ],
+      "/Volumes/Stuff/CS169/youth-media-tracker/app/models/comment.rb": [
+        1,
+        1,
+        1,
+        null
+      ],
       "/Volumes/Stuff/CS169/youth-media-tracker/app/models/pitch.rb": [
         1,
         1,
         null,
+        1,
         1,
         null
       ],
@@ -209,7 +220,7 @@
         null
       ]
     },
-    "timestamp": 1428789074
+    "timestamp": 1428856385
   },
   "Cucumber Features": {
     "coverage": {

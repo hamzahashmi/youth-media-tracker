@@ -58,8 +58,6 @@ GEM
       rack (>= 0.9.0)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
-    bootstrap-sass (3.2.0.2)
-      sass (~> 3.2)
     builder (3.2.2)
     byebug (4.0.5)
       columnize (= 0.9.0)
@@ -121,6 +119,8 @@ GEM
     faker (1.4.3)
       i18n (~> 0.5)
     ffi (1.9.8)
+    font-awesome-rails (4.3.0.0)
+      railties (>= 3.2, < 5.0)
     foreman (0.78.0)
       thor (~> 0.19.1)
     formatador (0.2.5)
@@ -383,7 +383,6 @@ PLATFORMS
 DEPENDENCIES
   acts_as_votable (~> 0.10.0)
   better_errors
-  bootstrap-sass (~> 3.2.0.2)
   byebug
   capybara
   coffee-rails (~> 4.1.0)
@@ -394,6 +393,7 @@ DEPENDENCIES
   erb2haml
   factory_girl_rails
   faker
+  font-awesome-rails
   foreman
   foundation-rails
   guard-bundler
@@ -405,6 +405,7 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   launchy
+  less-rails
   pg
   pry-rails
   pry-rescue

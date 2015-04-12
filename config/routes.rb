@@ -1,9 +1,12 @@
 Rails.application.routes.draw do
+  resources :comments
+
   resources :pitches do
     member do
       put "like", to: "pitches#upvote"
       put "dislike", to: "pitches#downvote"
     end
+    resources :comments
 end
 
   mount Upmin::Engine => '/admin'
