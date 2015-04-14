@@ -11,4 +11,5 @@
           by #{comment.user.name}
     .btn-group.pull-right
       - if comment.user == current_user
-        = link_to 'Remove', comment, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-sm btn-danger"
+        = link_to comment, method: :delete, data: { confirm: 'Are you sure?' } do
+          .fa.fa-trash.fa-lg.icon-danger

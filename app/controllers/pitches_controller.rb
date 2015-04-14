@@ -6,7 +6,10 @@ class PitchesController < ApplicationController
   # GET /pitches
   # GET /pitches.json
   def index
-    @pitches = Pitch.order(created_at: :desc)
+    sort = params[:sort] || session[:sort] || "recent"
+    session[:sort] = sort
+    return @pitches = Pitch.order(created_at: :desc) if sort=="recent"
+    @pitches = Pitch.all.sort{|a,b| a.get_downvotes.size - a.get_upvotes.size <=> b.get_downvotes.size - b.get_upvotes.size}
   end
 
   # GET /pitches/1

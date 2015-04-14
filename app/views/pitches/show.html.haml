@@ -25,7 +25,7 @@
 	.btn-group.pull-right
 		= link_to 'Back', pitches_path,  class: "btn btn-info"
 		= link_to 'Edit', edit_pitch_path(@pitch), class: "btn btn-info"
-		= link_to 'Destroy', @pitch, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger"
+		= link_to 'Remove', @pitch, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger"
 .active
 	%br/
 	%span.badge

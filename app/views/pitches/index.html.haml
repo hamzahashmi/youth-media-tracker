@@ -1,4 +1,8 @@
 .list-group
+  .btn-group
+    = link_to_if(session[:sort] != "recent", "Most Recent", { action: "index", sort: "recent" })
+    = link_to_if(session[:sort] != "top", "Top Voted", { action: "index", sort: "top" })
+  %br
   - @pitches.each do |pitch|
     %li.list-group-item
       %blockquote
