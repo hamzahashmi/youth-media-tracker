@@ -1,0 +1,12 @@
+%form
+  %p 
+    Every
+    %input{:name => "schedule_weeks", :type => "text", :value => "#{Rails.application.config.schedule_weeks}"}
+    weeks...
+  %p
+    Pitches may be submitted until day 
+    %input{:name => "pitch_day", :type => "text", :value => "#{Rails.application.config.pitch_day}"}
+  %p
+    Discussion may start on day 
+    %input{:name => "disc_day", :type => "text", :value => "#{Rails.application.config.disc_day}"}
+  %button Submit
