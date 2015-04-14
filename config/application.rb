@@ -37,7 +37,7 @@ module YouthMediaTracker
     config.assets.initialize_on_precompile = false
 
     #Setting variables pertaining to scheduling
-    config.schedule_weeks = 2
+    config.schedule_days = 14
     config.pitch_day = 14
     config.disc_day = 0
     config.archive_days = 14
