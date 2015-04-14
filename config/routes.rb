@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
+  resources :schedule, only: :create
+
   resources :comments
-  resources :schedule, only: :update
 
   resources :pitches do
     member do

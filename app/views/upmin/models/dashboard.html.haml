@@ -1,7 +1,9 @@
 .container
+  - if flash[:notice]
+    %h5 
+      = flash[:notice]
   .row
     .col-sm-12
-      %h1 Scheduling
       = render 'form'
   .row
     .col-sm-12

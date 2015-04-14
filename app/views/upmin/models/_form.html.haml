@@ -1,4 +1,6 @@
-%form
+= form_tag '/schedule' do
+  %h2
+    Scheduling
   %p 
     Every
     %input{:name => "schedule_weeks", :type => "text", :value => "#{Rails.application.config.schedule_weeks}"}
@@ -9,4 +11,13 @@
   %p
     Discussion may start on day 
     %input{:name => "disc_day", :type => "text", :value => "#{Rails.application.config.disc_day}"}
-  %button Submit
+
+  %h2
+    Archiving
+  %p
+    After
+    %input{:name => "archive_days", :type => "text", :value => "#{Rails.application.config.archive_days}"}
+    days, posts will automatically be archived.
+    %br
+    Users can still view the posts but may no longer vote or comment.
+  = submit_tag

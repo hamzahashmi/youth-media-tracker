@@ -40,5 +40,6 @@ module YouthMediaTracker
     config.schedule_weeks = 2
     config.pitch_day = 14
     config.disc_day = 0
+    config.archive_days = 14
   end
 end
