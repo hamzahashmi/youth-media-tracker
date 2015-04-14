@@ -13,14 +13,16 @@
         #{pitch.category}, #{pitch.media}
       %br/
       .btn-group
-        = link_to like_pitch_path(pitch), method: :put, class: "btn btn-default btn-sm" do
-          %span.glyphicon.glyphicon-chevron-up
-          Upvote
-          \ #{pitch.get_upvotes.size}
-        = link_to dislike_pitch_path(pitch), method: :put, class: "btn btn-default btn-sm" do
-          %span.glyphicon.glyphicon-chevron-down
-          Downvote
-          \#{pitch.get_downvotes.size}
+        = link_to like_pitch_path(pitch), method: :put do
+          .btn-group
+            .fa.fa-thumbs-up.fa-lg.icon-success
+            %span.badge
+              \#{pitch.get_upvotes.size}
+        = link_to dislike_pitch_path(pitch),  method: :put do
+          .btn-group
+            .fa.fa-thumbs-down.fa-lg.icon-danger
+            %span.badge
+              \#{pitch.get_downvotes.size}
       .active
         %br/
         %a

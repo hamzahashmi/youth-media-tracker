@@ -10,25 +10,28 @@
 	%br/
 	%cite
 		#{@pitch.media}, #{@pitch.category}
-.btn-group.pull-right
-	= link_to like_pitch_path(@pitch), method: :put, class: "btn btn-default btn-sm" do
-		%span.glyphicon.glyphicon-chevron-up
-		Upvote
-		\#{@pitch.get_upvotes.size}
-	= link_to dislike_pitch_path(@pitch), method: :put, class: "btn btn-default btn-sm" do
-		= fa_icon "fa-thumbs-up"
-		Downvote
-		\#{@pitch.get_downvotes.size}
+.btn-group
+	= link_to like_pitch_path(@pitch), method: :put do
+		.btn-group
+			.fa.fa-thumbs-up.fa-2x.icon-success
+			%span.badge
+				\#{@pitch.get_upvotes.size}
+	= link_to dislike_pitch_path(@pitch),  method: :put do
+		.btn-group
+			.fa.fa-thumbs-down.fa-2x.icon-danger
+			%span.badge
+				\#{@pitch.get_downvotes.size}
 - if @pitch.user == current_user
-	.btn-group
-		= link_to 'Back', pitches_path,  class: "btn btn-default"
-		= link_to 'Edit', edit_pitch_path(@pitch), class: "btn btn-default"
-		= link_to 'Destroy', @pitch, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default"
+	.btn-group.pull-right
+		= link_to 'Back', pitches_path,  class: "btn btn-info"
+		= link_to 'Edit', edit_pitch_path(@pitch), class: "btn btn-info"
+		= link_to 'Destroy', @pitch, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger"
 .active
 	%br/
 	%span.badge
 		= @pitch.comments.count
 	Comments
+%br/
 #comments
 	= render :partial => @pitch.comments
 = simple_form_for [@pitch, Comment.new]  do |f|
