@@ -12,7 +12,14 @@ class PitchesController < ApplicationController
     @pitches_disabled = days_from > Rails.application.config.pitch_day
     @disc_disabled = days_from < Rails.application.config.disc_day
 
-    flash.now[:notice] = "Current iteration ends on #{iter_end.to_formatted_s(:long)}.".html_safe
+    if flash.key? :notice
+      flash.now[:notice] = flash[:notice].html_safe
+      flash.now[:notice] += "<br/>".html_safe
+      flash.now[:notice] += "Current iteration ends on #{iter_end.to_formatted_s(:long)}."
+    else
+      flash.now[:notice] = "Current iteration ends on #{iter_end.to_formatted_s(:long)}.".html_safe
+    end
+
     if @pitches_disabled
       flash.now[:notice] += "<br/>".html_safe
       flash.now[:notice] += "Pitch submissions currently disabled."
