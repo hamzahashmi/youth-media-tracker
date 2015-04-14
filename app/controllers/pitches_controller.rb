@@ -35,8 +35,9 @@ class PitchesController < ApplicationController
         format.html { redirect_to @pitch, notice: 'Pitch was successfully created.' }
         format.json { render :show, status: :created, location: @pitch }
       else
-        format.html { render :new }
-        format.json { render json: @pitch.errors, status: :unprocessable_entity }
+        # format.html { render :new }
+        # format.json { render json: @pitch.errors, status: :unprocessable_entity }
+        render :new
       end
     end
   end
@@ -48,6 +49,8 @@ class PitchesController < ApplicationController
       if @pitch.update(pitch_params)
         format.html { redirect_to @pitch, notice: 'Pitch was successfully updated.' }
         format.json { render :show, status: :ok, location: @pitch }
+      else
+        render :edit
       end
     end
   end
@@ -66,7 +69,7 @@ def upvote
   @pitch.upvote_by current_user
   redirect_to :back
 end
- 
+
 def downvote
   @pitch = Pitch.find(params[:id])
   @pitch.downvote_by current_user
