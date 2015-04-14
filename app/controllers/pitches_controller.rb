@@ -6,6 +6,19 @@ class PitchesController < ApplicationController
   # GET /pitches
   # GET /pitches.json
   def index
+    days_from = (DateTime.current - Rails.application.config.start_day).to_i % Rails.application.config.schedule_days
+    iter_start = DateTime.current.advance(:days => -days_from).at_beginning_of_day
+    iter_end = iter_start.advance(:days => Rails.application.config.schedule_days).at_beginning_of_day
+    flash[:notice] = "Current iteration ends on #{iter_end.to_formatted_s(:long)}.".html_safe
+    if days_from > Rails.application.config.pitch_day
+      flash[:notice] += "<br/>".html_safe
+      flash[:notice] += "Pitch submissions currently disabled."
+    end
+    if days_from < Rails.application.config.disc_day
+      flash[:notice] += "<br/>".html_safe
+      flash[:notice] += "Discussion starts in #{Rails.application.config.disc_day - days_from} days."
+    end
+
     sort = params[:sort] || session[:sort] || "recent"
     session[:sort] = sort
     return @pitches = Pitch.order(created_at: :desc) if sort=="recent"
