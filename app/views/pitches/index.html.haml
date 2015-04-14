@@ -15,6 +15,7 @@
         #{pitch.text}
       %cite
         #{pitch.category}, #{pitch.media}
+      //- if not @disc_disabled
       %br/
       .btn-group
         = link_to like_pitch_path(pitch), method: :put do
