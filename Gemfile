@@ -6,13 +6,17 @@ gem 'coffee-rails', '~> 4.1.0'
 gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
+gem 'acts_as_votable', '~> 0.10.0'
+gem 'therubyracer', '~> 0.12.1'
+gem 'twitter-bootswatch-rails', :github => 'scottvrosenthal/twitter-bootswatch-rails'
+gem "less-rails"
+gem "font-awesome-rails"
 group :development, :test do
   gem 'byebug'
   gem 'web-console', '~> 2.0'
-  gem 'spring'
-  gem 'selenium-webdriver'
+  gem 'spring', '~> 1.3.3'
 end
-gem 'bootstrap-sass'
+gem 'uglifier'
 gem 'devise'
 gem 'devise_invitable'
 gem 'haml-rails'
@@ -56,7 +60,4 @@ group :test do
   gem 'selenium-webdriver'
   gem 'cucumber-rails', :require => false
 end
-group :assets do
-  gem 'uglifier'
-  gem 'therubyracer'
-end
+

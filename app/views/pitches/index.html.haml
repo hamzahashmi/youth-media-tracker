@@ -1,27 +1,32 @@
-%h1 Listing pitches
-
-%table
-  %thead
-    %tr
-      %th Name
-      %th Media
-      %th Category
-      %th Text
-      %th
-      %th
-      %th
-
-  %tbody
-    - @pitches.each do |pitch|
-      %tr
-        %td= pitch.name
-        %td= pitch.media
-        %td= pitch.category
-        %td= pitch.text
-        %td= link_to 'Show', pitch
-        %td= link_to 'Edit', edit_pitch_path(pitch)
-        %td= link_to 'Destroy', pitch, :method => :delete, :data => { :confirm => 'Are you sure?' }
-
-%br
-
-= link_to 'New Pitch', new_pitch_path
+.list-group
+  - @pitches.each do |pitch|
+    %li.list-group-item
+      %blockquote
+        %a
+          = link_to pitch.name, pitch
+        %small
+          Submitted #{time_ago_in_words(pitch.created_at)} by 
+          %cite #{pitch.user.name}
+      %p.lead
+        #{pitch.text}
+      %cite
+        #{pitch.category}, #{pitch.media}
+      %br/
+      .btn-group
+        = link_to like_pitch_path(pitch), method: :put do
+          .btn-group
+            .fa.fa-thumbs-up.fa-lg.icon-success
+            %span.badge
+              \#{pitch.get_upvotes.size}
+        = link_to dislike_pitch_path(pitch),  method: :put do
+          .btn-group
+            .fa.fa-thumbs-down.fa-lg.icon-danger
+            %span.badge
+              \#{pitch.get_downvotes.size}
+      .active
+        %br/
+        %a
+          %span.badge
+            = pitch.comments.count
+          = link_to "Commments", pitch
+     

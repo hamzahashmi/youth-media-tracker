@@ -1,6 +1,8 @@
 class User < ActiveRecord::Base
   enum role: [:user, :vip, :admin]
   after_initialize :set_default_role, :if => :new_record?
+
+  has_many :pitches
   
   validates :name,:address_zip_code,:phone_number,:bio, :presence => true
   validates :bio, length: { maximum: 1000,
