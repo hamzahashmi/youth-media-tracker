@@ -9,14 +9,14 @@ class PitchesController < ApplicationController
     days_from = (DateTime.current - Rails.application.config.start_day).to_i % Rails.application.config.schedule_days
     iter_start = DateTime.current.advance(:days => -days_from).at_beginning_of_day
     iter_end = iter_start.advance(:days => Rails.application.config.schedule_days).at_beginning_of_day
-    flash[:notice] = "Current iteration ends on #{iter_end.to_formatted_s(:long)}.".html_safe
+    flash.now[:notice] = "Current iteration ends on #{iter_end.to_formatted_s(:long)}.".html_safe
     if days_from > Rails.application.config.pitch_day
-      flash[:notice] += "<br/>".html_safe
-      flash[:notice] += "Pitch submissions currently disabled."
+      flash.now[:notice] += "<br/>".html_safe
+      flash.now[:notice] += "Pitch submissions currently disabled."
     end
     if days_from < Rails.application.config.disc_day
-      flash[:notice] += "<br/>".html_safe
-      flash[:notice] += "Discussion starts in #{Rails.application.config.disc_day - days_from} days."
+      flash.now[:notice] += "<br/>".html_safe
+      flash.now[:notice] += "Discussion starts in #{Rails.application.config.disc_day - days_from} days."
     end
 
     sort = params[:sort] || session[:sort] || "recent"
@@ -33,6 +33,10 @@ class PitchesController < ApplicationController
   # GET /pitches/new
   def new
     @pitch = current_user.pitches.build
+    days_from = (DateTime.current - Rails.application.config.start_day).to_i % Rails.application.config.schedule_days
+    if days_from > Rails.application.config.pitch_day
+      flash.now[:notice] = "Sorry, pitch submissions are currently disabled."
+    end
   end
 
   # GET /pitches/1/edit
@@ -42,9 +46,14 @@ class PitchesController < ApplicationController
   # POST /pitches
   # POST /pitches.json
   def create
+    days_from = (DateTime.current - Rails.application.config.start_day).to_i % Rails.application.config.schedule_days
+
     @pitch = current_user.pitches.build(pitch_params)
     respond_to do |format|
-      if @pitch.save
+      if days_from > Rails.application.config.pitch_day
+        flash[:notice] = "Sorry, pitch submissions are currently disabled."
+        format.html { render :new }
+      elsif @pitch.save
         format.html { redirect_to @pitch, notice: 'Pitch was successfully created.' }
         format.json { render :show, status: :created, location: @pitch }
       else
