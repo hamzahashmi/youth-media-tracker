@@ -1,12 +1,13 @@
-%nav.navbar.navbar-inverse{role: "navigation"}
-  .container-fluid
+-# navigation styled for Bootstrap 3.0
+%nav.navbar.navbar-default.navbar-fixed-top
+  .container
     .navbar-header
-      %button.navbar-toggle.collapsed{"data-target" => "#bs-example-navbar-collapse-2", "data-toggle" => "collapse", :type => "button"}
+      %button.navbar-toggle{"data-target" => ".navbar-collapse", "data-toggle" => "collapse", :type => "button"}
         %span.sr-only Toggle navigation
         %span.icon-bar
         %span.icon-bar
         %span.icon-bar
       = link_to 'Youth Media Tracker', root_path, class: 'navbar-brand'
-    #bs-example-navbar-collapse-2.collapse.navbar-collapse
-      %ul.nav.navbar-nav.navbar-right
+    .collapse.navbar-collapse
+      %ul.nav.navbar-nav
         = render 'layouts/navigation_links'

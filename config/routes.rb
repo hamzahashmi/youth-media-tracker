@@ -1,16 +1,11 @@
 Rails.application.routes.draw do
-  resources :comments
 
-  resources :pitches do
-    member do
-      put "like", to: "pitches#upvote"
-      put "dislike", to: "pitches#downvote"
-    end
-    resources :comments
-end
+  get '/pitches/search' => 'pitches#search', as: 'search'
+
+  resources :pitches
 
   mount Upmin::Engine => '/admin'
-  root to: 'pitches#index'
+  root to: 'visitors#index'
   devise_for :users
   resources :users
   get  '/users/sign_up(.:format)', to:'devise_invitable/registrations#new', as:'signup'

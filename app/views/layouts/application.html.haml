@@ -10,7 +10,6 @@
   %body
     %header
       = render 'layouts/navigation'
-    #main_content.container
+    %main{:role => "main"}
       = render 'layouts/messages'
-      #container.col-md-9.center-block
-        = yield
+      = yield

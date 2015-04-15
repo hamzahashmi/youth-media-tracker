@@ -1,0 +1,23 @@
+<h2>Search Results</h2>
+
+-if @found_pitch.empty?
+  <p>No results found. </p>
+
+%table
+  %thead
+    %tr
+      %th Name
+      %th Media
+      %th Category
+      %th Text
+      %th
+      %th
+      %th
+
+  %tbody
+    - @found_pitch.each do |pitch|
+      %tr
+        %td= pitch.name
+        %td= pitch.media
+        %td= pitch.category
+        %td= pitch.text

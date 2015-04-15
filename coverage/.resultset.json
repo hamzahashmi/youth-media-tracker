@@ -1,7 +1,7 @@
 {
   "RSpec": {
     "coverage": {
-      "/Volumes/Stuff/CS169/youth-media-tracker/app/controllers/application_controller.rb": [
+      "/Users/stephanie/cs169/youth-media-tracker/app/controllers/application_controller.rb": [
         1,
         null,
         null,
@@ -19,20 +19,19 @@
         null,
         null
       ],
-      "/Volumes/Stuff/CS169/youth-media-tracker/app/helpers/application_helper.rb": [
+      "/Users/stephanie/cs169/youth-media-tracker/app/helpers/application_helper.rb": [
         1,
         null
       ],
-      "/Volumes/Stuff/CS169/youth-media-tracker/app/helpers/comments_helper.rb": [
+      "/Users/stephanie/cs169/youth-media-tracker/app/helpers/pitches_helper.rb": [
         1,
         null
       ],
-      "/Volumes/Stuff/CS169/youth-media-tracker/app/helpers/pitches_helper.rb": [
+      "/Users/stephanie/cs169/youth-media-tracker/app/models/user.rb": [
         1,
-        null
-      ],
-      "/Volumes/Stuff/CS169/youth-media-tracker/app/models/user.rb": [
         1,
+        1,
+        null,
         1,
         1,
         null,
@@ -42,12 +41,7 @@
         1,
         null,
         1,
-        null,
-        1,
-        1,
-        null,
-        1,
-        55,
+        48,
         null,
         null,
         null,
@@ -56,8 +50,8 @@
         null,
         null,
         1,
-        35,
-        35,
+        29,
+        29,
         1,
         1,
         1,
@@ -66,38 +60,22 @@
         null,
         null
       ],
-      "/Volumes/Stuff/CS169/youth-media-tracker/app/models/comment.rb": [
-        1,
-        1,
+      "/Users/stephanie/cs169/youth-media-tracker/app/models/pitch.rb": [
         1,
         null
       ],
-      "/Volumes/Stuff/CS169/youth-media-tracker/app/models/pitch.rb": [
-        1,
-        1,
-        1,
-        null,
-        1,
+      "/Users/stephanie/cs169/youth-media-tracker/app/models/zipcode.rb": [
         1,
         null
       ],
-      "/Volumes/Stuff/CS169/youth-media-tracker/app/models/zipcode.rb": [
-        1,
-        null
-      ],
-      "/Volumes/Stuff/CS169/youth-media-tracker/app/controllers/pitches_controller.rb": [
-        1,
-        1,
+      "/Users/stephanie/cs169/youth-media-tracker/app/controllers/pitches_controller.rb": [
         1,
         1,
         null,
         null,
         null,
         1,
-        18,
-        18,
-        18,
-        2,
+        1,
         null,
         null,
         null,
@@ -107,7 +85,7 @@
         null,
         null,
         1,
-        2,
+        1,
         null,
         null,
         null,
@@ -117,16 +95,9 @@
         null,
         null,
         1,
-        2,
-        2,
-        2,
-        2,
         1,
-        null,
-        2,
         1,
-        null,
-        null,
+        1,
         null,
         null,
         null,
@@ -148,17 +119,6 @@
         0,
         null,
         null,
-        null,
-        1,
-        1,
-        1,
-        1,
-        null,
-        null,
-        1,
-        1,
-        1,
-        1,
         null,
         null,
         1,
@@ -166,17 +126,18 @@
         1,
         5,
         null,
-        1,
-        2,
-        2,
         null,
         null,
         1,
-        3,
+        2,
         null,
         null
       ],
-      "/Volumes/Stuff/CS169/youth-media-tracker/app/controllers/users_controller.rb": [
+      "/Users/stephanie/cs169/youth-media-tracker/app/controllers/visitors_controller.rb": [
+        1,
+        null
+      ],
+      "/Users/stephanie/cs169/youth-media-tracker/app/controllers/users_controller.rb": [
         1,
         1,
         1,
@@ -224,19 +185,19 @@
         null
       ]
     },
-    "timestamp": 1428999020
+    "timestamp": 1428969223
   },
   "Cucumber Features": {
     "coverage": {
-      "/home/saasbook/Desktop/youth-media-tracker/app/models/zipcode.rb": [
+      "/Users/stephanie/cs169/youth-media-tracker/app/models/zipcode.rb": [
         1,
         null
       ],
-      "/home/saasbook/Desktop/youth-media-tracker/app/controllers/visitors_controller.rb": [
+      "/Users/stephanie/cs169/youth-media-tracker/app/controllers/visitors_controller.rb": [
         1,
         null
       ]
     },
-    "timestamp": 1428124437
+    "timestamp": 1428969205
   }
 }

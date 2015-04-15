@@ -1,41 +1,18 @@
 %p#notice= notice
-.page-header
-	%blockquote
-		%b
-			= @pitch.name
-		%small
-			Submitted by #{@pitch.user.name}
-	%h4
-		= @pitch.text
-	%br/
-	%cite
-		#{@pitch.media}, #{@pitch.category}
-.btn-group
-	= link_to like_pitch_path(@pitch), method: :put do
-		.btn-group
-			.fa.fa-thumbs-up.fa-2x.icon-success
-			%span.badge
-				\#{@pitch.get_upvotes.size}
-	= link_to dislike_pitch_path(@pitch),  method: :put do
-		.btn-group
-			.fa.fa-thumbs-down.fa-2x.icon-danger
-			%span.badge
-				\#{@pitch.get_downvotes.size}
-- if @pitch.user == current_user
-	.btn-group.pull-right
-		= link_to 'Back', pitches_path,  class: "btn btn-info"
-		= link_to 'Edit', edit_pitch_path(@pitch), class: "btn btn-info"
-		= link_to 'Remove', @pitch, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger"
-.active
-	%br/
-	%span.badge
-		= @pitch.comments.count
-	Comments
-%br/
-#comments
-	= render :partial => @pitch.comments
-= simple_form_for [@pitch, Comment.new]  do |f|
-	.field
-	= f.text_area :body, class: "form-control"
-	%br/
-	= f.submit "Add Comment", class: "btn btn-primary"
+
+%p
+  %b Name:
+  = @pitch.name
+%p
+  %b Media:
+  = @pitch.media
+%p
+  %b Category:
+  = @pitch.category
+%p
+  %b Text:
+  = @pitch.text
+
+= link_to 'Edit', edit_pitch_path(@pitch)
+\|
+= link_to 'Back', pitches_path
