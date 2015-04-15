@@ -79,4 +79,6 @@ feature 'Sign Up', :devise do
     expect(page).to have_content "Bio can't be blank"
   end
 
+  
+
 end
