@@ -1,7 +1,7 @@
 
 <%= render 'shared/errors', obj: @pitch %>
 
-<div class = 'well'>
+<div class = 'mypitch'>
 <%= form_for @pitch do |f| %>
   <%= f.label :name %>
   <%= f.text_field :name %>
@@ -12,8 +12,8 @@
   <%= f.label :category %>
   <%= f.select :category, Pitch.categories %>
   <br/>
-  <%= f.label "Description" %>
-  <%= f.text_area :text, size: "74x3" %>
+  <%= f.label :description %>
+  <%= f.text_area :description, size: "86x3" %>
   <br/>
 
   <%= f.submit("Submit/Update Pitch", class: 'btn btn-primary') %>
