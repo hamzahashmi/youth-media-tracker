@@ -19,6 +19,7 @@ end
 gem 'uglifier'
 gem 'devise'
 gem 'devise_invitable'
+gem 'activeadmin', github: 'gregbell/active_admin'
 gem 'haml-rails'
 gem 'high_voltage'
 gem 'simple_form'
