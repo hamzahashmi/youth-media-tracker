@@ -1,4 +1,12 @@
 GIT
+  remote: git://github.com/bernat/best_in_place.git
+  revision: a6859a860e13a97364204dc2e4b4639aec2acee1
+  specs:
+    best_in_place (3.0.3)
+      actionpack (>= 3.2)
+      railties (>= 3.2)
+
+GIT
   remote: git://github.com/gregbell/active_admin.git
   revision: 4a1c68a397a35e95814a742d894eb7f0c8d47286
   specs:
@@ -419,6 +427,7 @@ PLATFORMS
 DEPENDENCIES
   activeadmin!
   acts_as_votable (~> 0.10.0)
+  best_in_place!
   better_errors
   byebug
   capybara

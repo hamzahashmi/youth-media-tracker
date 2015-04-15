@@ -230,7 +230,9 @@ ActiveAdmin.setup do |config|
   # You can enable or disable them for all resources here.
   #
   # config.filters = true
-  config.comments = false
+  config.comments = true
+  config.comments_registration_name = "PostComment"
+  config.show_comments_in_menu = false
 
   config.namespace :admin do |admin|
     admin.build_menu :utility_navigation do |menu|
