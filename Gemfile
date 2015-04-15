@@ -23,6 +23,7 @@ gem 'haml-rails'
 gem 'high_voltage'
 gem 'simple_form'
 gem 'upmin-admin'
+gem 'timecop'
 group :development do
   gem "erb2haml"
   gem 'foundation-rails'
