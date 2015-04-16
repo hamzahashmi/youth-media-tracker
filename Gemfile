@@ -25,9 +25,9 @@ gem 'haml-rails'
 gem 'high_voltage'
 gem 'simple_form'
 gem 'upmin-admin'
+gem  'populator'
+gem  'faker'
 group :development do
-  gem  'populator'
-  gem  'faker'
   gem "erb2haml"
   gem 'foundation-rails'
   gem 'better_errors'
@@ -45,7 +45,6 @@ group :development do
 end
 group :development, :test do
   gem 'factory_girl_rails'
-  gem 'faker'
   gem 'pry-rails'
   gem 'pry-rescue'
   gem 'rspec-rails'
