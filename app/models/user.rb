@@ -29,5 +29,8 @@ class User < ActiveRecord::Base
       false
     end
   end
+  def is_admin?
+    true if self.admin?
+  end
 
 end
