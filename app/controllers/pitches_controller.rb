@@ -11,7 +11,7 @@ class PitchesController < ApplicationController
     session[:sort] = sort
     return @pitches = Pitch.order(created_at: :desc) if sort=="recent"
     @pitches = Pitch.all.sort{|a,b| a.get_downvotes.size - a.get_upvotes.size <=> b.get_downvotes.size - b.get_upvotes.size}
-    @pitches = @pitches.paginate(:page => params[:page], :per_page => 30)
+    @pitches = @pitches.paginate(:page => params[:page] || 1, :per_page => 30)
 
   end
 
