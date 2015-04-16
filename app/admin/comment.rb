@@ -1,5 +1,6 @@
-ActiveAdmin.register Comment, :as => "Comment" do
-belongs_to :pitch
+ActiveAdmin.register Comment do
+
+belongs_to :pitch,  :optional => true
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
 #
