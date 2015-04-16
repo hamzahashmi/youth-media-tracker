@@ -10,6 +10,12 @@ class PitchesController < ApplicationController
     session[:sort] = sort
     return @pitches = Pitch.order(created_at: :desc) if sort=="recent"
     @pitches = Pitch.all.sort{|a,b| a.get_downvotes.size - a.get_upvotes.size <=> b.get_downvotes.size - b.get_upvotes.size}
+    current_page = params[:page] || 1
+    per_page = params[:per_page] || 20
+    length = @pitches.length
+    @pitches = WillPaginate::Collection.create(current_page, per_page, length) do |pager|
+        pager.replace @pitches[pager.offset, pager.per_page].to_a
+      end
   end
 
   # GET /pitches/1
@@ -70,6 +76,7 @@ def downvote
 end
 
   private
+
     # Use callbacks to share common setup or constraints between actions.
     def set_pitch
       @pitch = Pitch.find(params[:id])
@@ -80,6 +87,6 @@ end
     end
     # Never trust parameters from the scary internet, only allow the white list through.
     def pitch_params
-      params.require(:pitch).permit(:name, :media, :category, :description)
+      params.require(:pitch).permit(:name, :media, :category, :description, :page)
     end
 end

@@ -34,7 +34,7 @@ namespace :db do
     user.suspended = false
   end
 
-  Pitch.populate 5..30 do |pitch|
+  Pitch.populate 20..50 do |pitch|
     pitch.name = Populator.words(1..5).titleize
     pitch.description = Populator.sentences(2..4)
     pitch.category = Pitch.categories
