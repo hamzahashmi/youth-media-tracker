@@ -30,39 +30,32 @@ class PitchesController < ApplicationController
   # POST /pitches.json
   def create
     @pitch = current_user.pitches.build(pitch_params)
-    respond_to do |format|
-      if @pitch.save
-        format.html { redirect_to @pitch, notice: 'Pitch was successfully created.' }
-        format.json { render :show, status: :created, location: @pitch }
-      else
-        # format.html { render :new }
-        # format.json { render json: @pitch.errors, status: :unprocessable_entity }
-        render :new
-      end
+    if @pitch.save
+      flash[:notice] = 'Pitch was successfully created.'
+      redirect_to pitches_path
+    else
+      render :new
     end
   end
 
   # PATCH/PUT /pitches/1
   # PATCH/PUT /pitches/1.json
   def update
-    respond_to do |format|
-      if @pitch.update(pitch_params)
-        format.html { redirect_to @pitch, notice: 'Pitch was successfully updated.' }
-        format.json { render :show, status: :ok, location: @pitch }
-      else
-        render :edit
-      end
+    if @pitch.update(pitch_params)
+      flash[:notice] = 'Pitch was successfully updated.'
+      redirect_to pitches_path(@pitch)
+    else
+      render :edit
     end
   end
 
   # DELETE /pitches/1
   # DELETE /pitches/1.json
   def destroy
+    @pitch = Pitch.find(params[:id])
     @pitch.destroy
-    respond_to do |format|
-      format.html { redirect_to pitches_url, notice: 'Pitch was successfully destroyed.' }
-      #format.json { head :no_content }
-    end
+    flash[:notice] = 'Pitch was successfully destroyed.'
+    redirect_to pitches_path
   end
 def upvote
   @pitch = Pitch.find(params[:id])
@@ -87,6 +80,6 @@ end
     end
     # Never trust parameters from the scary internet, only allow the white list through.
     def pitch_params
-      params.require(:pitch).permit(:name, :media, :category, :text)
+      params.require(:pitch).permit(:name, :media, :category, :description)
     end
 end

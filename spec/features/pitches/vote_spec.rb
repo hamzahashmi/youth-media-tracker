@@ -19,7 +19,7 @@ feature 'Vote functionality' do
     login_as(user, :scope => :user)
     visit pitches_path
     click_link  "vote-up"
-    have_selector('num-voteup', :text => '1')
+    have_selector('num-voteup', :description => '1')
   end
   scenario 'user can vote down' do
     user = FactoryGirl.create(:user)
@@ -27,7 +27,7 @@ feature 'Vote functionality' do
     login_as(user, :scope => :user)
     visit pitches_path
     click_link  "vote-down"
-    have_selector('num-votedown', :text => '1')
+    have_selector('num-votedown', :description => '1')
   end
 
 end

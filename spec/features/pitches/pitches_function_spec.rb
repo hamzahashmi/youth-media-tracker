@@ -7,53 +7,53 @@ feature 'Pitch functionality' do
     Warden.test_reset!
   end
 
-  scenario 'user creates pitch' do
+  scenario 'user creates pitch for video about art' do
     user = FactoryGirl.create(:user)
     login_as(user, :scope => :user)
     visit new_pitch_path
     fill_in 'Name', :with => 'testName'
-    fill_in 'Category', :with => 'testCategory'
-    fill_in 'Media', :with => 'testMedia'
-    fill_in 'Text', :with => 'testText'
-    click_button 'Create Pitch'
+    page.select "Video", :from => "pitch_media"
+    page.select "Arts", :from => "pitch_category"
+    fill_in 'Description', :with => 'testDescription'
+    click_button 'Submit/Update Pitch'
     expect(page).to have_content('Pitch was successfully created.')
   end
-  scenario 'user cant creates pitch without name' do
+  scenario 'user cant create pitch for video about art without name' do
     user = FactoryGirl.create(:user)
     login_as(user, :scope => :user)
     visit new_pitch_path
-    fill_in 'Category', :with => 'testCategory'
-    fill_in 'Media', :with => 'testMedia'
-    fill_in 'Text', :with => 'testText'
-    click_button 'Create Pitch'
+    page.select "Video", :from => "pitch_media"
+    page.select "Arts", :from => "pitch_category"
+    fill_in 'Description', :with => 'testDescription'
+    click_button 'Submit/Update Pitch'
     expect(page).to have_content('can\'t be blank')
   end
 
-  scenario 'user can view a pitch' do
+  scenario 'user can view a pitch for video about art' do
     user = FactoryGirl.create(:user)
-    pitch = FactoryGirl.create(:pitch, :user => user)
+    pitch = FactoryGirl.create(:pitch, :user => user, :name => 'testName', :media => 'Video', :category => 'Arts', :description => 'testDescription')
     login_as(user, :scope => :user)
     visit pitch_path(pitch)
     expect(page).to have_content('testName')
-    expect(page).to have_content('testCategory')
-    expect(page).to have_content('testMedia')
-    expect(page).to have_content('testText')
+    expect(page).to have_content('Video')
+    expect(page).to have_content('Arts')
+    expect(page).to have_content('testDescription')
   end
 
-  scenario 'user can edit a pitch' do
+  scenario 'user can edit a pitch to now be audio about sports' do
     user = FactoryGirl.create(:user)
-    pitch = FactoryGirl.create(:pitch, :user => user)
+    pitch = FactoryGirl.create(:pitch, :user => user, :name => 'testName', :media => 'Video', :category => 'Arts', :description => 'testDescription')
     login_as(user, :scope => :user)
     visit edit_pitch_path(pitch)
     fill_in 'Name', :with => 'otherName'
-    fill_in 'Category', :with => 'otherCategory'
-    fill_in 'Media', :with => 'otherMedia'
-    fill_in 'Text', :with => 'otherText'
+    page.select "Audio", :from => "pitch_media"
+    page.select "Sports", :from => "pitch_category"
+    fill_in 'Description', :with => 'otherDescription'
     click_button 'Update Pitch'
     expect(page).to have_content('otherName')
-    expect(page).to have_content('otherCategory')
-    expect(page).to have_content('otherMedia')
-    expect(page).to have_content('otherText')
+    expect(page).to have_content('Audio')
+    expect(page).to have_content('Sports')
+    expect(page).to have_content('otherDescription')
   end
 
   scenario 'user can see pitches' do
@@ -81,5 +81,4 @@ feature 'Pitch functionality' do
     click_link  "Most Recent"
     page.body.index('Name 2').should < page.body.index('Name 1')
   end
-
 end
