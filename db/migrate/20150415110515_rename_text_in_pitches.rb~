@@ -1,4 +1,0 @@
-class RenameTextInPitches < ActiveRecord::Migration
-  def change
-  end
-end
