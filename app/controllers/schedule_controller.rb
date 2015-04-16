@@ -18,6 +18,6 @@ class ScheduleController < ApplicationController
 	  	Rails.application.config.disc_day = disc_day
 	  	flash[:notice] = "Scheduling successfully updated."
 	end
-	  redirect_to '/admin'
+	  redirect_to '/admin/scheduling'
   end
 end

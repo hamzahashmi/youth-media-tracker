@@ -9,9 +9,8 @@ feature 'Home page' do
   #   When I visit the home page
   #   Then I see "Welcome"
   scenario 'visit the home page' do
-  	pitch = FactoryGirl.create(:pitch)
     visit root_path
-    expect(page).to have_content 'testName'
+    expect(page).to have_content 'Sign in'
   end
 
 end

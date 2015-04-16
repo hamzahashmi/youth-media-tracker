@@ -11,6 +11,7 @@ gem 'therubyracer', '~> 0.12.1'
 gem 'twitter-bootswatch-rails', :github => 'scottvrosenthal/twitter-bootswatch-rails'
 gem "less-rails"
 gem "font-awesome-rails"
+gem 'best_in_place', github: 'bernat/best_in_place'
 group :development, :test do
   gem 'byebug'
   gem 'web-console', '~> 2.0'
@@ -19,11 +20,14 @@ end
 gem 'uglifier'
 gem 'devise'
 gem 'devise_invitable'
+gem 'activeadmin', github: 'gregbell/active_admin'
 gem 'haml-rails'
 gem 'high_voltage'
 gem 'simple_form'
 gem 'upmin-admin'
 gem 'timecop'
+gem  'populator'
+gem  'faker'
 group :development do
   gem "erb2haml"
   gem 'foundation-rails'
@@ -42,7 +46,6 @@ group :development do
 end
 group :development, :test do
   gem 'factory_girl_rails'
-  gem 'faker'
   gem 'pry-rails'
   gem 'pry-rescue'
   gem 'rspec-rails'

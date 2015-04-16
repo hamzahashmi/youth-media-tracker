@@ -13,12 +13,14 @@ feature 'Schedule settings disables features', :devise do
 
     Timecop.travel(Rails.application.config.start_day.advance(:days => 7))
 
-    visit upmin_path
+    visit admin_scheduling_path
 
     fill_in 'schedule_days', :with => '14'
     fill_in 'pitch_day', :with => '6'
     fill_in 'disc_day', :with => '8'
     page.find('#update_scheduling').click
+
+    expect(page).to have_content(/Scheduling successfully updated./)
 
     visit root_path
 

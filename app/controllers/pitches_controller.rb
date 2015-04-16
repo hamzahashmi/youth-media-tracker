@@ -65,6 +65,7 @@ class PitchesController < ApplicationController
     @pitches_disabled = days_from > Rails.application.config.pitch_day
 
     @pitch = current_user.pitches.build(pitch_params)
+    
     respond_to do |format|
       if @pitches_disabled
         flash[:notice] = "Sorry, pitch submissions are currently disabled."
@@ -82,22 +83,21 @@ class PitchesController < ApplicationController
   # PATCH/PUT /pitches/1
   # PATCH/PUT /pitches/1.json
   def update
-    respond_to do |format|
-      if @pitch.update(pitch_params)
-        format.html { redirect_to @pitch, notice: 'Pitch was successfully updated.' }
-        format.json { render :show, status: :ok, location: @pitch }
-      end
+    if @pitch.update(pitch_params)
+      flash[:notice] = 'Pitch was successfully updated.'
+      redirect_to pitches_path(@pitch)
+    else
+      render :edit
     end
   end
 
   # DELETE /pitches/1
   # DELETE /pitches/1.json
   def destroy
+    @pitch = Pitch.find(params[:id])
     @pitch.destroy
-    respond_to do |format|
-      format.html { redirect_to pitches_url, notice: 'Pitch was successfully destroyed.' }
-      #format.json { head :no_content }
-    end
+    flash[:notice] = 'Pitch was successfully destroyed.'
+    redirect_to pitches_path
   end
 def upvote
   days_from = (DateTime.current - Rails.application.config.start_day).to_i % Rails.application.config.schedule_days
@@ -112,7 +112,7 @@ def upvote
 
   redirect_to :back
 end
- 
+
 def downvote
   days_from = (DateTime.current - Rails.application.config.start_day).to_i % Rails.application.config.schedule_days
   @disc_disabled = days_from < Rails.application.config.disc_day
@@ -138,6 +138,6 @@ end
     end
     # Never trust parameters from the scary internet, only allow the white list through.
     def pitch_params
-      params.require(:pitch).permit(:name, :media, :category, :text)
+      params.require(:pitch).permit(:name, :media, :category, :description)
     end
 end
