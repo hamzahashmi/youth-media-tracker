@@ -1,4 +1,5 @@
 class PitchesController < ApplicationController
+  require 'will_paginate/array' 
   before_action :set_pitch, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, except: [:index, :show]
   before_action :authorized_user, only: [:edit, :update, :destroy]
@@ -10,12 +11,8 @@ class PitchesController < ApplicationController
     session[:sort] = sort
     return @pitches = Pitch.order(created_at: :desc) if sort=="recent"
     @pitches = Pitch.all.sort{|a,b| a.get_downvotes.size - a.get_upvotes.size <=> b.get_downvotes.size - b.get_upvotes.size}
-    current_page = params[:page] || 1
-    per_page = params[:per_page] || 20
-    length = @pitches.length
-    @pitches = WillPaginate::Collection.create(current_page, per_page, length) do |pager|
-        pager.replace @pitches[pager.offset, pager.per_page].to_a
-      end
+    @pitches = @pitches.paginate(:page => params[:page], :per_page => 30)
+
   end
 
   # GET /pitches/1
