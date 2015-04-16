@@ -65,7 +65,7 @@ class PitchesController < ApplicationController
     @pitches_disabled = days_from > Rails.application.config.pitch_day
 
     @pitch = current_user.pitches.build(pitch_params)
-    
+
     respond_to do |format|
       if @pitches_disabled
         flash[:notice] = "Sorry, pitch submissions are currently disabled."
@@ -103,9 +103,7 @@ def upvote
   days_from = (DateTime.current - Rails.application.config.start_day).to_i % Rails.application.config.schedule_days
   @disc_disabled = days_from < Rails.application.config.disc_day
 
-  if @disc_disabled
-    flash[:notice] = "Voting is disabled."
-  else
+  if not @disc_disabled
     @pitch = Pitch.find(params[:id])
     @pitch.upvote_by current_user
   end
@@ -117,9 +115,7 @@ def downvote
   days_from = (DateTime.current - Rails.application.config.start_day).to_i % Rails.application.config.schedule_days
   @disc_disabled = days_from < Rails.application.config.disc_day
 
-  if @disc_disabled
-    flash[:notice] = "Voting is disabled."
-  else
+  if not @disc_disabled
     @pitch = Pitch.find(params[:id])
     @pitch.downvote_by current_user
   end
