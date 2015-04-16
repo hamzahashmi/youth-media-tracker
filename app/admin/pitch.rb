@@ -25,7 +25,7 @@ index do
   	:collection => Pitch.categories.map{|category| [category,category]} }
   column(:media) { |i| best_in_place i, :category, :type => :select, :path => [:admin, i],
   	:collection => Pitch.media_types.map{|media_type| [media_type,media_type]} }
-  column(:description) { |i| best_in_place i, :description, :type => :input, :path => [:admin, i] } 
+  column(:text) { |i| best_in_place i, :text, :type => :input, :path => [:admin, i] } 
   column "Comments", :comment, sortable: :comments_count do |i| 
   	link_to "Comments (#{Pitch.find(i).comments.count})", admin_pitch_comments_path(Pitch.find(i)) 
   end

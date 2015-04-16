@@ -15,23 +15,23 @@
         #{pitch.description}
       %cite
         #{pitch.category}, #{pitch.media}
-      %br/
-      .btn-group
-        = link_to like_pitch_path(pitch), method: :put, id: "vote-up" do
-          .btn-group
-            .fa.fa-thumbs-up.fa-lg.icon-success
-            %span.badge#num-voteup
-              \#{pitch.get_upvotes.size}
-        = link_to dislike_pitch_path(pitch),  method: :put, id: "vote-down" do
-          .btn-group
-            .fa.fa-thumbs-down.fa-lg.icon-danger
-            %span.badge#num-votedown
-              \#{pitch.get_downvotes.size}
-      .active
+      - if not @disc_disabled
         %br/
-        %a
-          %span.badge
-            = pitch.comments.count
-          = link_to "Commments", pitch
-  = will_paginate @pitches
+        .btn-group
+          = link_to like_pitch_path(pitch), method: :put, id: "vote-up" do
+            .btn-group
+              .fa.fa-thumbs-up.fa-lg.icon-success
+              %span.badge#num-voteup
+                \#{pitch.get_upvotes.size}
+          = link_to dislike_pitch_path(pitch),  method: :put, id: "vote-down" do
+            .btn-group
+              .fa.fa-thumbs-down.fa-lg.icon-danger
+              %span.badge#num-votedown
+                \#{pitch.get_downvotes.size}
+        .active
+          %br/
+          %a
+            %span.badge
+              = pitch.comments.count
+            = link_to "Comments", pitch
      

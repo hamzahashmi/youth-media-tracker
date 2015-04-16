@@ -1,4 +1,10 @@
 .container
+  - if flash[:notice]
+    %h5 
+      = flash[:notice]
+  .row
+    .col-sm-12
+      = render 'form'
   .row
     .col-sm-12
       = link_to 'Home', "/", class: 'navbar-brand'
