@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150415110515) do
+ActiveRecord::Schema.define(version: 20150416071707) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace"
@@ -85,7 +85,7 @@ ActiveRecord::Schema.define(version: 20150415110515) do
     t.string   "address_state"
     t.integer  "address_zip_code"
     t.string   "bio"
-    t.integer  "phone_number"
+    t.string   "phone_number"
     t.boolean  "suspended",              default: false, null: false
   end
 
