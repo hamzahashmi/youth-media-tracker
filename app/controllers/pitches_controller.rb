@@ -9,11 +9,14 @@ class PitchesController < ApplicationController
   def index
     sort = params[:sort] || session[:sort] || "recent"
     session[:sort] = sort
-    return @pitches = Pitch.order(created_at: :desc) if sort=="recent"
+    if (sort=="recent" ) 
+     @pitches = Pitch.order(created_at: :desc)
+   else
     @pitches = Pitch.all.sort{|a,b| a.get_downvotes.size - a.get_upvotes.size <=> b.get_downvotes.size - b.get_upvotes.size}
-    @pitches = @pitches.paginate(:page => params[:page] || 1, :per_page => 30)
-
   end
+  @pitches = @pitches.paginate(:page => params[:page] || 1, :per_page => 30)
+
+end
 
   # GET /pitches/1
   # GET /pitches/1.json
@@ -60,17 +63,17 @@ class PitchesController < ApplicationController
     flash[:notice] = 'Pitch was successfully destroyed.'
     redirect_to pitches_path
   end
-def upvote
-  @pitch = Pitch.find(params[:id])
-  @pitch.upvote_by current_user
-  redirect_to :back
-end
+  def upvote
+    @pitch = Pitch.find(params[:id])
+    @pitch.upvote_by current_user
+    redirect_to :back
+  end
 
-def downvote
-  @pitch = Pitch.find(params[:id])
-  @pitch.downvote_by current_user
-  redirect_to :back
-end
+  def downvote
+    @pitch = Pitch.find(params[:id])
+    @pitch.downvote_by current_user
+    redirect_to :back
+  end
 
   private
 
@@ -86,4 +89,4 @@ end
     def pitch_params
       params.require(:pitch).permit(:name, :media, :category, :description, :page)
     end
-end
+  end
