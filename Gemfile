@@ -11,6 +11,7 @@ gem 'therubyracer', '~> 0.12.1'
 gem 'twitter-bootswatch-rails', :github => 'scottvrosenthal/twitter-bootswatch-rails'
 gem "less-rails"
 gem "font-awesome-rails"
+gem 'best_in_place', github: 'bernat/best_in_place'
 group :development, :test do
   gem 'byebug'
   gem 'web-console', '~> 2.0'

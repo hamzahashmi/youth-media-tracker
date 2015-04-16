@@ -3,12 +3,40 @@ ActiveAdmin.register_page "Dashboard" do
   menu priority: 1, label: proc{ I18n.t("active_admin.dashboard") }
 
   content title: proc{ I18n.t("active_admin.dashboard") } do
-    div class: "blank_slate_container", id: "dashboard_default_message" do
-      span class: "blank_slate" do
-        #span I18n.t("active_admin.dashboard_welcome.welcome")
-        #small I18n.t("active_admin.dashboard_welcome.call_to_action")
+
+   
+    # Most recent pitches
+    columns do
+      column do
+        panel "Recent Pitches" do
+          table_for Pitch.order("created_at desc").limit(5) do
+            column :name do |pitch|
+              link_to pitch.name, [:admin, pitch]
+          end
+          column "Created By",:user
+          column :created_at
       end
-    end
+      strong { link_to "View All Pitches", admin_pitches_path }
+  end
+end
+
+
+     # most recent comments
+     column do
+        panel "Recent Comments" do
+          table_for Comment.order("created_at desc").limit(10) do
+            column :body do |comment|
+              link_to comment.body, [:admin, comment]
+          end
+          column "Created By",:user
+          column :created_at
+      end
+      strong { link_to "View All Comments", admin_comments_path }
+  end
+end
+end
+
+
 
     # Here is an example of a simple dashboard with columns and panels.
     #
