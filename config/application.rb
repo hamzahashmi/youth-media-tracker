@@ -35,5 +35,12 @@ module YouthMediaTracker
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
     config.assets.initialize_on_precompile = false
+
+    #Setting variables pertaining to scheduling
+    config.start_day = DateTime.civil_from_format :local, 2015, 1, 5
+    config.schedule_days = 14
+    config.pitch_day = 14
+    config.disc_day = 0
+    config.archive_days = 14
   end
 end
