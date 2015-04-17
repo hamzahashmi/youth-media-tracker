@@ -26,6 +26,7 @@ gem 'haml-rails'
 gem 'high_voltage'
 gem 'simple_form'
 gem 'upmin-admin'
+gem 'timecop'
 gem  'populator'
 gem  'faker'
 group :development do
