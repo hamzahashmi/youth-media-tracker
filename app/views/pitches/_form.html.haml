@@ -2,13 +2,20 @@
   %legend
     Submit a New Pitch
   %fieldset
+    .alert.alert-dismissible.alert-danger
+      = render 'shared/errors', obj: @pitch
     .form-group
-      = f.input :name, :class => "form-control" 
+      = f.label :name
+      = f.text_field :name, :class => "form-control" 
     .form-group
-      = f.select :media , Pitch.media_types, :class => "form-control" 
+      = f.label :media
+      = f.select :media , Pitch.media_types, :class => "form-control"
+      %br/
+      = f.label :category 
       = f.select :category, Pitch.categories , :class => "form-control" 
     .form-group
+      = f.label :description
       = f.text_area :description, :class => "form-control" 
-    .form-actions
-      = f.button :submit, :class => 'btn btn-primary'
-      = link_to t('.cancel', :default => t("helpers.links.cancel")), pitches_path, :class => 'btn'
+  .form-actions
+    = f.submit  'Submit/Update Pitch', :class => 'btn btn-primary'
+    = link_to t('.cancel', :default => t("helpers.links.cancel")), pitches_path, :class => 'btn'

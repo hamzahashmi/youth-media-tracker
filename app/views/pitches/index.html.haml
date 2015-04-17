@@ -6,8 +6,7 @@
   - @pitches.each do |pitch|
     %li.list-group-item
       %blockquote
-        %a
-          = link_to pitch.name, pitch
+        = link_to pitch.name, pitch
         %small
           Submitted #{time_ago_in_words(pitch.created_at)} by 
           %cite #{pitch.user.name}

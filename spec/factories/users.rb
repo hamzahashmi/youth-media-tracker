@@ -3,7 +3,7 @@ FactoryGirl.define do
     before (:create) {FactoryGirl.create(:zipcode)}
     confirmed_at Time.now
     name "Test User"
-    email "test@example.com"
+    sequence(:email, 1000) { |n| "person#{n}@example.com" }
     password "please123"
     phone_number 123456789
     address_zip_code 12345
@@ -14,4 +14,5 @@ FactoryGirl.define do
     end
     
   end
+
 end
