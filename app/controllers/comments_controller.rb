@@ -40,9 +40,10 @@ class CommentsController < ApplicationController
         flash[:notice] = "Your comment was added"
         redirect_to pitch_path(@pitch)
       else
-        @post.reload
+        flash[:warning] = "Your comment was NOT added, try again!"
+        @pitch.reload
         #prevents breaking if comments field is left blank
-        render 'posts/show'
+        redirect_to pitch_path(@pitch)
       end
     end
   end

@@ -1,7 +1,7 @@
 {
   "RSpec": {
     "coverage": {
-      "/home/saasbook/Desktop/youth-media-tracker/app/controllers/application_controller.rb": [
+      "/Volumes/Stuff/CS169/youth-media-tracker/app/controllers/application_controller.rb": [
         1,
         null,
         null,
@@ -19,19 +19,38 @@
         null,
         null
       ],
-      "/home/saasbook/Desktop/youth-media-tracker/app/helpers/application_helper.rb": [
+      "/Volumes/Stuff/CS169/youth-media-tracker/app/helpers/application_helper.rb": [
         1,
         null
       ],
-      "/home/saasbook/Desktop/youth-media-tracker/app/helpers/comments_helper.rb": [
+      "/Volumes/Stuff/CS169/youth-media-tracker/app/helpers/comments_helper.rb": [
         1,
         null
       ],
-      "/home/saasbook/Desktop/youth-media-tracker/app/helpers/pitches_helper.rb": [
+      "/Volumes/Stuff/CS169/youth-media-tracker/app/helpers/pitches_helper.rb": [
         1,
         null
       ],
-      "/home/saasbook/Desktop/youth-media-tracker/app/admin/comment.rb": [
+      "/Volumes/Stuff/CS169/youth-media-tracker/app/admin/active_admin_comment.rb": [
+        1,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "/Volumes/Stuff/CS169/youth-media-tracker/app/admin/comment.rb": [
         1,
         null,
         1,
@@ -50,13 +69,13 @@
         null,
         null
       ],
-      "/home/saasbook/Desktop/youth-media-tracker/app/models/comment.rb": [
+      "/Volumes/Stuff/CS169/youth-media-tracker/app/models/comment.rb": [
         1,
         1,
         1,
         null
       ],
-      "/home/saasbook/Desktop/youth-media-tracker/app/models/pitch.rb": [
+      "/Volumes/Stuff/CS169/youth-media-tracker/app/models/pitch.rb": [
         1,
         1,
         1,
@@ -74,49 +93,7 @@
         null,
         null
       ],
-      "/home/saasbook/Desktop/youth-media-tracker/app/admin/zipcode.rb": [
-        1,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null
-      ],
-      "/home/saasbook/Desktop/youth-media-tracker/app/models/zipcode.rb": [
-        1,
-        null
-      ],
-      "/home/saasbook/Desktop/youth-media-tracker/app/admin/active_admin_comment.rb": [
-        1,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null
-      ],
-      "/home/saasbook/Desktop/youth-media-tracker/app/admin/dashboard.rb": [
+      "/Volumes/Stuff/CS169/youth-media-tracker/app/admin/dashboard.rb": [
         1,
         null,
         10,
@@ -179,7 +156,7 @@
         null,
         null
       ],
-      "/home/saasbook/Desktop/youth-media-tracker/app/admin/pitch.rb": [
+      "/Volumes/Stuff/CS169/youth-media-tracker/app/admin/pitch.rb": [
         1,
         null,
         null,
@@ -227,7 +204,14 @@
         null,
         null
       ],
-      "/home/saasbook/Desktop/youth-media-tracker/app/admin/user.rb": [
+      "/Volumes/Stuff/CS169/youth-media-tracker/app/admin/scheduling.rb": [
+        1,
+        1,
+        8,
+        null,
+        null
+      ],
+      "/Volumes/Stuff/CS169/youth-media-tracker/app/admin/user.rb": [
         1,
         null,
         null,
@@ -255,7 +239,7 @@
         null,
         null
       ],
-      "/home/saasbook/Desktop/youth-media-tracker/app/models/user.rb": [
+      "/Volumes/Stuff/CS169/youth-media-tracker/app/models/user.rb": [
         1,
         1,
         1,
@@ -293,14 +277,30 @@
         null,
         null
       ],
-      "/home/saasbook/Desktop/youth-media-tracker/app/admin/scheduling.rb": [
+      "/Volumes/Stuff/CS169/youth-media-tracker/app/admin/zipcode.rb": [
         1,
-        1,
-        8,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
         null,
         null
       ],
-      "/home/saasbook/Desktop/youth-media-tracker/app/controllers/comments_controller.rb": [
+      "/Volumes/Stuff/CS169/youth-media-tracker/app/models/zipcode.rb": [
+        1,
+        null
+      ],
+      "/Volumes/Stuff/CS169/youth-media-tracker/app/controllers/comments_controller.rb": [
         1,
         1,
         1,
@@ -386,7 +386,7 @@
         null,
         null
       ],
-      "/home/saasbook/Desktop/youth-media-tracker/app/controllers/pitches_controller.rb": [
+      "/Volumes/Stuff/CS169/youth-media-tracker/app/controllers/pitches_controller.rb": [
         1,
         1,
         1,
@@ -424,7 +424,7 @@
         26,
         25,
         null,
-        14,
+        9,
         null,
         26,
         null,
@@ -532,7 +532,7 @@
         null,
         null
       ],
-      "/home/saasbook/Desktop/youth-media-tracker/app/controllers/users_controller.rb": [
+      "/Volumes/Stuff/CS169/youth-media-tracker/app/controllers/users_controller.rb": [
         1,
         1,
         1,
@@ -579,7 +579,7 @@
         null,
         null
       ],
-      "/home/saasbook/Desktop/youth-media-tracker/app/controllers/schedule_controller.rb": [
+      "/Volumes/Stuff/CS169/youth-media-tracker/app/controllers/schedule_controller.rb": [
         1,
         1,
         5,
@@ -605,7 +605,7 @@
         null
       ]
     },
-    "timestamp": 1421035205
+    "timestamp": 1421049604
   },
   "Cucumber Features": {
     "coverage": {
