@@ -12,6 +12,7 @@ gem 'twitter-bootswatch-rails', :github => 'scottvrosenthal/twitter-bootswatch-r
 gem "less-rails"
 gem "font-awesome-rails"
 gem 'best_in_place', github: 'bernat/best_in_place'
+gem 'will_paginate', '~> 3.0.6', :require => nil
 group :development, :test do
   gem 'byebug'
   gem 'web-console', '~> 2.0'
@@ -25,7 +26,6 @@ gem 'haml-rails'
 gem 'high_voltage'
 gem 'simple_form'
 gem 'upmin-admin'
-gem 'timecop'
 gem  'populator'
 gem  'faker'
 group :development do

@@ -1,9 +1,6 @@
 = simple_form_for @pitch, :html => { :class => 'form-horizontal' } do |f|
-  %legend
-    Submit a New Pitch
   %fieldset
-    .alert.alert-dismissible.alert-danger
-      = render 'shared/errors', obj: @pitch
+    = render 'shared/errors', obj: @pitch
     .form-group
       = f.label :name
       = f.text_field :name, :class => "form-control" 

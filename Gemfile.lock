@@ -395,7 +395,6 @@ GEM
     thor (0.19.1)
     thread_safe (0.3.5)
     tilt (1.4.1)
-    timecop (0.7.3)
     timers (4.0.1)
       hitimes
     turbolinks (2.5.3)
@@ -420,6 +419,7 @@ GEM
       railties (>= 4.0)
       sprockets-rails (>= 2.0, < 4.0)
     websocket (1.2.1)
+    will_paginate (3.0.7)
     xpath (2.0.0)
       nokogiri (~> 1.3)
 
@@ -475,9 +475,9 @@ DEPENDENCIES
   spring-commands-rspec
   sqlite3
   therubyracer (~> 0.12.1)
-  timecop
   turbolinks
   twitter-bootswatch-rails!
   uglifier
   upmin-admin
   web-console (~> 2.0)
+  will_paginate (~> 3.0.6)

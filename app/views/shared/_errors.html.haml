@@ -1,5 +1,6 @@
 - if obj.errors.any?
-  %h5 Errors:
-  %ul
-    - obj.errors.full_messages.each do |msg|
-      %li= msg
+  .alert.alert-dismissible.alert-danger
+    %h5 Errors:
+    %ul
+      - obj.errors.full_messages.each do |msg|
+        %li= msg
