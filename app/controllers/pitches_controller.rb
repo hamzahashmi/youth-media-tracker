@@ -73,7 +73,7 @@ end
     @pitch = current_user.pitches.build(pitch_params)
 
     if @pitches_disabled
-      flash[:notice] = "Sorry, pitch submissions are currently disabled."
+      flash.now[:notice] = "Sorry, pitch submissions are currently disabled."
       render :new
     elsif @pitch.save
       flash[:notice] = "Pitch was successfully created."
