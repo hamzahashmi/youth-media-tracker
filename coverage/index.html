@@ -14,7 +14,7 @@
       <img src="./assets/0.9.0/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" style="display:none;">
-      <div class="timestamp">Generated <abbr class="timeago" title="2015-04-16T23:41:57-07:00">2015-04-16T23:41:57-07:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2015-04-17T00:35:58-07:00">2015-04-17T00:35:58-07:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
@@ -25,7 +25,7 @@
      covered at
      <span class="covered_strength">
        <span class="green">
-         2.41
+         2.17
        </span>
     </span> hits/line)
   </h2>
@@ -137,7 +137,7 @@
         <td>48</td>
         <td>37</td>
         <td>11</td>
-        <td>3.5</td>
+        <td>3.1</td>
       </tr>
       
       <tr>
@@ -207,7 +207,7 @@
         <td>20</td>
         <td>20</td>
         <td>0</td>
-        <td>11.4</td>
+        <td>10.0</td>
       </tr>
       
       <tr>
@@ -233,7 +233,7 @@
      covered at
      <span class="covered_strength">
        <span class="green">
-         1.95
+         1.77
        </span>
     </span> hits/line)
   </h2>
@@ -285,7 +285,7 @@
         <td>48</td>
         <td>37</td>
         <td>11</td>
-        <td>3.5</td>
+        <td>3.1</td>
       </tr>
       
       <tr>
@@ -310,7 +310,7 @@
      covered at
      <span class="covered_strength">
        <span class="green">
-         7.49
+         6.65
        </span>
     </span> hits/line)
   </h2>
@@ -362,7 +362,7 @@
         <td>20</td>
         <td>20</td>
         <td>0</td>
-        <td>11.4</td>
+        <td>10.0</td>
       </tr>
       
       <tr>
@@ -2490,26 +2490,26 @@
           <code class="ruby">  def index</code>
         </li>
       
-        <li class="covered" data-hits="23" data-linenumber="10">
-          <span class="hits">23</span>
+        <li class="covered" data-hits="20" data-linenumber="10">
+          <span class="hits">20</span>
           
           <code class="ruby">    sort = params[:sort] || session[:sort] || &quot;recent&quot;</code>
         </li>
       
-        <li class="covered" data-hits="23" data-linenumber="11">
-          <span class="hits">23</span>
+        <li class="covered" data-hits="20" data-linenumber="11">
+          <span class="hits">20</span>
           
           <code class="ruby">    session[:sort] = sort</code>
         </li>
       
-        <li class="covered" data-hits="23" data-linenumber="12">
-          <span class="hits">23</span>
+        <li class="covered" data-hits="20" data-linenumber="12">
+          <span class="hits">20</span>
           
           <code class="ruby">    if (sort==&quot;recent&quot; ) </code>
         </li>
       
-        <li class="covered" data-hits="22" data-linenumber="13">
-          <span class="hits">22</span>
+        <li class="covered" data-hits="19" data-linenumber="13">
+          <span class="hits">19</span>
           
           <code class="ruby">     @pitches = Pitch.order(created_at: :desc)</code>
         </li>
@@ -2532,8 +2532,8 @@
           <code class="ruby">  end</code>
         </li>
       
-        <li class="covered" data-hits="23" data-linenumber="17">
-          <span class="hits">23</span>
+        <li class="covered" data-hits="20" data-linenumber="17">
+          <span class="hits">20</span>
           
           <code class="ruby">  @pitches = @pitches.paginate(:page =&gt; params[:page] || 1, :per_page =&gt; 30)</code>
         </li>
@@ -2922,8 +2922,8 @@
           <code class="ruby">    def set_pitch</code>
         </li>
       
-        <li class="covered" data-hits="6" data-linenumber="82">
-          <span class="hits">6</span>
+        <li class="covered" data-hits="3" data-linenumber="82">
+          <span class="hits">3</span>
           
           <code class="ruby">      @pitch = Pitch.find(params[:id])</code>
         </li>
@@ -3630,8 +3630,8 @@
           <code class="ruby">  def set_default_role</code>
         </li>
       
-        <li class="covered" data-hits="79" data-linenumber="16">
-          <span class="hits">79</span>
+        <li class="covered" data-hits="70" data-linenumber="16">
+          <span class="hits">70</span>
           
           <code class="ruby">    self.role ||= :user</code>
         </li>
@@ -3684,14 +3684,14 @@
           <code class="ruby">  def zip_code_is_allowed</code>
         </li>
       
-        <li class="covered" data-hits="65" data-linenumber="25">
-          <span class="hits">65</span>
+        <li class="covered" data-hits="56" data-linenumber="25">
+          <span class="hits">56</span>
           
           <code class="ruby">    begin</code>
         </li>
       
-        <li class="covered" data-hits="65" data-linenumber="26">
-          <span class="hits">65</span>
+        <li class="covered" data-hits="56" data-linenumber="26">
+          <span class="hits">56</span>
           
           <code class="ruby">      Zipcode.find_by_code!(self.address_zip_code)</code>
         </li>

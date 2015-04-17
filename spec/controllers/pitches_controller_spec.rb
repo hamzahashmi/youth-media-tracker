@@ -1,5 +1,6 @@
 RSpec.describe PitchesController do
   render_views
+  login_admin
   before(:each) do
     @user = FactoryGirl.create(:user)
   end
@@ -18,14 +19,14 @@ RSpec.describe PitchesController do
       assigns[:pitches].should_not be_empty
     end
 
-    it 'should have googd title' do 
+    it 'should have googd name' do 
       response.body.should have_link("test")
     end
 
   end
   describe 'show action' do
     before :each do
-      pitch =FactoryGirl.create(:pitch, :name => "test2")
+      pitch =FactoryGirl.create(:pitch, :name => "test2",:user => @user)
       get 'show', :id => pitch.id
     end
 
@@ -37,7 +38,27 @@ RSpec.describe PitchesController do
       assigns[:pitch].should be_valid
     end
 
-    it 'should have googd title' do 
+    it 'should have  name' do 
+      response.body.should have_content("test2")
+    end
+
+  end
+
+  describe 'edit action' do
+    before :each do
+      pitch =FactoryGirl.create(:pitch, :name => "test3",:user => @user)
+      get 'edit', :id => pitch.id
+    end
+
+    it 'should be render template edit' do
+      response.should render_template(:edit)
+    end
+
+    it 'should edit  pitch' do
+      assigns[:pitch].should be_valid
+    end
+
+    it 'should have name' do 
       response.body.should have_content("test2")
     end
 
