@@ -49,7 +49,7 @@ end
   def update
     if @pitch.update(pitch_params)
       flash[:notice] = 'Pitch was successfully updated.'
-      redirect_to pitches_path(@pitch)
+      redirect_to pitch_path(@pitch)
     else
       render :edit
     end
