@@ -25,12 +25,6 @@ feature 'Active Admin functionality' do
     user = FactoryGirl.create(:user)
     login_as(user)
     visit admin_dashboard_path
-    expect(page).to render_template("admin/dashboard/index")
-  end
-  scenario 'admin can get to Active Admin route' do
-    user = FactoryGirl.create(:user)
-    login_as(user)
-    visit admin_dashboard_path
     expect(page).to have_content('Most Recent')
   end
   
