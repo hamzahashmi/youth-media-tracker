@@ -8,8 +8,12 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'acts_as_votable', '~> 0.10.0'
 gem 'therubyracer', '~> 0.12.1'
-gem 'twitter-bootswatch-rails', :github => 'scottvrosenthal/twitter-bootswatch-rails'
-gem "less-rails"
+gem "parser", '~> 2.2.0.3'
+gem 'ruby_parser', '~> 3.6.5'
+gem 'sprockets', '~> 2.12.3'
+gem 'tilt', '~> 1.1'
+gem 'bootstrap-sass', :git => 'https://github.com/trisweb/bootstrap-sass.git', :branch => 'trisweb_glebm_fix_sprockets_context'
+gem "less-rails", '~> 2.6.0'
 gem "font-awesome-rails"
 gem 'best_in_place', github: 'bernat/best_in_place'
 gem 'will_paginate', '~> 3.0.6', :require => nil
@@ -23,7 +27,7 @@ gem 'devise'
 gem 'devise_invitable'
 gem 'activeadmin', github: 'gregbell/active_admin'
 gem 'haml-rails'
-gem 'high_voltage'
+gem 'high_voltage', '~> 2.2.1'
 gem 'simple_form'
 gem 'upmin-admin'
 gem 'timecop'
@@ -52,7 +56,7 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'rubocop'
   gem 'sqlite3'
-  gem 'simplecov'
+  gem 'simplecov', '~> 0.10.0'
 end
 group :production do
   gem 'pg'

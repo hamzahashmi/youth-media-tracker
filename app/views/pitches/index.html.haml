@@ -1,12 +1,12 @@
-.list-group
+.list-group#pitches-list
   .btn-group
     = link_to_if(session[:sort] != "recent", "Most Recent", { action: "index", sort: "recent" }, id: "most-recent")
     = link_to_if(session[:sort] != "top", "Top Voted", { action: "index", sort: "top" },id: "top-voted")
   %br
   - @pitches.each do |pitch|
-    %li.list-group-item
+    %li.list-group-item#pitch-item
       %blockquote
-        = link_to pitch.name, pitch
+        = link_to pitch.name, pitch, :id => "pitch-link" 
         %small
           Submitted #{time_ago_in_words(pitch.created_at)} by 
           %cite #{pitch.user.name}

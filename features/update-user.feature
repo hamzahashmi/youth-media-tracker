@@ -1,4 +1,4 @@
-Feature: Youth login
+Feature: User update
 	As a registered youth
 	I want to login to the website
 	So I can upload videos
@@ -15,7 +15,7 @@ Feature: Youth login
 
 Scenario:
 	Given I am on the login page
-	Given I am user "test2@gmail.com" is confirmed
+	Given email "test2@gmail.com" is confirmed
 	And I fill in "user_email" with "test2@gmail.com"
 	And fill in "user_password" with "11111111"
 	And I press "sign_in"
