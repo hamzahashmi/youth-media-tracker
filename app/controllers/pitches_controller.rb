@@ -35,7 +35,7 @@ class PitchesController < ApplicationController
     if (sort=="recent" ) 
       @pitches = Pitch.order(created_at: :desc)
     else
-      @pitches = Pitch.all.sort{|a,b| a.get_downvotes.size - a.get_upvotes.size <=> b.get_downvotes.size - b.get_upvotes.size}
+      @pitches = Pitch.all.sort_by{|a| - a.get_upvotes.size }
   end
   @pitches = @pitches.paginate(:page => params[:page] || 1, :per_page => 30)
 
@@ -119,7 +119,7 @@ end
     days_from = (DateTime.current - Rails.application.config.start_day).to_i % Rails.application.config.schedule_days
     @disc_disabled = days_from < Rails.application.config.disc_day
 
-    if not @disc_disabled
+    if not @disc_disabled && current_user.voted_up_on?(pitch)
       @pitch = Pitch.find(params[:id])
       @pitch.downvote_by current_user
     end

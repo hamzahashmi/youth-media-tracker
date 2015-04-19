@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
   after_initialize :set_default_role, :if => :new_record?
 
   has_many :pitches
+  acts_as_voter
   
   validates :name,:address_zip_code,:phone_number,:bio, :presence => true
   validates :bio, length: { maximum: 1000,

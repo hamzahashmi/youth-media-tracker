@@ -14,7 +14,7 @@
       <img src="./assets/0.10.0/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" style="display:none;">
-      <div class="timestamp">Generated <abbr class="timeago" title="2015-04-19T10:28:20-07:00">2015-04-19T10:28:20-07:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2015-04-19T11:25:44-07:00">2015-04-19T11:25:44-07:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
@@ -507,10 +507,10 @@
           <code class="ruby">    else</code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="38">
-          <span class="hits">2</span>
+        <li class="covered" data-hits="3" data-linenumber="38">
+          <span class="hits">3</span>
           
-          <code class="ruby">      @pitches = Pitch.all.sort{|a,b| a.get_downvotes.size - a.get_upvotes.size &lt;=&gt; b.get_downvotes.size - b.get_upvotes.size}</code>
+          <code class="ruby">      @pitches = Pitch.all.sort_by{|a| - a.get_upvotes.size }</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="39">
@@ -1014,7 +1014,7 @@
         <li class="missed" data-hits="0" data-linenumber="122">
           
           
-          <code class="ruby">    if not @disc_disabled</code>
+          <code class="ruby">    if not @disc_disabled &amp;&amp; current_user.voted_up_on?(pitch)</code>
         </li>
       
         <li class="missed" data-hits="0" data-linenumber="123">
