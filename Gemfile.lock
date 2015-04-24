@@ -8,7 +8,7 @@ GIT
 
 GIT
   remote: git://github.com/gregbell/active_admin.git
-  revision: 8968efcc51cc7c765c35c75aa7bf68c758ca03f3
+  revision: c6347ea2429d0f052e167ba472a35f1d1061124e
   specs:
     activeadmin (1.0.0.pre1)
       arbre (~> 1.0, >= 1.0.2)
@@ -25,12 +25,13 @@ GIT
       sass-rails
 
 GIT
-  remote: https://github.com/trisweb/bootstrap-sass.git
-  revision: 91a628ffa080901cc5ea4e9ec758eb0b8a786916
-  branch: trisweb_glebm_fix_sprockets_context
+  remote: git://github.com/scottvrosenthal/twitter-bootswatch-rails.git
+  revision: 15b5290ab7e43003e47f62ed4106afaf986da312
   specs:
-    bootstrap-sass (2.3.1.2)
-      sass (~> 3.2)
+    twitter-bootswatch-rails (3.3.2.0)
+      execjs (~> 2.3.0)
+      less-rails (~> 2.4)
+      railties (>= 3.1, < 5.0)
 
 GEM
   remote: https://rubygems.org/
@@ -140,7 +141,7 @@ GEM
     erb2haml (0.1.5)
       html2haml
     erubis (2.7.0)
-    execjs (2.5.2)
+    execjs (2.3.0)
     factory_girl (4.5.0)
       activesupport (>= 3.0.0)
     factory_girl_rails (4.5.0)
@@ -435,7 +436,6 @@ DEPENDENCIES
   acts_as_votable (~> 0.10.0)
   best_in_place!
   better_errors
-  bootstrap-sass!
   byebug
   capybara
   coffee-rails (~> 4.1.0)
@@ -487,6 +487,7 @@ DEPENDENCIES
   tilt (~> 1.1)
   timecop
   turbolinks
+  twitter-bootswatch-rails!
   uglifier
   upmin-admin
   web-console (~> 2.0)

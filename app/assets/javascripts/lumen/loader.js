@@ -1,4 +1,4 @@
-// Yeti
+// Lumen
 // Bootswatch
 // loader.js
 

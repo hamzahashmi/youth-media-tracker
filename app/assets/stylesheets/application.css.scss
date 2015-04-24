@@ -28,7 +28,10 @@
 }
 *.icon-danger {color: red}
 *.icon-success {color: green}
-
+*.navbar-inverse {background-color: #008cba}
+*.navbar-inverse .navbar-nav > li > a {
+  color: white;
+}
 #main_content {
 	#content {
 		float: none;

@@ -1,3 +1,3 @@
-// Yeti
+// Lumen
 // Bootswatch
 // bootswatch.js
