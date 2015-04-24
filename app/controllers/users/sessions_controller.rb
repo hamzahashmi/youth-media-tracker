@@ -9,7 +9,7 @@ class Users::SessionsController < Devise::SessionsController
   # POST /resource/sign_in
   def create
     user = User.find_by_email(sign_in_params['email'])
-    super and return unless user.suspended?
+    super and return unless !user.nil? && user.suspended?
     self.resource = resource_class.new(sign_in_params)
     sign_out
     flash[:error] = 'Your account has been suspended by admin.'

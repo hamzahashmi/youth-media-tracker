@@ -5,6 +5,5 @@
       %table.table
         %tbody
           - @users.each do |user|
-            - unless user == current_user
-              %tr
-                = render user
+            %tr
+              = render user

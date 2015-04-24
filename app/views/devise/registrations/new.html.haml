@@ -13,5 +13,9 @@
         = f.label :password_confirmation,class: "col-sm-2 control-label"
         .col-sm-6
           = f.password_field :password_confirmation, placeholder: "Confirm the password", class: 'form-control'
+          .checkbox{:style => "width:200px"}
+            %label
+              = f.check_box :agreement
+              I agree to the Terms of Service
       .col-sm-6.col-sm-offset-2
         = f.submit 'Sign up', :class => 'btn btn-primary', :id => 'submit_'
