@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
   after_initialize :set_default_role, :if => :new_record?
 
   has_many :pitches
-  
+
   validates :name,:address_zip_code,:phone_number,:bio, :presence => true
   validates :bio, length: { maximum: 1000,
                             too_long: "%{count} characters is the maximum allowed" }
@@ -11,6 +11,9 @@ class User < ActiveRecord::Base
 
   GENDER_TYPES = [ ["Do not wish to say",0],["Male",1], [ "Female",2 ]  ]
   validates :gender, inclusion: { in: [0,1,2] }, :if => :gender?
+
+  has_attached_file :photo, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :default_url => "/images/:style/missing.png"
+  validates_attachment_content_type :photo, :content_type => /\Aimage\/.*\Z/
 
   def set_default_role
     self.role ||= :user
