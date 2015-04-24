@@ -1,4 +1,4 @@
-#Youth Media Tracker
+#YouthZone Del Norte
 
 ###Objective
   Create a platform that allows at-risk youth to upload videos and blog posts about their communities.

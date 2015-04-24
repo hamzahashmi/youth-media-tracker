@@ -5,7 +5,7 @@ class CreateAdminService
     	email = Rails.application.secrets.admin_email
         password = Rails.application.secrets.admin_password
         password_confirmation = Rails.application.secrets.admin_password
-        name = "Youth Media Tracker"
+        name = "YouthZone Del Norte"
         address_zip_code = 95531
         phone_number = 1234567890
         bio = "This is the admin"
