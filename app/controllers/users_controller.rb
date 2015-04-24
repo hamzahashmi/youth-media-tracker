@@ -29,7 +29,12 @@ class UsersController < ApplicationController
     user.destroy
     redirect_to users_path, :notice => "User deleted."
   end
-
+  def suspend
+    user = User.find(params[:id])
+    user.suspended = true
+    user.save!
+    redirect_to users_path, :notice => "User suspended."
+  end
   private
 
   def admin_only
@@ -39,7 +44,7 @@ class UsersController < ApplicationController
   end
 
   def secure_params
-    params.require(:user).permit(:role)
+    params.require(:user).permit(:role,:suspended)
   end
 
 end

@@ -3,6 +3,11 @@
 %td
   = form_for(user) do |f|
     = f.select(:role, User.roles.keys.map {|role| [role.titleize,role]})
-    = f.submit 'Change Role', :class => 'button-xs', :id => 'changeRole' + user.id.to_s
+    = f.submit 'Change Role', :class => 'button-xs', :id => 'changeRole' + user.id.to_s 
 %td
-  = link_to("Delete user", user_path(user), :data => { :confirm => "Are you sure?" }, :method => :delete, :class => 'button-xs', :id => 'deleteUser' + user.id.to_s) unless user == current_user
+  = form_for(user) do |f|
+    = f.label :suspended
+    = f.check_box :suspended,{}, true, false
+    = f.submit 'Change', :class => 'button-xs', :id => 'suspendUser' + user.id.to_s
+%td
+  = link_to("Delete user", user_path(user), :data => { :confirm => "Are you sure?" }, :method => :delete, :class => 'btn btn-danger btn-xs', :id => 'deleteUser' + user.id.to_s) 

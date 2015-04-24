@@ -12,9 +12,9 @@ Rails.application.routes.draw do
     resources :comments
 end
 
-  mount Upmin::Engine => '/admin'
   root to: 'pitches#index'
-  devise_for :users
+  #devise_for :users
+  devise_for :users, controllers: { sessions: "users/sessions" }
   resources :users
   get  '/users/sign_up(.:format)', to:'devise_invitable/registrations#new', as:'signup'
 
