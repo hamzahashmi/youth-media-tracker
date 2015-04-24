@@ -10,6 +10,7 @@ module Features
       fill_in 'Phone number', :with => phone_number
       fill_in 'Bio', :with => bio
       fill_in 'Name', :with => name
+      check 'I agree to the Terms of Service'
       click_button 'Sign up'
     end
 
