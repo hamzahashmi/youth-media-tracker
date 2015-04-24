@@ -26,11 +26,9 @@
             = link_to dislike_pitch_path(pitch),  method: :put, id: ("vote-down" << pitch.id.to_s) do
               .btn-group
                 .fa.fa-thumbs-down.fa-lg.icon-danger
-        .active
-          %br/
-          %a
-            %span.badge
-              = pitch.comments.count
-            = link_to "Comments", pitch
+        .active.pull-right
+          %span.badge
+            = pitch.comments.count
+          = link_to "Comments", pitch
   = will_paginate @pitches
      

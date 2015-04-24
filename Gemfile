@@ -34,6 +34,7 @@ gem 'timecop'
 gem  'populator'
 gem  'faker'
 group :development do
+  gem "lol_dba"
   gem "erb2haml"
   gem 'foundation-rails'
   gem 'better_errors'

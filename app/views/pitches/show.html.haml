@@ -1,7 +1,7 @@
 %p#notice
 .page-header
 	%blockquote
-		%b
+		%h3
 			= @pitch.name
 		%small
 			Submitted by #{@pitch.user.name}
@@ -26,9 +26,7 @@
 		= link_to 'Edit', edit_pitch_path(@pitch), class: "btn btn-info"
 		= link_to 'Remove', @pitch, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger"
 .active
-	%br/
-	%span.badge
-		= @pitch.comments.count
+	%h4/
 	Comments
 %br/
 #comments

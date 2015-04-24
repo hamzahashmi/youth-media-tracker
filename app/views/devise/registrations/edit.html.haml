@@ -11,18 +11,22 @@
       .jumbotron
         %p Leave these fields blank if you don't want to change your password.
         .form-group
-          = f.label :password
-          = f.password_field :password, :autocomplete => 'off', class: 'form-control'
+          = f.label :password,class: "col-sm-2 control-label"
+          .col-sm-6
+            = f.password_field :password, :autocomplete => 'off', class: 'form-control'
         .form-group
-          = f.label :password_confirmation
-          = f.password_field :password_confirmation, class: 'form-control'
+          = f.label :password_confirmation,class: "col-sm-2 control-label"
+          .col-sm-6
+            = f.password_field :password_confirmation, class: 'form-control'
       %fieldset
         %p You must enter your current password to make changes.
         .form-group
-          = f.label :current_password
-          = f.password_field :current_password, class: 'form-control'
-      = f.submit 'Update', :class => 'btn btn-primary', :id => "update_user"
+          = f.label :current_password,class: "col-sm-2 control-label"
+          .col-sm-6
+            = f.password_field :current_password, class: 'form-control'
+      .col-sm-6.col-sm-offset-2
+        = f.submit 'Update', :class => 'btn btn-primary', :id => "update_user"
   .form-horizontal
     %h3 Cancel Account
     %p Unhappy? We'll be sad to see you go.
-    = button_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete, :class => 'btn btn-danger'
+    = button_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete, :class => 'btn btn-danger btn-xs'
