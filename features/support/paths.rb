@@ -13,7 +13,7 @@ module NavigationHelpers
   def path_to(page_name)
     case page_name
 
-    when /^the (Youth Media Tracker )?home\s?page$/ then '/'
+    when /^the (YouthZone Del Norte )?home\s?page$/ then '/'
     when /^the sign_up page$/ then signup_path
     when /^the login page$/ then login_path
     when /^the edit page$/ then edit_user_registration_path

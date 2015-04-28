@@ -8,6 +8,7 @@ FactoryGirl.define do
     phone_number 123456789
     address_zip_code 12345
     bio "bio"
+    agreement "1"
 
     trait :admin do
       role 'admin'

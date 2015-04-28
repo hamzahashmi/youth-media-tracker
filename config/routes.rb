@@ -2,7 +2,6 @@ Rails.application.routes.draw do
   resources :schedule, only: :create
   ActiveAdmin.routes(self)
   
-  resources :comments
   resources :schedule, only: :create
 
   resources :pitches do
@@ -13,14 +12,15 @@ Rails.application.routes.draw do
     resources :comments
 end
 
-  mount Upmin::Engine => '/admin'
   root to: 'pitches#index'
-  devise_for :users
+  #devise_for :users
+  devise_for :users, controllers: { sessions: "users/sessions" }
   resources :users
   get  '/users/sign_up(.:format)', to:'devise_invitable/registrations#new', as:'signup'
 
   get  '/users/sign_in(.:format)', to:'devise/sessions#new', as:'login'
 
+  get  '/about', to:'pages#about', as:'about'
 
 
 end

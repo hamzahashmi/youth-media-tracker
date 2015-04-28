@@ -12,7 +12,7 @@ gem "parser", '~> 2.2.0.3'
 gem 'ruby_parser', '~> 3.6.5'
 gem 'sprockets', '~> 2.12.3'
 gem 'tilt', '~> 1.1'
-gem 'bootstrap-sass', :git => 'https://github.com/trisweb/bootstrap-sass.git', :branch => 'trisweb_glebm_fix_sprockets_context'
+gem 'twitter-bootswatch-rails', :github => 'scottvrosenthal/twitter-bootswatch-rails'
 gem "less-rails", '~> 2.6.0'
 gem "font-awesome-rails"
 gem 'best_in_place', github: 'bernat/best_in_place'
@@ -34,6 +34,7 @@ gem 'timecop'
 gem  'populator'
 gem  'faker'
 group :development do
+  gem "lol_dba"
   gem "erb2haml"
   gem 'foundation-rails'
   gem 'better_errors'

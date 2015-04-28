@@ -13,7 +13,7 @@
       %p.lead
         #{pitch.description}
       %cite
-        #{pitch.category}, #{pitch.media}
+        #{pitch.category.name}, #{pitch.media_type.name}
       -if not @disc_disabled
         %br/
         .btn-group
@@ -22,16 +22,13 @@
               .fa.fa-thumbs-up.fa-lg.icon-success
               %span.badge#num-voteup
                 \#{pitch.get_upvotes.size}
-          = link_to dislike_pitch_path(pitch),  method: :put, id: ("vote-down" << pitch.id.to_s) do
-            .btn-group
-              .fa.fa-thumbs-down.fa-lg.icon-danger
-              %span.badge#num-votedown
-                \#{pitch.get_downvotes.size}
-        .active
-          %br/
-          %a
-            %span.badge
-              = pitch.comments.count
-            = link_to "Comments", pitch
+          - if user_signed_in? && current_user.voted_up_on?(pitch)
+            = link_to dislike_pitch_path(pitch),  method: :put, id: ("vote-down" << pitch.id.to_s) do
+              .btn-group
+                .fa.fa-thumbs-down.fa-lg.icon-danger
+        .active.pull-right
+          %span.badge
+            = pitch.comments.count
+          = link_to "Comments", pitch
   = will_paginate @pitches
      

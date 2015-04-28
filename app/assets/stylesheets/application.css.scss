@@ -28,7 +28,10 @@
 }
 *.icon-danger {color: red}
 *.icon-success {color: green}
-
+*.navbar-inverse {background-color: #008cba}
+*.navbar-inverse .navbar-nav > li > a {
+  color: white;
+}
 #main_content {
 	#content {
 		float: none;
@@ -56,4 +59,32 @@
 			}
 		}
 	}
+}
+footer {
+  margin-top: 45px;
+  padding-top: 5px;
+  border-top: 1px solid #eaeaea;
+  color: #999;
+}
+
+footer a {
+  color: #555;
+}
+
+footer a:hover {
+  color: #222;
+}
+
+footer small {
+  float: left;
+}
+
+footer ul {
+  float: right;
+  list-style: none;
+}
+
+footer ul li {
+  float: left;
+  margin-left: 10px;
 }

@@ -2,17 +2,22 @@
   %fieldset
     = render 'shared/errors', obj: @pitch
     .form-group
-      = f.label :name
-      = f.text_field :name, :class => "form-control" 
+      = f.label :name,class: "col-sm-2 control-label"
+      .col-sm-6
+        = f.text_field :name, :class => "form-control" 
     .form-group
-      = f.label :media
-      = f.select :media , Pitch.media_types, :class => "form-control"
-      %br/
-      = f.label :category 
-      = f.select :category, Pitch.categories , :class => "form-control" 
+      = f.label :media_type_id,class: "col-sm-2 control-label"
+      .col-sm-6
+        = f.select :media_type_id , @media_types, :class => "form-control"
     .form-group
-      = f.label :description
-      = f.text_area :description, :class => "form-control" 
+      = f.label :category_id,class: "col-sm-2 control-label"
+      .col-sm-6
+        = f.select :category_id, @categories , :class => "form-control" 
+    .form-group
+      = f.label :description,class: "col-sm-2 control-label"
+      .col-sm-6
+        = f.text_area :description,size: "60x6", :class => "form-control" 
   .form-actions
-    = f.submit  'Submit/Update Pitch', :class => 'btn btn-primary'
-    = link_to t('.cancel', :default => t("helpers.links.cancel")), pitches_path, :class => 'btn'
+    .col-sm-6.col-sm-offset-2
+      = f.submit  'Submit/Update Pitch', :class => 'btn btn-primary'
+      = link_to t('.cancel', :default => t("helpers.links.cancel")), pitches_path, :class => 'btn'

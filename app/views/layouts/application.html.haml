@@ -2,15 +2,17 @@
 %html
   %head
     %meta{:name => "viewport", :content => "width=device-width, initial-scale=1.0"}
-    %title= content_for?(:title) ? yield(:title) : 'Youth Media Tracker'
-    %meta{:name => "description", :content => "#{content_for?(:description) ? yield(:description) : 'Youth Media Tracker'}"}
+    %title= content_for?(:title) ? yield(:title) : 'YouthZone Del Norte'
+    %meta{:name => "description", :content => "#{content_for?(:description) ? yield(:description) : 'YouthZone Del Norte'}"}
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
   %body
     %header
-      = render 'layouts/navigation'
+      .bs-component
+        = render 'layouts/navigation'
     #main_content.container
       = render 'layouts/messages'
       #container.col-md-9.center-block
         = yield
+        = render 'layouts/footer'
