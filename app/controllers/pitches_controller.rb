@@ -54,6 +54,8 @@ end
   # GET /pitches/new
   def new
     @pitch = current_user.pitches.build
+    @categories = Category.all.map { |c| [c.name,c.id] }
+    @media_types = MediaType.all.map { |c| [c.name,c.id] }
     days_from = (DateTime.current - Rails.application.config.start_day).to_i % Rails.application.config.schedule_days
     if days_from > Rails.application.config.pitch_day
       flash.now[:notice] = "Pitch submissions are currently disabled."
@@ -139,6 +141,6 @@ end
     end
     # Never trust parameters from the scary internet, only allow the white list through.
     def pitch_params
-      params.require(:pitch).permit(:name, :media, :category, :description, :page)
+      params.require(:pitch).permit(:name, :media_type_id,  :description, :page,:category_id)
     end
   end

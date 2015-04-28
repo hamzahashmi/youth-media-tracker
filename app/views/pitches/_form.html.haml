@@ -6,13 +6,13 @@
       .col-sm-6
         = f.text_field :name, :class => "form-control" 
     .form-group
-      = f.label :media,class: "col-sm-2 control-label"
+      = f.label :media_type_id,class: "col-sm-2 control-label"
       .col-sm-6
-        = f.select :media , Pitch.media_types, :class => "form-control"
+        = f.select :media_type_id , @media_types, :class => "form-control"
     .form-group
-      = f.label :category ,class: "col-sm-2 control-label"
+      = f.label :category_id,class: "col-sm-2 control-label"
       .col-sm-6
-        = f.select :category, Pitch.categories , :class => "form-control" 
+        = f.select :category_id, @categories , :class => "form-control" 
     .form-group
       = f.label :description,class: "col-sm-2 control-label"
       .col-sm-6

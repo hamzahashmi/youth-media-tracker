@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150416071707) do
+ActiveRecord::Schema.define(version: 20150425184946) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace"
@@ -28,6 +28,13 @@ ActiveRecord::Schema.define(version: 20150416071707) do
   add_index "active_admin_comments", ["namespace"], name: "index_active_admin_comments_on_namespace"
   add_index "active_admin_comments", ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource_type_and_resource_id"
 
+  create_table "categories", force: :cascade do |t|
+    t.string   "name"
+    t.string   "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
   create_table "comments", force: :cascade do |t|
     t.integer  "pitch_id"
     t.text     "body"
@@ -39,14 +46,21 @@ ActiveRecord::Schema.define(version: 20150416071707) do
   add_index "comments", ["pitch_id"], name: "index_comments_on_pitch_id"
   add_index "comments", ["user_id"], name: "index_comments_on_user_id"
 
-  create_table "pitches", force: :cascade do |t|
+  create_table "media_types", force: :cascade do |t|
     t.string   "name"
-    t.string   "media"
-    t.string   "category"
     t.string   "description"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+  end
+
+  create_table "pitches", force: :cascade do |t|
+    t.string   "name"
+    t.string   "description"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
     t.integer  "user_id"
+    t.integer  "category_id"
+    t.integer  "media_type_id"
   end
 
   add_index "pitches", ["user_id"], name: "index_pitches_on_user_id"

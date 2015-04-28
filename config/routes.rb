@@ -20,6 +20,7 @@ end
 
   get  '/users/sign_in(.:format)', to:'devise/sessions#new', as:'login'
 
+  get  '/about', to:'pages#about', as:'about'
 
 
 end

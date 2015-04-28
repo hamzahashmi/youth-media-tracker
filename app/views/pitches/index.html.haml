@@ -13,7 +13,7 @@
       %p.lead
         #{pitch.description}
       %cite
-        #{pitch.category}, #{pitch.media}
+        #{pitch.category.name}, #{pitch.media_type.name}
       -if not @disc_disabled
         %br/
         .btn-group
