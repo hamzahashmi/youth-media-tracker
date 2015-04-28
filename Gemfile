@@ -17,6 +17,7 @@ gem "less-rails", '~> 2.6.0'
 gem "font-awesome-rails"
 gem 'best_in_place', github: 'bernat/best_in_place'
 gem 'will_paginate', '~> 3.0.6', :require => nil
+gem "paperclip", "~> 4.2"
 group :development, :test do
   gem 'byebug'
   gem 'web-console', '~> 2.0'

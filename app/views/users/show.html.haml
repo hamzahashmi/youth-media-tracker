@@ -1,5 +1,7 @@
 %h3 User
 %p
+  Photo: #{image_tag @user.photo.url(:medium)}
+%p
   Name: #{@user.name if @user.name}
 %p
   Email: #{@user.email if @user.email}
