@@ -1,0 +1,15 @@
+image_advtab : true
+toolbar:
+  - styleselect | bold italic | undo redo | table
+  - image | link | media | preview | spellchecker
+plugins:
+  - image
+  - link
+  - media
+  - preview
+  - spellchecker
+  - wordcount
+  - textcolor
+  - lists
+  - autolink
+ file_browser_callback: 'file_upload'

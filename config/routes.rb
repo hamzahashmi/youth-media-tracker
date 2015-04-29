@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :media
+
   resources :schedule, only: :create
   ActiveAdmin.routes(self)
   
