@@ -15,9 +15,18 @@ namespace :db do
     zip_codes_list.each do |code, county|
      Zipcode.create(:code => code, :county => county) if !Zipcode.exists?(code)
    end
-   CreateAdminService.new.call
+   media_types_list = ["Video","Audio","Written"]
+   media_types_list.each do |type|
+    MediaType.create!(:name => type) if !MediaType.exists?(:name => type)
+  end
+  categories_list = ["Arts","Sports","Politics","Current Events","Education","Entertainment"]
+  categories_list.each do |category|
+    Category.create!(:name => category) if !Category.exists?(:name => category)
+  end
 
-   User.populate 40 do |user|
+  CreateAdminService.new.call
+
+  User.populate 40 do |user|
     user.name    = Faker::Name.name
     user.email   = Faker::Internet.email
     user.encrypted_password = Faker::Internet.password
@@ -37,8 +46,8 @@ namespace :db do
   Pitch.populate 5..30 do |pitch|
     pitch.name = Populator.words(1..5).titleize
     pitch.description = Populator.sentences(2..4)
-    pitch.category = Pitch.categories
-    pitch.media = Pitch.media_types
+    pitch.category_id = Category.order("RANDOM()").first.id
+    pitch.media_type_id = MediaType.order("RANDOM()").first.id
     user = User.order("RANDOM()").first
     pitch.user_id = user.id
     pitch.created_at = user.created_at..Time.now

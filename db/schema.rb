@@ -101,6 +101,10 @@ ActiveRecord::Schema.define(version: 20150425184946) do
     t.string   "bio"
     t.string   "phone_number"
     t.boolean  "suspended",              default: false, null: false
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
+    t.datetime "photo_updated_at"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
