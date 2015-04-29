@@ -7,6 +7,9 @@ class Pitch < ActiveRecord::Base
   belongs_to :media_type
   has_many :comments
 
+def self.top_voted
+  self.all.sort_by{|a| - a.get_upvotes.size }
+end
   # def self.media_types
   #   ["Video","Audio","Written"]
   # end

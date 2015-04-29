@@ -31,7 +31,20 @@ ActiveAdmin.register_page "Dashboard" do
         end
       end
 
-
+      column do
+        panel "Top Three Piches" do
+         table_for Pitch.top_voted.first(3) do
+            column :name do |pitch|
+              link_to pitch.name, [:admin, pitch]
+            end
+            column "Created By",:user
+            column :created_at
+            column "Votes",:name do |pitch|
+               pitch.get_upvotes.size
+            end 
+          end
+       end
+     end
      # most recent comments
      column do
       panel "Recent Comments" do
