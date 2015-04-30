@@ -54,8 +54,10 @@ end
   # GET /pitches/new
   def new
     @pitch = current_user.pitches.build
-    @categories = Category.all.map { |c| [c.name,c.id] }
-    @media_types = MediaType.all.map { |c| [c.name,c.id] }
+    @categories = Category.categories_list
+    puts @categories
+    @media_types = MediaType.all.map { |m| [m.name,m.id] }
+    puts @media_types
     days_from = (DateTime.current - Rails.application.config.start_day).to_i % Rails.application.config.schedule_days
     if days_from > Rails.application.config.pitch_day
       flash.now[:notice] = "Pitch submissions are currently disabled."

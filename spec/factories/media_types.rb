@@ -1,7 +1,7 @@
 FactoryGirl.define do
   factory :media_type do
-    name "MyString"
-description "MyString"
+    name "Text"
+	description "text"
   end
 
 end

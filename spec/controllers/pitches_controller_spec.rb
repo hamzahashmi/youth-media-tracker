@@ -91,7 +91,7 @@ RSpec.describe PitchesController do
     end
 
 
-    it 'should edit  pitch' do
+    it 'should edit pitch' do
       assigns[:pitch].should eq(@pitch)
     end
 

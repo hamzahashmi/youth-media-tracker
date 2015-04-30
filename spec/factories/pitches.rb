@@ -1,8 +1,8 @@
 FactoryGirl.define do
   factory :pitch do
       name "testName"
-	  media "testMedia"
-	  category "testCategory"
+	  media_type
+	  category
 	  description "testText"
 	  user
   end
