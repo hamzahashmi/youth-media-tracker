@@ -22,8 +22,8 @@ feature 'Pitch functionality' do
     user = FactoryGirl.create(:user)
     login_as(user, :scope => :user)
     visit new_pitch_path
-    page.select "Video", :from => "pitch_media"
-    page.select "Arts", :from => "pitch_category"
+    page.select "Video", :from => "pitch_media_type_id"
+    page.select "Arts", :from => "pitch_category_id"
     fill_in 'Description', :with => 'testDescription'
     click_button 'Submit/Update Pitch'
     expect(page).to have_content('can\'t be blank')
@@ -46,8 +46,8 @@ feature 'Pitch functionality' do
     login_as(user, :scope => :user)
     visit edit_pitch_path(pitch)
     fill_in 'Name', :with => 'otherName'
-    page.select "Audio", :from => "pitch_media"
-    page.select "Sports", :from => "pitch_category"
+    page.select "Audio", :from => "pitch_media_type_id"
+    page.select "Sports", :from => "pitch_category_id"
     fill_in 'Description', :with => 'otherDescription'
     click_button 'Update Pitch'
     expect(page).to have_content('otherName')

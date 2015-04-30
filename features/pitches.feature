@@ -7,9 +7,9 @@ Feature: Pitches
 		Given the website is set up
 		Given I am logged into website
 	    Given the following pitches exist:
-	    |name|category|media|description|
-	    |PitchNameOne|Education|Video| description|
-	    |PitchNameTwo|Education 2|Video 2| description|
+	    |name|category_id|media_type_id|description|
+	    |PitchNameOne|Education|Video|description|
+	    |PitchNameTwo|Education|Video|description|
 
 	Scenario: browse pitches on home screen
 		Given I am on the home page
