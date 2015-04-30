@@ -5,6 +5,8 @@ RSpec.describe PitchesController do
   render_views
   before(:all) do
     @user = FactoryGirl.create(:user)
+    @category = FactoryGirl.create(:category)
+    @media_type = FactoryGirl.create(:media_type)
   end
     it "blocks unauthenticated access" do
     sign_in nil
@@ -24,7 +26,7 @@ RSpec.describe PitchesController do
 
   describe 'index action' do
     before :each do
-      FactoryGirl.create(:pitch, :name => "test",:user => @user)
+      FactoryGirl.create(:pitch, :name => "test",:user => @user, :category => @category, :media_type => @media_type)
       get 'index'
     end
 
@@ -44,7 +46,7 @@ RSpec.describe PitchesController do
 
   describe 'index action with sorting' do
     before :each do
-      FactoryGirl.create(:pitch, :name => "test",:user => @user)
+      FactoryGirl.create(:pitch, :name => "test",:user => @user, :category => @category, :media_type => @media_type)
       get 'index', {:sort => "top"}
     end
 
@@ -64,7 +66,7 @@ RSpec.describe PitchesController do
   end
   describe 'show action' do
     before :each do
-      pitch =FactoryGirl.create(:pitch, :name => "test2",:user_id=> @user.id)
+      pitch =FactoryGirl.create(:pitch, :name => "test2",:user_id=> @user.id, :category => @category, :media_type => @media_type)
       get 'show', :id => pitch.id
     end
 
@@ -86,7 +88,7 @@ RSpec.describe PitchesController do
   describe 'edit action' do
     before :each do
       sign_in @user
-      @pitch =FactoryGirl.create(:pitch, :name => "test3",:user => @user)
+      @pitch =FactoryGirl.create(:pitch, :name => "test3",:user => @user, :category => @category, :media_type => @media_type)
       get 'edit', :id => @pitch.id
     end
 
@@ -100,7 +102,7 @@ RSpec.describe PitchesController do
   describe 'new action' do
     before :each do
       sign_in @user
-      @pitch =FactoryGirl.create(:pitch, :name => "test3",:user => @user)
+      @pitch =FactoryGirl.create(:pitch, :name => "test3",:user => @user, :category => @category, :media_type => @media_type)
       get 'new'
     end
 
@@ -118,7 +120,7 @@ RSpec.describe PitchesController do
   describe 'update action' do
     before :each do
       sign_in @user
-      @pitch =FactoryGirl.create(:pitch, :name => "test3",:user => @user)
+      @pitch =FactoryGirl.create(:pitch, :name => "test3",:user => @user, :category => @category, :media_type => @media_type)
       put 'update', :id => @pitch , :pitch => @pitch.attributes
     end
 
@@ -130,8 +132,8 @@ RSpec.describe PitchesController do
   describe 'update action failed' do
     before :each do
       sign_in @user
-      @pitch =FactoryGirl.create(:pitch, :name => "test4",:user => @user)
-      put 'update', :id => @pitch , :pitch => {:name => ""}
+      @pitch =FactoryGirl.create(:pitch, :name => "test4",:user => @user, :category => @category, :media_type => @media_type)
+      put 'update', :id => @pitch , :pitch => {:name => "",:user => @user, :category => @category, :media_type => @media_type}
     end
 
     it 'should redirect to new' do
@@ -146,8 +148,8 @@ RSpec.describe PitchesController do
     it 'should success' do
       sign_in @user
       params = {:name=>"testName",
-                :media=>"testMedia",
-                :category=>"testCategory",
+                :media_type=>@media_type,
+                :category=>@category,
                 :description=>"testText",}
       post 'create',  :pitch => params
       response.should redirect_to(pitches_path)
@@ -160,8 +162,8 @@ RSpec.describe PitchesController do
     it 'should failed' do
       sign_in @user
       params = {:name=>"",
-                :media=>"testMedia",
-                :category=>"testCategory",
+                :media=>@media_type,
+                :category=>@category,
                 :description=>"testText",}
       post 'create', :pitch => params
       response.should render_template(:new)
@@ -174,7 +176,7 @@ RSpec.describe PitchesController do
 
     it 'should success' do
       sign_in @user
-      @pitch = FactoryGirl.create(:pitch, :user => @user)
+      @pitch = FactoryGirl.create(:pitch, :user => @user, :category => @category, :media_type => @media_type)
       get 'destroy',  :id => @pitch.id
       response.should redirect_to(pitches_path)
     end
@@ -183,7 +185,7 @@ RSpec.describe PitchesController do
 
     it 'should add one up vote' do
       sign_in @user
-      @pitch = FactoryGirl.create(:pitch, :user => @user)
+      @pitch = FactoryGirl.create(:pitch, :user => @user, :category => @category, :media_type => @media_type)
       @request.env['HTTP_REFERER'] = 'http://test.com/'
       expect{put 'upvote',  :id => @pitch.id}.to change{ 
         @pitch.get_upvotes.size}.from(0).to(1)
@@ -194,7 +196,7 @@ RSpec.describe PitchesController do
 
     it 'should add one down vote' do
       sign_in @user
-      @pitch = FactoryGirl.create(:pitch, :user => @user)
+      @pitch = FactoryGirl.create(:pitch, :user => @user, :category => @category, :media_type => @media_type)
       @request.env['HTTP_REFERER'] = 'http://test.com/'
       expect{put 'downvote',  :id => @pitch.id}.to change{ 
         @pitch.get_downvotes.size}.from(0).to(1)

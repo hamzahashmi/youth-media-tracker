@@ -64,11 +64,15 @@ end
 
   # GET /pitches/1/edit
   def edit
+    @categories = Category.all.map { |c| [c.name,c.id] }
+    @media_types = MediaType.all.map { |c| [c.name,c.id] }
   end
 
   # POST /pitches
   # POST /pitches.json
   def create
+    @categories = Category.all.map { |c| [c.name,c.id] }
+    @media_types = MediaType.all.map { |c| [c.name,c.id] }
     days_from = (DateTime.current - Rails.application.config.start_day).to_i % Rails.application.config.schedule_days
     @pitches_disabled = days_from > Rails.application.config.pitch_day
 
@@ -88,6 +92,8 @@ end
   # PATCH/PUT /pitches/1
   # PATCH/PUT /pitches/1.json
   def update
+    @categories = Category.all.map { |c| [c.name,c.id] }
+    @media_types = MediaType.all.map { |c| [c.name,c.id] }
     if @pitch.update(pitch_params)
       flash[:notice] = 'Pitch was successfully updated.'
       redirect_to pitch_path(@pitch)
