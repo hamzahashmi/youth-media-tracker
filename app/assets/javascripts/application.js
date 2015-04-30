@@ -17,4 +17,4 @@
 //= require redactor-rails
 //= require redactor-rails/plugins
 //= require redactor-rails/video
-
+//= require redactor-rails/imagemanager
