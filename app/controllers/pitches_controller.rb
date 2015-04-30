@@ -1,6 +1,7 @@
 class PitchesController < ApplicationController
   require 'will_paginate/array' 
   before_action :set_pitch, only: [:show, :edit, :update, :destroy , :send_final_work_mail]
+  before_action :set_categories_media_types, only: [:edit, :new]
   before_action :authenticate_user!, except: [:index, :show]
   before_action :authorized_user, only: [:edit, :update, :destroy]
 
@@ -54,10 +55,6 @@ end
   # GET /pitches/new
   def new
     @pitch = current_user.pitches.build
-    @categories = Category.categories_list
-    puts @categories
-    @media_types = MediaType.all.map { |m| [m.name,m.id] }
-    puts @media_types
     days_from = (DateTime.current - Rails.application.config.start_day).to_i % Rails.application.config.schedule_days
     if days_from > Rails.application.config.pitch_day
       flash.now[:notice] = "Pitch submissions are currently disabled."
@@ -141,6 +138,10 @@ end
     # Use callbacks to share common setup or constraints between actions.
     def set_pitch
       @pitch = Pitch.find(params[:id])
+    end
+    def set_categories_media_types
+      @categories = Category.categories_list
+      @media_types = MediaType.all.map { |m| [m.name,m.id] }
     end
     def authorized_user
       @pitch = current_user.pitches.find_by(id: params[:id])
