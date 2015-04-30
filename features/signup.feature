@@ -23,6 +23,7 @@ Scenario:
 	And I fill in "user_address_zip_code" with "12345"
 	And I fill in "user_phone_number" with "123456789"
 	And I fill in "user_bio" with "bio text"
+	And I check "I agree to the Terms of Service"
 	And I press "submit_"
 	Then I should see "A message with a confirmation link has been sent to your email address. Please follow the link to activate your account."
 
@@ -35,6 +36,7 @@ Scenario:
 	And I fill in "user_address_zip_code" with "12345"
 	And I fill in "user_phone_number" with "123456789"
 	And I fill in "user_bio" with "bio text"
+	And I check "I agree to the Terms of Service"
 	And I press "submit_"
 	Then I should see "A message with a confirmation link has been sent to your email address. Please follow the link to activate your account."
 

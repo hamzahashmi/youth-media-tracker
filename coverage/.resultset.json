@@ -793,7 +793,40 @@
   },
   "Cucumber Features": {
     "coverage": {
+      "/Volumes/Stuff/CS169/youth-media-tracker/app/controllers/users/sessions_controller.rb": [
+        1,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        1,
+        10,
+        10,
+        0,
+        0,
+        0,
+        0,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
       "/Volumes/Stuff/CS169/youth-media-tracker/app/controllers/pitches_controller.rb": [
+        1,
         1,
         1,
         1,
@@ -922,12 +955,21 @@
         null,
         0,
         null,
+        1,
+        0,
+        0,
+        0,
+        null,
         null,
         1,
         null,
         null,
         1,
         5,
+        null,
+        1,
+        4,
+        12,
         null,
         1,
         2,
@@ -940,6 +982,6 @@
         null
       ]
     },
-    "timestamp": 1429467944
+    "timestamp": 1430437058
   }
 }

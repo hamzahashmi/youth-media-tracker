@@ -6,10 +6,18 @@ Feature: Pitches
 	Background:
 		Given the website is set up
 		Given I am logged into website
+		Given the following categories exist:
+		|id|name|
+		|1|"Arts"|
+		|2|"Education"|
+		Given the following media types exist:
+		|id|name|
+		|1|"Video"|
+		|2|"Audio"|
 	    Given the following pitches exist:
-	    |name|category|media|description|
-	    |PitchNameOne|Education|Video| description|
-	    |PitchNameTwo|Education 2|Video 2| description|
+	    |name|category_id|media_type_id|description|
+	    |PitchNameOne|1|1| description|
+	    |PitchNameTwo|1|2| description|
 
 	Scenario: browse pitches on home screen
 		Given I am on the home page
