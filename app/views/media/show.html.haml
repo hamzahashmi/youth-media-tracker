@@ -1,0 +1,23 @@
+- model_class = Medium
+.page-header
+  %h1=t '.title', :default => model_class.model_name.human
+%table.table.table-striped
+  %thead
+    %tr
+      %th= model_class.human_attribute_name(:context)
+      %th= model_class.human_attribute_name(:week_session_id)
+      %th= model_class.human_attribute_name(:due_date)
+      %th= model_class.human_attribute_name(:created_at)
+  %tbody
+    %tr
+      %td= raw @medium.context
+      %td= @medium.week_session_id
+      %td= @medium.due_date
+      %td=l @medium.created_at
+%p
+  %strong= model_class.human_attribute_name(:context) + ':'
+  %br
+  = raw @medium.context
+
+.form-actions
+  = link_to t('.back', :default => t("helpers.links.back")), media_path, :class => 'btn btn-primary btn-xs'

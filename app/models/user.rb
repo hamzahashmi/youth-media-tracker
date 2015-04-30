@@ -4,6 +4,8 @@ class User < ActiveRecord::Base
   
   
   has_many :pitches
+  has_many :media
+  
   acts_as_voter
   
   validates :name,:address_zip_code,:phone_number,:bio, :presence => true

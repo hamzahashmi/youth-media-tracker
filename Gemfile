@@ -17,10 +17,14 @@ gem "less-rails", '~> 2.6.0'
 gem "font-awesome-rails"
 gem 'best_in_place', github: 'bernat/best_in_place'
 gem 'will_paginate', '~> 3.0.6', :require => nil
+gem 'tinymce-rails'
+gem 'redactor-rails'
+gem "carrierwave"
+gem "mini_magick"
 group :development, :test do
   gem 'byebug'
   gem 'web-console', '~> 2.0'
-  gem 'spring', '~> 1.3.3'
+  gem 'spring', '~> 1.3.5'
 end
 gem 'uglifier'
 gem 'devise'

@@ -1,0 +1,15 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+  %body
+    %h1
+      Congratulation, #{@user.name}
+    %p
+      You have been selected to submit your pitch final work by clicking the bellow link
+      = link_to "Submit", :controller => 'media', :action => 'edit', :id => @medium.id ,:token => @medium.token
+      %br/
+    %p
+      You have two weeks to complete this work
+    %p
+      Good Luck!

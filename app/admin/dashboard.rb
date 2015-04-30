@@ -10,7 +10,7 @@ ActiveAdmin.register_page "Dashboard" do
         end
       end
       column do
-        panel "Last Week Number of Users" do
+        panel "Number of New Users" do
          User.where(created_at: Time.zone.now.all_week).count
        end
      end
@@ -41,12 +41,21 @@ ActiveAdmin.register_page "Dashboard" do
             column :created_at
             column "Votes",:name do |pitch|
                pitch.get_upvotes.size
+            end
+            column "",:name do |pitch|
+              link_to "Notify to submit final work", mail_user_pitch_path(pitch), method: :put
             end 
           end
        end
      end
      # most recent comments
-     column do
+     
+
+
+
+
+
+  end
       panel "Recent Comments" do
         table_for Comment.order("created_at desc").limit(10) do
           column :body do |comment|
@@ -57,13 +66,8 @@ ActiveAdmin.register_page "Dashboard" do
         end
         strong { link_to "View All Comments", admin_comments_path }
       end
-    end
+    
 
-
-
-
-
-  end
   panel "New Users" do
     table_for User.order("created_at desc").limit(10) do
       column :name do |user|

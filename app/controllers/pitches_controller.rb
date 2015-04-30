@@ -1,6 +1,6 @@
 class PitchesController < ApplicationController
   require 'will_paginate/array' 
-  before_action :set_pitch, only: [:show, :edit, :update, :destroy]
+  before_action :set_pitch, only: [:show, :edit, :update, :destroy , :send_final_work_mail]
   before_action :authenticate_user!, except: [:index, :show]
   before_action :authorized_user, only: [:edit, :update, :destroy]
 
@@ -126,6 +126,11 @@ end
       @pitch.downvote_by current_user
     end
 
+    redirect_to :back
+  end
+  def send_final_work_mail
+    UserMailer.submit_final_work(@pitch).deliver
+    flash[:success] = 'Sent successfully.'
     redirect_to :back
   end
 

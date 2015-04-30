@@ -13,4 +13,8 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
-
+//= require tinymce-jquery
+//= require redactor-rails
+//= require redactor-rails/plugins
+//= require redactor-rails/video
+//= require redactor-rails/imagemanager
