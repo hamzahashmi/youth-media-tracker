@@ -1,7 +1,7 @@
 class PitchesController < ApplicationController
   require 'will_paginate/array' 
   before_action :set_pitch, only: [:show, :edit, :update, :destroy , :send_final_work_mail]
-  before_action :set_categories_media_types, only: [:edit, :new]
+  before_action :set_categories_media_types, only: [:edit, :new, :update, :create]
   before_action :authenticate_user!, except: [:index, :show]
   before_action :authorized_user, only: [:edit, :update, :destroy]
 

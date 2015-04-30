@@ -145,9 +145,11 @@ RSpec.describe PitchesController do
 
     it 'should success' do
       sign_in @user
+      category = FactoryGirl.create(:category)
+      media_type = FactoryGirl.create(:media_type)
       params = {:name=>"testName",
-                :media=>"testMedia",
-                :category=>"testCategory",
+                :media_type_id => media_type.id,
+                :category_id => category.id,
                 :description=>"testText",}
       post 'create',  :pitch => params
       response.should redirect_to(pitches_path)

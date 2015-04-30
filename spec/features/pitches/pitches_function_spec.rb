@@ -9,21 +9,27 @@ feature 'Pitch functionality' do
 
   scenario 'user creates pitch for video about art' do
     user = FactoryGirl.create(:user)
+    category = FactoryGirl.create(:category, :name => "Arts")
+    media_type = FactoryGirl.create(:media_type, :name => "Video")
     login_as(user, :scope => :user)
     visit new_pitch_path
     fill_in 'Name', :with => 'testName'
-    page.select "Video", :from => "pitch_media"
-    page.select "Arts", :from => "pitch_category"
+    page.select "Video", :from => "pitch_media_type_id"
+    page.select "Arts", :from => "pitch_category_id"
     fill_in 'Description', :with => 'testDescription'
     click_button 'Submit/Update Pitch'
     expect(page).to have_content('Pitch was successfully created.')
   end
   scenario 'user cant create pitch for video about art without name' do
     user = FactoryGirl.create(:user)
+    user = FactoryGirl.create(:user)
+    category = FactoryGirl.create(:category, :name => "Arts")
+    media_type = FactoryGirl.create(:media_type, :name => "Video")
+
     login_as(user, :scope => :user)
     visit new_pitch_path
-    page.select "Video", :from => "pitch_media"
-    page.select "Arts", :from => "pitch_category"
+    page.select "Video", :from => "pitch_media_type_id"
+    page.select "Arts", :from => "pitch_category_id"
     fill_in 'Description', :with => 'testDescription'
     click_button 'Submit/Update Pitch'
     expect(page).to have_content('can\'t be blank')
@@ -31,7 +37,9 @@ feature 'Pitch functionality' do
 
   scenario 'user can view a pitch for video about art' do
     user = FactoryGirl.create(:user)
-    pitch = FactoryGirl.create(:pitch, :user => user, :name => 'testName', :media => 'Video', :category => 'Arts', :description => 'testDescription')
+    category = FactoryGirl.create(:category, :name => "Arts")
+    media_type = FactoryGirl.create(:media_type, :name => "Video")
+    pitch = FactoryGirl.create(:pitch, :user => user, :name => 'testName', :media_type => media_type, :category => category, :description => 'testDescription')
     login_as(user, :scope => :user)
     visit pitch_path(pitch)
     expect(page).to have_content('testName')
@@ -42,12 +50,14 @@ feature 'Pitch functionality' do
 
   scenario 'user can edit a pitch to now be audio about sports' do
     user = FactoryGirl.create(:user)
-    pitch = FactoryGirl.create(:pitch, :user => user, :name => 'testName', :media => 'Video', :category => 'Arts', :description => 'testDescription')
+    category = FactoryGirl.create(:category, :name => "Sports")
+    media_type = FactoryGirl.create(:media_type, :name => "Audio")
+    pitch = FactoryGirl.create(:pitch, :user => user)
     login_as(user, :scope => :user)
     visit edit_pitch_path(pitch)
     fill_in 'Name', :with => 'otherName'
-    page.select "Audio", :from => "pitch_media"
-    page.select "Sports", :from => "pitch_category"
+    page.select "Audio", :from => "pitch_media_type_id"
+    page.select "Sports", :from => "pitch_category_id"
     fill_in 'Description', :with => 'otherDescription'
     click_button 'Update Pitch'
     expect(page).to have_content('otherName')
