@@ -51,15 +51,17 @@ class CommentsController < ApplicationController
   # PATCH/PUT /comments/1
   # PATCH/PUT /comments/1.json
   def update
-    respond_to do |format|
+      @pitch = Pitch.find(params[:pitch_id]);
       if @comment.update(comment_params)
-        format.html { redirect_to redirect_to pitch_path(@comment.pitch), notice: 'Comment was successfully updated.' }
-        format.json { render :show, status: :ok, location: @comment }
+        flash[:notice] = "Your comment was updated"
+        redirect_to pitch_path(@pitch)
       else
-        format.html { render :edit }
-        format.json { render json: @comment.errors, status: :unprocessable_entity }
+        @pitch.reload
+        flash[:alert] = "Update failed"
+        #prevents breaking if comments field is left blank
+        redirect_to pitch_path(@pitch)
       end
-    end
+    
   end
 
   # DELETE /comments/1

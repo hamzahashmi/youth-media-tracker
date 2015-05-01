@@ -15,4 +15,22 @@ RSpec.describe CommentsController do
 
     response.should be_success
   end
+
+  it "should update comment" do
+    sign_in @user
+    comment = FactoryGirl.create(:comment, :user => @user, :pitch => @pitch, :body => "old")
+    put :update, :pitch_id => @pitch.id,:id => comment.id,  :comment => {:body => "new"}
+    comment.reload
+    comment.body.should eq("new")
+    expect(flash[:notice]).to be_present
+  end
+
+  it "should not update comment" do
+    sign_in @user
+    comment = FactoryGirl.create(:comment, :user => @user, :pitch => @pitch, :body => "old")
+    put :update, :pitch_id => @pitch.id,:id => comment.id,  :comment => {:body => ""}
+    comment.reload
+    comment.body.should eq("old")
+    expect(flash[:alert]).to be_present
+  end
 end
