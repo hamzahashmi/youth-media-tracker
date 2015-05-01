@@ -5,7 +5,7 @@ Feature: Pitches
 
 	Background:
 		Given the website is set up
-		Given I am logged into website
+		Given I am logged into website as "user"
 		Given the following categories exist:
 		|id|name|
 		|1|"Arts"|
@@ -15,9 +15,9 @@ Feature: Pitches
 		|1|"Video"|
 		|2|"Audio"|
 	    Given the following pitches exist:
-	    |name|category_id|media_type_id|description|
-	    |PitchNameOne|1|1| description|
-	    |PitchNameTwo|1|2| description|
+	    |id|name|category_id|media_type_id|description|
+	    |1|PitchNameOne|1|1| description|
+	    |2|PitchNameTwo|1|2| description|
 
 	Scenario: browse pitches on home screen
 		Given I am on the home page
@@ -56,4 +56,14 @@ Feature: Pitches
 		When I fill in "Name" with "pitch name"
 		And I press "Submit/Update"
 		Then I should see "Pitch was successfully updated."
+	Scenario: vote up for pitch
+		Given I am on the home page
+		When I click vote up on "PitchNameOne"
+		Then the "vote-up1" should contain "1" 
+		When I click vote down on "PitchNameOne"
+		Then the "vote-up1" should contain "0" 
+	Scenario: cant vote down
+		Given I am on the home page
+		Then I can not find "vote-down1"
+
 

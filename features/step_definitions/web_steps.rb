@@ -116,15 +116,14 @@ Then /^(?:|I )should see \/([^\/]*)\/$/ do |regexp|
   end
 end
 
-=begin
+
 Then /^(?:|I )should not see "([^"]*)"$/ do |text|
   if page.respond_to? :should
-    page.should have_no_content(text)
+    expect(page).to have_no_content(text)
   else
     assert page.has_no_content?(text)
   end
 end
-
 Then /^(?:|I )should not see \/([^\/]*)\/$/ do |regexp|
   regexp = Regexp.new(regexp)
 
@@ -134,7 +133,6 @@ Then /^(?:|I )should not see \/([^\/]*)\/$/ do |regexp|
     assert page.has_no_xpath?('//*', :text => regexp)
   end
 end
-=end
 
 Then /^the "([^"]*)" field(?: within (.*))? should contain "([^"]*)"$/ do |field, parent, value|
   with_scope(parent) do
@@ -211,25 +209,24 @@ Then /^the "([^"]*)" checkbox(?: within (.*))? should be checked$/ do |label, pa
   with_scope(parent) do
     field_checked = find_field(label)['checked']
     if field_checked.respond_to? :should
-      field_checked.should be_true
+      expect(field_checked).to be_truthy
     else
       assert field_checked
     end
   end
 end
 
-=begin
+
 Then /^the "([^"]*)" checkbox(?: within (.*))? should not be checked$/ do |label, parent|
   with_scope(parent) do
     field_checked = find_field(label)['checked']
     if field_checked.respond_to? :should
-      field_checked.should be_false
+      expect(field_checked).to be_falsey
     else
       assert !field_checked
     end
   end
 end
-=end
  
 Then /^(?:|I )should be on (.+)$/ do |page_name|
   current_path = URI.parse(current_url).path

@@ -35,8 +35,12 @@ end
 
 Given /^the website is set up$/ do
 	Zipcode.create!(:code => "12345")
-	@user = User.create!(:name => "admin", :email => "admin@gmail.com", :address_zip_code => "12345", :password => "11111111", :bio => "Bio", :phone_number => "123456789")
-	@user.role = "admin"
+	@admin = User.create!(:name => "admin", :email => "admin@gmail.com", :address_zip_code => "12345", :password => "11111111", :bio => "Bio", :phone_number => "123456789")
+	@admin.role = "admin"
+	@admin.confirmed_at =  Time.now
+	@admin.save!
+	@user = User.create!(:name => "user", :email => "user@gmail.com", :address_zip_code => "12345", :password => "11111111", :bio => "Bio", :phone_number => "123456789")
+	@user.role = "user"
 	@user.confirmed_at =  Time.now
 	@user.save!
 end
@@ -45,13 +49,15 @@ Given /email "(.*)" is confirmed/ do |email|
 	user.confirmed_at =  Time.now
 	user.save!
 end
+Given /I sign out/ do
+	visit('/users/sign_out')
+end
 
-Given /I am logged into website/ do 
+Given /I am logged into website as "(.*)"/ do  |role|
 	visit login_path
-	fill_in "Email" ,:with => "admin@gmail.com"
+	fill_in "Email" ,:with => "#{role}@gmail.com"
 	fill_in "Password", :with => "11111111"
 	click_link_or_button "sign_in"
-	expect(page).to have_content('Signed in successfully.')
 end
 
 

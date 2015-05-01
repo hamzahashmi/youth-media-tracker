@@ -29,22 +29,31 @@ class UsersController < ApplicationController
     user.destroy
     redirect_to users_path, :notice => "User deleted."
   end
-  def suspend
-    user = User.find(params[:id])
-    user.suspended = true
-    user.save!
-    redirect_to users_path, :notice => "User suspended."
-  end
+  # def suspend
+  #   user = User.find(params[:id])
+  #   user.suspended = true
+  #   user.save!
+  #   redirect_to users_path, :notice => "User suspended."
+  # end
   private
 
   def admin_only
-    unless current_user.admin?
-      redirect_to :back, :alert => "Access denied."
+    unless user_signed_in? && current_user.admin?
+      flash[:alert] = "Access denied."
+      go_back
     end
   end
 
   def secure_params
     params.require(:user).permit(:role,:suspended)
   end
+
+  def go_back
+    #Attempt to redirect
+    redirect_to :back
+    #Catch exception and redirect to root
+    rescue ActionController::RedirectBackError
+      redirect_to root_path
+   end
 
 end

@@ -19,6 +19,8 @@ module NavigationHelpers
     when /^the edit page$/ then edit_user_registration_path
     when /^the pitch new page$/ then new_pitch_path
     when /^the pitch edit page$/ then edit_pitch_path
+    when /^users page$/ then users_path
+    when /^the about page$/ then about_path
 
 
     # Add more mappings here.
