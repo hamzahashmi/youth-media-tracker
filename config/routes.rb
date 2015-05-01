@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   resources :schedule, only: :create
   ActiveAdmin.routes(self)
-  
+
   resources :schedule, only: :create
 
   resources :pitches do
@@ -14,7 +14,7 @@ end
 
   root to: 'pitches#index'
   #devise_for :users
-  devise_for :users, controllers: { sessions: "users/sessions" }
+  devise_for :users, :controllers => { :registrations => "users/registrations", :sessions => "users/sessions" }
   resources :users
   get  '/users/sign_up(.:format)', to:'devise_invitable/registrations#new', as:'signup'
 

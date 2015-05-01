@@ -1,16 +1,21 @@
 class Users::RegistrationsController < Devise::RegistrationsController
-# before_filter :configure_sign_up_params, only: [:create]
-# before_filter :configure_account_update_params, only: [:update]
+before_filter :configure_sign_up_params, only: [:create]
+before_filter :configure_account_update_params, only: [:update]
 
   # GET /resource/sign_up
   # def new
   #   super
   # end
 
-  # POST /resource
-  # def create
-  #   super
-  # end
+  # POST /resource/sign_up
+  def create
+    user = User.find_by_email(sign_up_params['email'])
+    super and return unless !user.nil? && user.suspended?
+    self.resource = resource_class.new(sign_up_params)
+    sign_out
+    flash[:error] = 'Your account has been suspended by admin.'
+    respond_with_navigational(resource) { render :new }
+  end
 
   # GET /resource/edit
   # def edit
@@ -36,17 +41,17 @@ class Users::RegistrationsController < Devise::RegistrationsController
   #   super
   # end
 
-  # protected
+  protected
 
   # You can put the params you want to permit in the empty array.
-  # def configure_sign_up_params
-  #   devise_parameter_sanitizer.for(:sign_up) << :attribute
-  # end
+    def configure_sign_up_params
+      devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:name, :email, :password, :gender,:date_of_birth,:address_zip_code, :address_street, :address_state, :address_city,:phone_number,:bio,:password_confirmation,:photo) }
+    end
 
   # You can put the params you want to permit in the empty array.
-  # def configure_account_update_params
-  #   devise_parameter_sanitizer.for(:account_update) << :attribute
-  # end
+    def configure_account_update_params
+      devise_parameter_sanitizer.for(:account_update) { |u| u.permit(:name, :email, :password, :gender,:date_of_birth,:address_zip_code, :address_street, :address_state, :address_city,:phone_number,:bio,:password_confirmation,:current_password,:photo) }
+    end
 
   # The path used after sign up.
   # def after_sign_up_path_for(resource)
