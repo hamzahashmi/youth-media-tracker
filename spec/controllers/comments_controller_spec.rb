@@ -33,4 +33,12 @@ RSpec.describe CommentsController do
     comment.body.should eq("old")
     expect(flash[:alert]).to be_present
   end
+
+  it "should update comment" do
+    sign_in @user
+    comment = FactoryGirl.create(:comment, :user => @user, :pitch => @pitch, :body => "old")
+    delete :destroy, :pitch_id => @pitch.id,:id => comment.id
+    comment.should be_valid
+    expect(flash[:notice]).to be_present
+  end
 end
