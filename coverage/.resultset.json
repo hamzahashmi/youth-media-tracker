@@ -391,7 +391,7 @@
         1,
         null,
         1,
-        1,
+        6,
         null,
         null,
         null,
@@ -400,11 +400,11 @@
         null,
         null,
         1,
+        9,
+        9,
         1,
         1,
-        0,
-        0,
-        0,
+        1,
         null,
         null,
         1,
@@ -435,28 +435,9 @@
       "/Volumes/Stuff/CS169/youth-media-tracker/app/models/zipcode.rb": [
         1,
         null
-      ],
-      "/Volumes/Stuff/CS169/youth-media-tracker/app/mailers/user_mailer.rb": [
-        1,
-        1,
-        null,
-        1,
-        1,
-        1,
-        1,
-        1,
-        null,
-        null,
-        null
-      ],
-      "/Volumes/Stuff/CS169/youth-media-tracker/app/mailers/application_mailer.rb": [
-        1,
-        1,
-        1,
-        null
       ]
     },
-    "timestamp": 1430448963
+    "timestamp": 1430449956
   },
   "Cucumber Features": {
     "coverage": {
