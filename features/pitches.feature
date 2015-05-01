@@ -17,7 +17,7 @@ Feature: Pitches
 	    Given the following pitches exist:
 	    |id|name|category_id|media_type_id|description|
 	    |1|PitchNameOne|1|1| description|
-	    |2|PitchNameTwo|1|2| description|
+	    |2|PitchNameTwo|1|1| description|
 
 	Scenario: browse pitches on home screen
 		Given I am on the home page
@@ -39,7 +39,7 @@ Feature: Pitches
 		When I follow "PitchNameOne"  
 		Then I should see "PitchNameOne"
 
-	Scenario: new pitch
+	Scenario: new Arts/Video pitch   
 		Given I am on the home page
 		Given I am on the pitch new page 
 		Then I should see "New Pitch"
@@ -47,6 +47,22 @@ Feature: Pitches
 		When I fill in "Description" with "des"
 		And I press "Submit/Update"
 		Then I should see "Pitch was successfully created."
+		Then I should see "Arts"
+		And I should see "Video"
+		And I should not see "Audio"
+
+	Scenario: new Education/Audio pitch   
+		Given I am on the home page
+		Given I am on the pitch new page 
+		Then I should see "New Pitch"
+		When I fill in "Name" with "pitch name"
+		When I fill in "Description" with "des"
+		When I select "Education" from "Category"
+		When I select "Audio" from "Media type"
+		And I press "Submit/Update"
+		Then I should see "Pitch was successfully created."
+		Then I should see "Education"
+		And I should see "Audio"
 
 	Scenario: update pitch
 		Given I am on the home page
