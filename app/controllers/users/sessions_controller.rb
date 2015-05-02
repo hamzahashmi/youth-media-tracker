@@ -1,5 +1,5 @@
 class Users::SessionsController < Devise::SessionsController
-before_filter :configure_sign_in_params, only: [:create]
+# before_filter :configure_sign_in_params, only: [:create]
 
   # GET /resource/sign_in
   # def new
@@ -7,9 +7,14 @@ before_filter :configure_sign_in_params, only: [:create]
   # end
 
   # POST /resource/sign_in
-  # def create
-  #   super
-  # end
+  def create
+    user = User.find_by_email(sign_in_params['email'])
+    super and return unless !user.nil? && user.suspended?
+    self.resource = resource_class.new(sign_in_params)
+    sign_out
+    flash[:error] = 'Your account has been suspended by admin.'
+    respond_with_navigational(resource) { render :new }
+  end
 
   # DELETE /resource/sign_out
   # def destroy
@@ -19,8 +24,7 @@ before_filter :configure_sign_in_params, only: [:create]
   # protected
 
   # You can put the params you want to permit in the empty array.
-    def configure_sign_in_params
-      devise_parameter_sanitizer.for(:sign_in) { |u| u.permit(:email, :password) }
-    end
-
+  # def configure_sign_in_params
+  #   devise_parameter_sanitizer.for(:sign_in) << :attribute
+  # end
 end
