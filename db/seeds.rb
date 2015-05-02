@@ -6,6 +6,16 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 # 
+
+#Scheduling
+iteration_start = DateTime.civil(2015, 1, 5, 12, 0, 0, Rational(-8, 24))
+iteration_end = DateTime.civil(2015, 1, 12, 12, 0, 0, Rational(-8, 24))
+submission_pick = DateTime.civil(2015, 1, 13, 17, 0, 0, Rational(-8, 24))
+Schedule.delete_all
+Schedule.create!(:iteration_start => iteration_start,
+                 :iteration_end => iteration_end,
+                 :submission_pick => submission_pick)
+
 media_types_list = ["Video","Audio","Written"]
 media_types_list.each do |type|
 	MediaType.create!(:name => type) if !MediaType.exists?(:name => type)
