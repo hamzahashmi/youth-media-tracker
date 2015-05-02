@@ -11,9 +11,9 @@ class PitchesController < ApplicationController
     if flash.key? :notice
       flash.now[:notice] = flash[:notice].html_safe
       flash.now[:notice] += "<br/>".html_safe
-      flash.now[:notice] += "Current iteration ends on ...."
+      flash.now[:notice] += "Current iteration ends on #{Schedule.iter_end.to_formatted_s(:long)}"
     else
-      flash.now[:notice] = "Current iteration ends on ....".html_safe
+      flash.now[:notice] = "Current iteration ends on #{Schedule.iter_end.to_formatted_s(:long)}".html_safe
     end
 
     sort = params[:sort] || session[:sort] || "recent"
@@ -44,6 +44,8 @@ end
   # POST /pitches
   # POST /pitches.json
   def create
+    @pitch = current_user.pitches.build(pitch_params)
+
     if @pitch.save
       flash[:notice] = "Pitch was successfully created."
       redirect_to pitches_path
@@ -74,7 +76,11 @@ end
 
   def upvote
     @pitch = Pitch.find(params[:id])
-    @pitch.upvote_by current_user
+    if @pitch.created_at > Schedule.iter_start
+      @pitch.upvote_by current_user
+    else
+      flash.now[:notice] = "Cannot vote on previous iteration's pitches."
+    end
 
     redirect_to :back
   end
@@ -82,7 +88,11 @@ end
   def downvote
     if current_user.voted_up_on?(pitch)
       @pitch = Pitch.find(params[:id])
-      @pitch.downvote_by current_user
+      if @pitch.created_at > Schedule.iter_start
+        @pitch.downvote_by current_user
+      else
+        flash.now[:notice] = "Cannot vote on previous iteration's pitches."
+      end
     end
 
     redirect_to :back

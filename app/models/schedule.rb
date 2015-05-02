@@ -1,5 +1,5 @@
 class Schedule < ActiveRecord::Base
-	validates :iteration_start, :iteration_end, :submission_pick, :presence => true
+	#validates :iteration_start, :iteration_end, :submission_pick, :presence => true
 	@entry = Schedule.all[0]
 
 	def self.update
@@ -68,5 +68,21 @@ class Schedule < ActiveRecord::Base
 			@time = "pm"
 		end
 		@time
+	end
+
+	def self.iter_start
+		@start = @entry.iteration_start
+		while (@start - DateTime.current) < 0
+			@start = @start.advance :weeks => 1
+		end
+		@start = @start.advance :weeks => -1
+	end
+
+	def self.iter_end
+		@end = @entry.iteration_end
+		while @end - DateTime.current < 0
+			@end = @end.advance :weeks => 1
+		end
+		@end
 	end
 end
