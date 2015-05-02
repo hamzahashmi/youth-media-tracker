@@ -1,7 +1,7 @@
-Feature: Pitches
+Feature: Stats of data
 	As an admin
 	I want to see stats
-	So I can read them
+	So I can read access them easily
 
 	Background:
 		Given the website is set up
