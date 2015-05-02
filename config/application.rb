@@ -8,6 +8,7 @@ Bundler.require(*Rails.groups)
 
 module YouthMediaTracker
   class Application < Rails::Application
+    config.autoload_paths += %W(#{config.root}/lib)
 
     config.generators do |g|
       g.test_framework :rspec,
@@ -20,6 +21,8 @@ module YouthMediaTracker
       g.fixture_replacement :factory_girl, dir: "spec/factories"
     end
 
+    config.time_zone = 'Pacific Time (US & Canada)'
+    config.active_record.default_timezone = 'Pacific Time (US & Canada)'
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
@@ -35,12 +38,5 @@ module YouthMediaTracker
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
     config.assets.initialize_on_precompile = false
-
-    #Setting variables pertaining to scheduling
-    config.start_day = DateTime.civil_from_format :local, 2015, 1, 5
-    config.schedule_days = 14
-    config.pitch_day = 14
-    config.disc_day = 0
-    config.archive_days = 14
   end
 end

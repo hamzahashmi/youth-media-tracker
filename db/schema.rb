@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150429182450) do
+ActiveRecord::Schema.define(version: 20150501232027) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace"
@@ -90,6 +90,14 @@ ActiveRecord::Schema.define(version: 20150429182450) do
 
   add_index "redactor_assets", ["assetable_type", "assetable_id"], name: "idx_redactor_assetable"
   add_index "redactor_assets", ["assetable_type", "type", "assetable_id"], name: "idx_redactor_assetable_type"
+
+  create_table "schedules", force: :cascade do |t|
+    t.datetime "iteration_start"
+    t.datetime "iteration_end"
+    t.datetime "submission_pick"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "",    null: false

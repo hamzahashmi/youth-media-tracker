@@ -28,3 +28,12 @@ end
 user = CreateAdminService.new.call
 puts 'CREATED ADMIN USER: ' << user.email if !user.nil?
 # Environment variables (ENV['...']) can be set in the file .env file.
+
+#Scheduling
+iteration_start = DateTime.civil_from_format :local, 2015, 1, 5, 12, 0
+iteration_end = DateTime.civil_from_format :local, 2015, 1, 12, 12, 0
+submission_pick = DateTime.civil_from_format :local, 2015, 1, 13, 17, 0
+Schedule.delete_all
+Schedule.create!(:iteration_start => iteration_start,
+                 :iteration_end => iteration_end,
+                 :submission_pick => submission_pick)
