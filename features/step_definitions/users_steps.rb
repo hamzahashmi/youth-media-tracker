@@ -60,4 +60,10 @@ Given /I am logged into website as "(.*)"/ do  |role|
 	click_link_or_button "sign_in"
 end
 
+Given /I visit the profile with email "(.*)"/ do  |email|
+	user = User.find_by_email(email)
+	visit user_path(user)
+end
+
+
 

@@ -7,7 +7,8 @@
         %strong
           = time_ago_in_words(comment.created_at)
           ago
-        by #{comment.user.name}
+        by 
+        =link_to "#{comment.user.name}", user_path(comment.user)
     .btn-group.pull-right
       - if comment.user == current_user
         = link_to [@pitch, comment], method: :delete, data: { confirm: 'Are you sure?' } do

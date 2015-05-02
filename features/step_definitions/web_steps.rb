@@ -237,3 +237,6 @@ end
 Then /^show me the page$/ do
   save_and_open_page
 end
+Given /I will accept confirmation/ do
+  page.evaluate_script('window.confirm = function() { return true; }')
+end

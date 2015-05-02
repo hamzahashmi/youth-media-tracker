@@ -5,12 +5,12 @@ ActiveAdmin.register_page "Dashboard" do
   content title: proc{ I18n.t("active_admin.dashboard") } do
     columns do
       column do
-        panel "Total Number of Users" do
+        panel "Total Number of Users", id: "total_number_of_users" do
           User.all.count
         end
       end
       column do
-        panel "Number of New Users" do
+        panel "Number of New Users" , id: "number_of_new_users"do
          User.where(created_at: Time.zone.now.all_week).count
        end
      end
@@ -19,10 +19,10 @@ ActiveAdmin.register_page "Dashboard" do
     # Most recent pitches
     columns do
       column do
-        panel "Recent Pitches" do
+        panel "Recent Pitches" ,:id => "recent_pitches"do
           table_for Pitch.order("created_at desc").limit(5) do
-            column :name do |pitch|
-              link_to pitch.name, [:admin, pitch]
+            column :name  do |pitch|
+              link_to pitch.name, [:admin, pitch],:id => "recent_pitch_" << pitch.id.to_s
             end
             column "Created By",:user
             column :created_at
@@ -32,7 +32,7 @@ ActiveAdmin.register_page "Dashboard" do
       end
 
       column do
-        panel "Top Three Piches" do
+        panel "Top Three Pitches" do
          table_for Pitch.top_voted.first(3) do
             column :name do |pitch|
               link_to pitch.name, [:admin, pitch]

@@ -68,10 +68,8 @@ end
   # DELETE /pitches/1
   # DELETE /pitches/1.json
   def destroy
-    @pitch = Pitch.find(params[:id])
     @pitch.destroy
-    flash[:notice] = 'Pitch was successfully destroyed.'
-    redirect_to pitches_path
+    redirect_to pitches_path, :notice => 'Pitch was successfully destroyed.'
   end
 
   def upvote
@@ -100,7 +98,7 @@ end
   end
 
   def send_final_work_mail
-    UserMailer.submit_final_work(@pitch).deliver
+    UserMailer.submit_final_work(@pitch).deliver_now
     flash[:success] = 'Sent successfully.'
     redirect_to :back
   end

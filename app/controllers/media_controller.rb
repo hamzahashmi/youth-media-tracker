@@ -1,7 +1,17 @@
 class MediaController < InheritedResources::Base
 	before_filter :check_token, only: [:edit]
-  	before_filter :admin_only, :except => :edit
+  before_filter :admin_only, :except => [:edit, :update]
 
+
+def update
+    @medium = Medium.find(params[:id])
+    if @medium.update(medium_params)
+      flash[:notice] = 'Medium was successfully submitted.'
+      redirect_to root_path
+    else
+      render :edit
+    end
+  end
   private
 
     def medium_params

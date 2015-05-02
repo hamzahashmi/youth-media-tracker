@@ -72,6 +72,16 @@ Feature: Pitches
 		When I fill in "Name" with "pitch name"
 		And I press "Submit/Update"
 		Then I should see "Pitch was successfully updated."
+
+	Scenario: cant update pitch
+		Given I am on the home page
+		When I follow "PitchNameOne" 
+		When I follow "Edit"
+		Then I should see "Edit Pitch"
+		When I fill in "Name" with ""
+		And I press "Submit/Update"
+		Then I should see "Edit"
+
 	Scenario: vote up for pitch
 		Given I am on the home page
 		When I click vote up on "PitchNameOne"
@@ -81,5 +91,6 @@ Feature: Pitches
 	Scenario: cant vote down
 		Given I am on the home page
 		Then I can not find "vote-down1"
+
 
 
