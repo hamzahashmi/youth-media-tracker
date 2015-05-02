@@ -79,7 +79,7 @@ end
     if @pitch.created_at > Schedule.iter_start
       @pitch.upvote_by current_user
     else
-      flash.now[:notice] = "Cannot vote on previous iteration's pitches."
+      flash[:notice] = "Cannot vote on previous iteration's pitches."
     end
 
     redirect_to :back
@@ -87,12 +87,12 @@ end
 
   def downvote
     @pitch = Pitch.find(params[:id])
-    
+
     if current_user.voted_up_on?(@pitch)
       if @pitch.created_at > Schedule.iter_start
         @pitch.downvote_by current_user
       else
-        flash.now[:notice] = "Cannot vote on previous iteration's pitches."
+        flash[:notice] = "Cannot vote on previous iteration's pitches."
       end
     end
 

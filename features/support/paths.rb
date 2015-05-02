@@ -21,6 +21,7 @@ module NavigationHelpers
     when /^the pitch edit page$/ then edit_pitch_path
     when /^users page$/ then users_path
     when /^the about page$/ then about_path
+    when /^the scheduling options page$/ then admin_scheduling_path
 
 
     # Add more mappings here.
