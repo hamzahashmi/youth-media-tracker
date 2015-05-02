@@ -4,12 +4,13 @@
 		%h3
 			= @pitch.name
 		%small
-			Submitted by #{@pitch.user.name}
+			Submitted by 
+			=link_to "#{@pitch.user.name}",user_path(@pitch.user)
 	%h4
 		= @pitch.description
 	%br/
 	%cite
-		#{@pitch.media}, #{@pitch.category}
+		#{@pitch.media_type.name}, #{@pitch.category.name}
 .btn-group
 	= link_to like_pitch_path(@pitch), method: :put do
 		.btn-group

@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  mount RedactorRails::Engine => '/redactor_rails'
+  resources :media
+
   resources :schedule, only: :create
   ActiveAdmin.routes(self)
 
@@ -8,10 +11,11 @@ Rails.application.routes.draw do
     member do
       put "like", to: "pitches#upvote"
       put "dislike", to: "pitches#downvote"
+      put "mail_user", to: "pitches#send_final_work_mail", as: 'mail_user'
     end
     resources :comments
 end
-
+  
   root to: 'pitches#index'
   #devise_for :users
   devise_for :users, controllers: { sessions: "users/sessions" }

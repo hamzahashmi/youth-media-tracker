@@ -1,6 +1,7 @@
 class PitchesController < ApplicationController
   require 'will_paginate/array' 
-  before_action :set_pitch, only: [:show, :edit, :update, :destroy]
+  before_action :set_pitch, only: [:show, :edit, :update, :destroy , :send_final_work_mail]
+  before_action :set_categories_media_types, only: [:edit, :new, :update, :create]
   before_action :authenticate_user!, except: [:index, :show]
   before_action :authorized_user, only: [:edit, :update, :destroy]
 
@@ -54,8 +55,6 @@ end
   # GET /pitches/new
   def new
     @pitch = current_user.pitches.build
-    @categories = Category.all.map { |c| [c.name,c.id] }
-    @media_types = MediaType.all.map { |c| [c.name,c.id] }
     days_from = (DateTime.current - Rails.application.config.start_day).to_i % Rails.application.config.schedule_days
     if days_from > Rails.application.config.pitch_day
       flash.now[:notice] = "Pitch submissions are currently disabled."
@@ -99,10 +98,8 @@ end
   # DELETE /pitches/1
   # DELETE /pitches/1.json
   def destroy
-    @pitch = Pitch.find(params[:id])
     @pitch.destroy
-    flash[:notice] = 'Pitch was successfully destroyed.'
-    redirect_to pitches_path
+    redirect_to pitches_path, :notice => 'Pitch was successfully destroyed.'
   end
 
   def upvote
@@ -128,12 +125,21 @@ end
 
     redirect_to :back
   end
+  def send_final_work_mail
+    UserMailer.submit_final_work(@pitch).deliver_now
+    flash[:success] = 'Sent successfully.'
+    redirect_to :back
+  end
 
   private
 
     # Use callbacks to share common setup or constraints between actions.
     def set_pitch
       @pitch = Pitch.find(params[:id])
+    end
+    def set_categories_media_types
+      @categories = Category.categories_list
+      @media_types = MediaType.all.map { |m| [m.name,m.id] }
     end
     def authorized_user
       @pitch = current_user.pitches.find_by(id: params[:id])

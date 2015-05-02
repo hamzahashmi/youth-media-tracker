@@ -51,31 +51,31 @@ class CommentsController < ApplicationController
   # PATCH/PUT /comments/1
   # PATCH/PUT /comments/1.json
   def update
-    respond_to do |format|
       if @comment.update(comment_params)
-        format.html { redirect_to redirect_to pitch_path(@comment.pitch), notice: 'Comment was successfully updated.' }
-        format.json { render :show, status: :ok, location: @comment }
+        flash[:notice] = "Your comment was updated"
+        redirect_to pitch_path(@pitch)
       else
-        format.html { render :edit }
-        format.json { render json: @comment.errors, status: :unprocessable_entity }
+        @pitch.reload
+        flash[:alert] = "Update failed"
+        #prevents breaking if comments field is left blank
+        redirect_to pitch_path(@pitch)
       end
-    end
+    
   end
 
   # DELETE /comments/1
   # DELETE /comments/1.json
   def destroy
     @comment.destroy
-    respond_to do |format|
-      format.html { redirect_to pitch_path(@comment.pitch), notice: 'Comment was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    flash[:notice] = "Your comment was destroyed."
+    redirect_to pitch_path(@pitch)
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_comment
       @comment = Comment.find(params[:id])
+      @pitch = Pitch.find(params[:pitch_id]);
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

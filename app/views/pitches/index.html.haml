@@ -9,7 +9,8 @@
         = link_to pitch.name, pitch, :id => "pitch-link" 
         %small
           Submitted #{time_ago_in_words(pitch.created_at)} by 
-          %cite #{pitch.user.name}
+          %cite 
+            = link_to "#{pitch.user.name}", user_path(pitch.user)
       %p.lead
         #{pitch.description}
       %cite
@@ -20,7 +21,7 @@
           = link_to like_pitch_path(pitch), method: :put, id: ("vote-up" << pitch.id.to_s) do
             .btn-group
               .fa.fa-thumbs-up.fa-lg.icon-success
-              %span.badge#num-voteup
+              .badge#num-voteup
                 \#{pitch.get_upvotes.size}
           - if user_signed_in? && current_user.voted_up_on?(pitch)
             = link_to dislike_pitch_path(pitch),  method: :put, id: ("vote-down" << pitch.id.to_s) do

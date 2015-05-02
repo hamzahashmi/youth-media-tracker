@@ -5,3 +5,8 @@
 
 ###Video description
   A short video description by the client after interview: https://www.youtube.com/watch?v=OdvORANzJFM
+  
+  
+###License
+
+MIT: http://rem.mit-license.org

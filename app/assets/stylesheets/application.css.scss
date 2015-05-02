@@ -12,6 +12,8 @@
  *
  *= require_tree .
  *= require_self
+ *= require redactor-rails
+ *= redactor-rails/plugins
  */
 @import url(https://fonts.googleapis.com/css?family=Open+Sans|Alegreya+Sans+SC|Lato);
 @import "font-awesome";
