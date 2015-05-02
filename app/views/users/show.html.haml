@@ -3,6 +3,8 @@
 		%h1 #{@user.name if @user.name}
 		%h4
 			%p
+				Photo: #{image_tag @user.photo.url(:medium)}
+			%p
 				%strong Bio: 
 				#{@user.bio if @user.bio}
 			- if current_user.is_admin? || current_user.id == @user.id

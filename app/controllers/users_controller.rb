@@ -38,7 +38,7 @@ class UsersController < ApplicationController
   end
 
   def secure_params
-    params.require(:user).permit(:role,:suspended)
+    params.require(:user).permit(:role,:suspended,:photo)
   end
 
   def go_back

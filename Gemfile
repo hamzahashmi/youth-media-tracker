@@ -21,6 +21,7 @@ gem 'tinymce-rails'
 gem 'redactor-rails'
 gem "carrierwave"
 gem "mini_magick"
+gem "paperclip", "~> 4.2"
 group :development, :test do
   gem 'byebug'
   gem 'web-console', '~> 2.0'
