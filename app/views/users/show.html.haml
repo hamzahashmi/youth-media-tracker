@@ -1,5 +1,20 @@
-%h3 User
-%p
-  Name: #{@user.name if @user.name}
-%p
-  Email: #{@user.email if @user.email}
+.well
+	.text-center
+		%h1 #{@user.name if @user.name}
+		%h4
+			%p
+				%strong Bio: 
+				#{@user.bio if @user.bio}
+			- if current_user.is_admin?
+				%p
+					%strong Email: 
+					#{@user.email if @user.email}
+				%p
+					%strong Birthdate: 
+					#{@user.date_of_birth if @user.date_of_birth}
+				%p
+					%strong Gender: 
+					#{User::GENDER_TYPES[@user.gender].first if @user.gender}
+				%p
+					%strong Phone number: 
+					#{@user.phone_number if @user.phone_number}

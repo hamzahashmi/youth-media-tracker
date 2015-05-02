@@ -72,6 +72,16 @@ Feature: Pitches
 		When I fill in "Name" with "pitch name"
 		And I press "Submit/Update"
 		Then I should see "Pitch was successfully updated."
+
+	Scenario: cant update pitch
+		Given I am on the home page
+		When I follow "PitchNameOne" 
+		When I follow "Edit"
+		Then I should see "Edit Pitch"
+		When I fill in "Name" with ""
+		And I press "Submit/Update"
+		Then I should see "Edit"
+
 	Scenario: vote up for pitch
 		Given I am on the home page
 		When I click vote up on "PitchNameOne"
@@ -82,13 +92,5 @@ Feature: Pitches
 		Given I am on the home page
 		Then I can not find "vote-down1"
 
-	@javascript
-	Scenario: can delete pitch
-		Given I am on the home page
-		When I follow "PitchNameOne"  
-		Then I should see "REMOVE"
-		Given I will accept confirmation
-		When I follow "Remove"
-		Then I should see "Pitch was successfully destroyed."
 
 
