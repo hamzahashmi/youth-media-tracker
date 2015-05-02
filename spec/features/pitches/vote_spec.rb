@@ -21,7 +21,7 @@ feature 'Vote functionality' do
     click_link  "vote-up" << pitch1.id.to_s
     have_selector('num-voteup', :description => '1')
   end
-  scenario 'user cannt see vote down without voted up' do
+  scenario 'user cant see vote down without voted up' do
     user = FactoryGirl.create(:user)
     pitch1 = FactoryGirl.create(:pitch, :name => 'Name 1',:user => user)
     login_as(user, :scope => :user)

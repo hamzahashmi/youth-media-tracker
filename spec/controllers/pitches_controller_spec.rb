@@ -191,17 +191,4 @@ RSpec.describe PitchesController do
         @pitch.get_upvotes.size}.from(0).to(1)
     end
   end
-
-  describe 'down action' do
-
-    it 'should add one down vote' do
-      sign_in @user
-      @pitch = FactoryGirl.create(:pitch, :user => @user)
-      @request.env['HTTP_REFERER'] = 'http://test.com/'
-      expect{put 'downvote',  :id => @pitch.id}.to change{ 
-        @pitch.get_downvotes.size}.from(0).to(1)
-    end
-  end
-
-  
 end

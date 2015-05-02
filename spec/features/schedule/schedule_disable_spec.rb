@@ -5,7 +5,7 @@ feature 'User cannot enter invalid schedule settings', :devise do
   after(:each) do
     Warden.test_reset!
   end
-
+=begin
   scenario 'user cannot a negative number of schedule days or archival days' do
     admin = FactoryGirl.create(:user, :email => "admin@test.com", :role => "admin")
     login_as(admin)
@@ -92,7 +92,7 @@ feature 'Schedule settings disables features', :devise do
     page.find('.btn-primary').click
     expect(page).to have_no_content(/FakeComment/)
   end
-=begin
+  
   scenario "user cannot cannot edit another user's profile", :me do
     me = FactoryGirl.create(:user)
     other = FactoryGirl.create(:user, email: 'other@example.com')
