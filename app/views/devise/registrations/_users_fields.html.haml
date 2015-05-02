@@ -1,4 +1,7 @@
 .form-group
+  = f.label :photo
+  = f.file_field :photo
+.form-group
   = f.label :name,class: "col-sm-2 control-label"
   .col-sm-6
     = f.text_field :name, :autofocus => true,placeholder: "Enter your name",class: 'form-control' 
