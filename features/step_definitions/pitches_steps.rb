@@ -20,7 +20,7 @@ When /I click vote down on "(.*)"/ do |name|
 end
 
 Then /^the "([^\"]*)" should contain "([^\"]*)"$/ do |field, value|
-  expect(page).to have_selector("##{field}", :text => value)
+  expect(page).to have_selector(:id,"#{field}", :text => value)
 end
 Then /I can not find "(.*)"/ do  |field|
   expect(page).to have_no_selector("##{field}")

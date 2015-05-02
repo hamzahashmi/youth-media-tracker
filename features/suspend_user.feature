@@ -49,3 +49,9 @@ Background:
 		When I uncheck "Suspended"
 		Then I press "Change"
 		Then the "Suspended" checkbox should not be checked
+
+	Scenario: admin can see user profile
+		Given I am logged into website as "admin"
+		When I go to users page
+		When I follow "user@gmail.com"
+		Then I should see "Email: user@gmail.com"

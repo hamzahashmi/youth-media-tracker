@@ -1,22 +1,16 @@
 class UsersController < ApplicationController
   before_filter :authenticate_user!
   before_filter :admin_only, :except => :show
+  before_action :set_user, only: [:show, :edit, :update, :destroy ]
 #http://www.peoplecancode.com/en/tutorials/users-avatars-uploading-images-using-paperclip
   def index
     @users = User.all
   end
 
   def show
-    @user = User.find(params[:id])
-    unless current_user.admin?
-      unless @user == current_user
-        redirect_to :back, :alert => "Access denied."
-      end
-    end
   end
 
   def update
-    @user = User.find(params[:id])
     if @user.update_attributes(secure_params)
       redirect_to users_path, :notice => "User updated."
     else
@@ -25,8 +19,7 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    user = User.find(params[:id])
-    user.destroy
+    @user.destroy
     redirect_to users_path, :notice => "User deleted."
   end
   # def suspend
@@ -54,6 +47,9 @@ class UsersController < ApplicationController
     #Catch exception and redirect to root
     rescue ActionController::RedirectBackError
       redirect_to root_path
+   end
+   def set_user
+     @user = User.find(params[:id])
    end
 
 end
