@@ -8,6 +8,7 @@ Bundler.require(*Rails.groups)
 
 module YouthMediaTracker
   class Application < Rails::Application
+    config.autoload_paths += %W(#{config.root}/lib)
 
     config.generators do |g|
       g.test_framework :rspec,
@@ -26,7 +27,8 @@ module YouthMediaTracker
 
     # Set Time.zone default to the specified zone and make Active Record auto-convert to this zone.
     # Run "rake -D time" for a list of tasks for finding time zone names. Default is UTC.
-    # config.time_zone = 'Central Time (US & Canada)'
+    config.time_zone = 'Pacific Time (US & Canada)'
+    config.active_record.default_timezone = :local
 
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
@@ -35,12 +37,5 @@ module YouthMediaTracker
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
     config.assets.initialize_on_precompile = false
-
-    #Setting variables pertaining to scheduling
-    config.start_day = DateTime.civil_from_format :local, 2015, 1, 5
-    config.schedule_days = 14
-    config.pitch_day = 14
-    config.disc_day = 0
-    config.archive_days = 14
   end
 end

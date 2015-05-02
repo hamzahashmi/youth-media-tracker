@@ -21,8 +21,7 @@ module NavigationHelpers
     when /^the pitch edit page$/ then edit_pitch_path
     when /^users page$/ then users_path
     when /^the about page$/ then about_path
-    when /^the admin page$/ then admin_dashboard_path
-    when /^the admin comment page$/ then admin_comments_path
+    when /^the scheduling options page$/ then admin_scheduling_path
     when /^the admin page$/ then admin_root_path
     when /^the final work page$/ then media_path
 

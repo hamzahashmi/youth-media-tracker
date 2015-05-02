@@ -8,32 +8,17 @@ class PitchesController < ApplicationController
   # GET /pitches
   # GET /pitches.json
   def index
-    days_from = (DateTime.current - Rails.application.config.start_day).to_i % Rails.application.config.schedule_days
-    iter_start = DateTime.current.advance(:days => -days_from).at_beginning_of_day
-    iter_end = iter_start.advance(:days => Rails.application.config.schedule_days).at_beginning_of_day
-    @pitches_disabled = days_from > Rails.application.config.pitch_day
-    @disc_disabled = days_from < Rails.application.config.disc_day
-
     if flash.key? :notice
       flash.now[:notice] = flash[:notice].html_safe
       flash.now[:notice] += "<br/>".html_safe
-      flash.now[:notice] += "Current iteration ends on #{iter_end.to_formatted_s(:long)}."
+      flash.now[:notice] += "Current iteration ends on #{Schedule.iter_end.to_formatted_s(:long)}"
     else
-      flash.now[:notice] = "Current iteration ends on #{iter_end.to_formatted_s(:long)}.".html_safe
-    end
-
-    if @pitches_disabled
-      flash.now[:notice] += "<br/>".html_safe
-      flash.now[:notice] += "Pitch submissions currently disabled."
-    end
-    if @disc_disabled
-      flash.now[:notice] += "<br/>".html_safe
-      flash.now[:notice] += "Discussion starts in #{Rails.application.config.disc_day - days_from} days."
+      flash.now[:notice] = "Current iteration ends on #{Schedule.iter_end.to_formatted_s(:long)}".html_safe
     end
 
     sort = params[:sort] || session[:sort] || "recent"
     session[:sort] = sort
-    if (sort=="recent" ) 
+    if (sort=="recent") 
       @pitches = Pitch.order(created_at: :desc)
     else
       @pitches = Pitch.all.sort_by{|a| - a.get_upvotes.size }
@@ -45,20 +30,11 @@ end
   # GET /pitches/1
   # GET /pitches/1.json
   def show
-    days_from = (DateTime.current - Rails.application.config.start_day).to_i % Rails.application.config.schedule_days
-    @disc_disabled = days_from < Rails.application.config.disc_day
-    if @disc_disabled
-      flash.now[:notice] = "Discussion currently disabled."
-    end
   end
 
   # GET /pitches/new
   def new
     @pitch = current_user.pitches.build
-    days_from = (DateTime.current - Rails.application.config.start_day).to_i % Rails.application.config.schedule_days
-    if days_from > Rails.application.config.pitch_day
-      flash.now[:notice] = "Pitch submissions are currently disabled."
-    end
   end
 
   # GET /pitches/1/edit
@@ -68,15 +44,9 @@ end
   # POST /pitches
   # POST /pitches.json
   def create
-    days_from = (DateTime.current - Rails.application.config.start_day).to_i % Rails.application.config.schedule_days
-    @pitches_disabled = days_from > Rails.application.config.pitch_day
-
     @pitch = current_user.pitches.build(pitch_params)
 
-    if @pitches_disabled
-      flash.now[:notice] = "Sorry, pitch submissions are currently disabled."
-      render :new
-    elsif @pitch.save
+    if @pitch.save
       flash[:notice] = "Pitch was successfully created."
       redirect_to pitches_path
     else
@@ -103,28 +73,30 @@ end
   end
 
   def upvote
-    days_from = (DateTime.current - Rails.application.config.start_day).to_i % Rails.application.config.schedule_days
-    @disc_disabled = days_from < Rails.application.config.disc_day
-
-    if not @disc_disabled
-      @pitch = Pitch.find(params[:id])
+    @pitch = Pitch.find(params[:id])
+    if @pitch.created_at > Schedule.iter_start
       @pitch.upvote_by current_user
+    else
+      flash[:notice] = "Cannot vote on previous iteration's pitches."
     end
 
     redirect_to :back
   end
 
   def downvote
-    days_from = (DateTime.current - Rails.application.config.start_day).to_i % Rails.application.config.schedule_days
-    @disc_disabled = days_from < Rails.application.config.disc_day
+    @pitch = Pitch.find(params[:id])
 
-    if not @disc_disabled && current_user.voted_up_on?(pitch)
-      @pitch = Pitch.find(params[:id])
-      @pitch.downvote_by current_user
+    if current_user.voted_up_on?(@pitch)
+      if @pitch.created_at > Schedule.iter_start
+        @pitch.downvote_by current_user
+      else
+        flash[:notice] = "Cannot vote on previous iteration's pitches."
+      end
     end
 
     redirect_to :back
   end
+
   def send_final_work_mail
     UserMailer.submit_final_work(@pitch).deliver_now
     flash[:success] = 'Sent successfully.'

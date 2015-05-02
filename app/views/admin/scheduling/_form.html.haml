@@ -2,24 +2,40 @@
   %h2
     Scheduling
   %p 
-    Iterations will last 
-    %input{:name => "schedule_days", :type => "text", :value => "#{Rails.application.config.schedule_days}"}
-    days
+    Iterations start on Monday at 
+    %select{:name => "start_hour"}
+      -@hours.each do |i|
+        %option{:value => i.to_i, :selected => (i.to_i == Schedule.iter_start_hour)} #{i}
+    \:
+    %select{:name => "start_min"}
+      -@minutes.each do |i|
+        %option{:value => i.to_i, :selected => (i.to_i == Schedule.iter_start_min)} #{i}
+    %select{:name => "start_ampm"}
+      -@ampm.each do |i|
+        %option{:value => i, :selected => (i == Schedule.iter_start_ampm)} #{i}
   %p
-    Pitches may be submitted until end of day (starting from 0)
-    %br
-    %input{:name => "pitch_day", :type => "text", :value => "#{Rails.application.config.pitch_day}"}
+    Iterations end the next Monday at 
+    %select{:name => "end_hour"}
+      -@hours.each do |i|
+        %option{:value => i.to_i, :selected => (i.to_i == Schedule.iter_end_hour)} #{i}
+    \:
+    %select{:name => "end_min"}
+      -@minutes.each do |i|
+        %option{:value => i.to_i, :selected => (i.to_i == Schedule.iter_end_min)} #{i}
+    %select{:name => "end_ampm"}
+      -@ampm.each do |i|
+        %option{:value => i, :selected => (i == Schedule.iter_end_ampm)} #{i}
   %p
-    Discussion may start on day
-    %br
-    %input{:name => "disc_day", :type => "text", :value => "#{Rails.application.config.disc_day}"}
+    Submissions are picked the next Tuesday at
+    %select{:name => "sub_hour"}
+      -@hours.each do |i|
+        %option{:value => i.to_i, :selected => (i.to_i == Schedule.sub_pick_hour)} #{i}
+    \:
+    %select{:name => "sub_min"}
+      -@minutes.each do |i|
+        %option{:value => i.to_i, :selected => (i.to_i == Schedule.sub_pick_min)} #{i}
+    %select{:name => "sub_ampm"}
+      -@ampm.each do |i|
+        %option{:value => i, :selected => (i == Schedule.sub_pick_ampm)} #{i}
 
-  %h2
-    Archival
-  %p
-    After
-    %input{:name => "archive_days", :type => "text", :value => "#{Rails.application.config.archive_days}"}
-    days, posts will automatically be archived.
-    %br
-    Users can still view the posts but may no longer vote or comment.
   %input{:name => "commit", :type => "submit", :value => "Save changes", :id => "update_scheduling"}
