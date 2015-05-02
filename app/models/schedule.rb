@@ -6,6 +6,10 @@ class Schedule < ActiveRecord::Base
 		@entry = Schedule.all[0]
 	end
 
+	def self.entry
+		@entry = Schedule.all[0]
+	end
+
 	def self.iter_start_hour
 		@hour = @entry.iteration_start.time.hour % 12
 		if @hour == 0

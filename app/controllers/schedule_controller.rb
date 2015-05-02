@@ -20,11 +20,9 @@ class ScheduleController < ApplicationController
       @sub_hour += 12
     end
 
-    print @start_hour
-
-    @entry.update(:iteration_start => (DateTime.civil_from_format :local, 2015, 1, 5, @start_hour, params["start_min"].to_i),
-                  :iteration_end => (DateTime.civil_from_format :local, 2015, 1, 12, @end_hour, params["end_min"].to_i),
-                  :submission_pick => (DateTime.civil_from_format :local, 2015, 1, 13, @sub_hour, params["sub_min"].to_i))
+    @entry.update(:iteration_start => DateTime.civil(2015, 1, 5, @start_hour, params["start_min"].to_i, 0, Rational(-8, 24)),
+                  :iteration_end => DateTime.civil(2015, 1, 12, @end_hour, params["end_min"].to_i, 0, Rational(-8, 24)),
+                  :submission_pick => DateTime.civil(2015, 1, 13, @sub_hour, params["sub_min"].to_i, 0, Rational(-8, 24)))
     @entry.save!
     Schedule.update
 

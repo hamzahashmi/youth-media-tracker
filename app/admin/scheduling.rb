@@ -5,6 +5,7 @@ ActiveAdmin.register_page "Scheduling" do
 
   controller do
   	def index
+  		print Schedule.entry.iteration_start.time
   		@hours = (1..12).to_a
   		@hours.map!{|x| format('%02d', x)}
   		@minutes = (0..59).step(5).to_a
