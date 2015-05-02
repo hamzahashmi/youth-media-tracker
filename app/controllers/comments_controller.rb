@@ -29,22 +29,14 @@ class CommentsController < ApplicationController
     @comment = @pitch.comments.build(params.require(:comment).permit(:body))
     @comment.user = current_user;
 
-    days_from = (DateTime.current - Rails.application.config.start_day).to_i % Rails.application.config.schedule_days
-    @disc_disabled = days_from < Rails.application.config.disc_day
-    
-    if @disc_disabled
-      flash[:notice] = "Comments are disabled."
+    if @comment.save
+      flash[:notice] = "Your comment was added"
       redirect_to pitch_path(@pitch)
     else
-      if @comment.save
-        flash[:notice] = "Your comment was added"
-        redirect_to pitch_path(@pitch)
-      else
-        flash[:warning] = "Your comment was NOT added, try again!"
-        @pitch.reload
-        #prevents breaking if comments field is left blank
-        redirect_to pitch_path(@pitch)
-      end
+      flash[:warning] = "Your comment was NOT added, try again!"
+      @pitch.reload
+      #prevents breaking if comments field is left blank
+      redirect_to pitch_path(@pitch)
     end
   end
 

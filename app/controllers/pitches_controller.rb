@@ -86,8 +86,9 @@ end
   end
 
   def downvote
-    if current_user.voted_up_on?(pitch)
-      @pitch = Pitch.find(params[:id])
+    @pitch = Pitch.find(params[:id])
+    
+    if current_user.voted_up_on?(@pitch)
       if @pitch.created_at > Schedule.iter_start
         @pitch.downvote_by current_user
       else

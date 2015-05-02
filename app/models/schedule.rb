@@ -1,5 +1,16 @@
 class Schedule < ActiveRecord::Base
-	#validates :iteration_start, :iteration_end, :submission_pick, :presence => true
+	validates :iteration_start, :iteration_end, :submission_pick, :presence => true
+
+	if Schedule.all.length == 0
+		iteration_start = DateTime.civil(2015, 1, 5, 12, 0, 0, Rational(-8, 24))
+		iteration_end = DateTime.civil(2015, 1, 12, 12, 0, 0, Rational(-8, 24))
+		submission_pick = DateTime.civil(2015, 1, 13, 17, 0, 0, Rational(-8, 24))
+		Schedule.delete_all
+		Schedule.create!(:iteration_start => iteration_start,
+		                 :iteration_end => iteration_end,
+		                 :submission_pick => submission_pick)
+	end
+
 	@entry = Schedule.all[0]
 
 	def self.update
