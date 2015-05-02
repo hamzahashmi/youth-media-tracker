@@ -14,10 +14,20 @@ Feature: Comment pitches
 		|id|name|
 		|1|"Video"|
 		|2|"Audio"|
-	    Given the following pitches exist:
+		Given the following pitches exist:
 	    |id|name|category_id|media_type_id|description|
-	    |1|PitchNameOne|1|1| description|
-	    |2|PitchNameTwo|1|1| description|
+	    |1|PitchNameOne|1|1|description|
+	    |2|PitchNameTwo|1|1|description|
+	    Given the following comments exist:
+	    |id|pitch_id|user_id|body|
+	    |1|1|2|not bad|
+	    |2|1|2|great|
+
+	Scenario: see all comments
+		Given I am on the home page
+		When I follow "PitchNameOne"
+		Then I should see "not bad"
+		And I should see "great"
 
 	Scenario: comment on pitch
 		Given I am on the home page

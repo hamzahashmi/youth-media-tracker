@@ -1,6 +1,8 @@
 ActiveAdmin.register Comment do
 
 belongs_to :pitch,  :optional => true
+
+permit_params :user_id, :pitch_id, :body
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
 #

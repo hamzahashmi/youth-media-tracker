@@ -32,7 +32,7 @@ ActiveAdmin.register_page "Dashboard" do
       end
 
       column do
-        panel "Top Three Piches" do
+        panel "Top Three Pitches" do
          table_for Pitch.top_voted.first(3) do
             column :name do |pitch|
               link_to pitch.name, [:admin, pitch]

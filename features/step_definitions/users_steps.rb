@@ -33,6 +33,12 @@ Given /the following zipcodes exist/ do |users_table|
 	end
 end
 
+Given /the following comments exist/ do |comments_table|
+	comments_table.hashes.each do |comment|
+		Comment.create!(comment) 
+	end
+end
+
 Given /^the website is set up$/ do
 	Zipcode.create!(:code => "12345")
 	@admin = User.create!(:name => "admin", :email => "admin@gmail.com", :address_zip_code => "12345", :password => "11111111", :bio => "Bio", :phone_number => "123456789")

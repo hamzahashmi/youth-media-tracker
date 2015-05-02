@@ -1,5 +1,5 @@
 ActiveAdmin.register User do
-permit_params :suspended, :bio
+permit_params :suspended, :bio, :email, :name, :address_zip_code, :phone_number
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
 #
