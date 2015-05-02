@@ -9,7 +9,8 @@
         = link_to pitch.name, pitch, :id => "pitch-link" 
         %small
           Submitted #{time_ago_in_words(pitch.created_at)} by 
-          %cite #{pitch.user.name}
+          %cite 
+            = link_to "#{pitch.user.name}", user_path(pitch.user)
       %p.lead
         #{pitch.description}
       %cite
