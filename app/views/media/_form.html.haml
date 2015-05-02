@@ -1,5 +1,5 @@
 = simple_form_for @medium, :html => { :class => 'form-horizontal' } do |f|
-  = f.text_area :context,:class => "redactor", :rows => 40, :cols => 120
+  = f.text_area :context,:class => "redactor", :rows => 40, :cols => 120, :id => "context"
   / = f.input :user_id
   / = f.input :token
   / = f.input :week_session_id

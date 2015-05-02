@@ -21,7 +21,8 @@ module NavigationHelpers
     when /^the pitch edit page$/ then edit_pitch_path
     when /^users page$/ then users_path
     when /^the about page$/ then about_path
-
+    when /^the admin page$/ then admin_root_path
+    when /^the final work page$/ then media_path
 
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:

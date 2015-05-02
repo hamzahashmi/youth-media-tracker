@@ -49,3 +49,16 @@ Background:
 		When I uncheck "Suspended"
 		Then I press "Change"
 		Then the "Suspended" checkbox should not be checked
+
+	@javascript
+	Scenario: admin can delete user
+		Given I am logged into website as "admin"
+		When I go to users page
+		Given I will accept confirmation
+		Then I follow "Delete user"
+		Then I should see "User deleted"
+	Scenario: admin can see user profile
+		Given I am logged into website as "admin"
+		When I go to users page
+		When I follow "user@gmail.com"
+		Then I should see "Name: user"

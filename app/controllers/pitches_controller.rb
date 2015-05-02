@@ -128,7 +128,7 @@ end
     redirect_to :back
   end
   def send_final_work_mail
-    UserMailer.submit_final_work(@pitch).deliver
+    UserMailer.submit_final_work(@pitch).deliver_now
     flash[:success] = 'Sent successfully.'
     redirect_to :back
   end
